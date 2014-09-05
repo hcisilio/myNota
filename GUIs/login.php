@@ -8,7 +8,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 	function logar() {		
-	    $.ajax({	    
+		$.ajax({	    
 			type: "POST",
 			url: "../Controladores/controlador.php",
 			data: { 
@@ -16,31 +16,21 @@
 				metodo: "login",
 				id: $("#id").val(),
 				senha: $("#senha").val()
+			},		
+			beforeSend: function() {							
 			},
-			
-			beforeSend: function() {
-				// enquanto a função esta sendo processada, você
-				// pode exibir na tela uma
-				// msg de carregando							
-			},
-			success: function(result) {
-				// pego o id da div que envolve o select com
-				// name="id_modelo" e a substituiu
-				// com o texto enviado pelo php, que é um novo
-				//select com dados da marca x
-				//$('#ajax_alunos').html(txt);
-				if (!result) {
+			success: function(saida) {				
+				if (saida==false) {
 					$("#login").show("slow");
 					return false;
 				}
 				else {
-					window.location.href = result;
+					window.location.href = saida;
 				}				
 			},
-			error: function(txt) {
-				
+			error: function() {			
 			}
-	    }); 
+	    });	    
 	}
 	function teste(){
 		window.location.href = "homeDiretor.php";
@@ -60,7 +50,7 @@
 		</div>
 		<!-- formulário -->
 		<div class="col-md-5">
-			<form action="../Controladores/controlador.php" method="post" onsubmit="JavaScript:return logar()">
+			<form action="../Controladores/controlador.php" method="post">
 				<input type="hidden" name="classe" id="classe" value="Professor">
 				<input type="hidden" name="metodo" id="metodo" value="login"> 
 				<div class="input-group abaixo">
@@ -70,8 +60,10 @@
 			  	<div class="input-group abaixo">
 			 		<span class="input-group-addon"><span class="glyphicon"><img src="Imagens/glyphicons_044_keys.png" style="width: 14px; height: 14px;"></span></span>			 		
 					<input class="form-control" name="senha" id="senha" type="password" placeholder="Senha">
-			  	</div>	
-			  	<input type="button" class="btn btn-default" id="btnSubmit" value="Login" onclick="logar()">
+			  	</div>
+			  	<div class="naDireita">	
+			  		<input type="button" class="btn btn-primary" id="btnSubmit" value="Login" onclick="logar()">
+			  	</div>
 			</form>	
 			<div class="alert alert-danger" role="alert" id="login" style="display:none">
 				Usuário ou senha inválidos
@@ -79,7 +71,6 @@
 		</div>
 		<!-- sobra -->
 		<div class="col-md-2">
-				<input type="button" value="teste" onclick="login()">
 		</div>
 	</div>
 	<div id="rodape">
