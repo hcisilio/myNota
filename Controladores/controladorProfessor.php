@@ -64,13 +64,15 @@ class ControladorProfessor {
 		if (!$professor) {
 			//$_SESSION["erro"] = 1;
 			//header("Location: ../GUIs/login.php");
-			return false;
+			$saida = false;
+			echo $saida;
 		}
 		else {
 			if ($senha != $professor->getSenha()){				
 				//$_SESSION["erro"] = 2;
 				//header("Location: ../GUIs/login.php");
-				return false;
+				$saida = false;
+				echo $saida;
 			} 
 			else {
 				//$_SESSION["erro"] = 0;
@@ -81,7 +83,7 @@ class ControladorProfessor {
 				$_SESSION["acesso"] = $professor->getAcesso();
 				$acesso = $professor->getAcesso(); 				
 				//header("Location: ../GUIs/home$acesso.php");	
-				return "home$acesso.php";
+				echo "home$acesso.php";
 			}
 		}
 	}
