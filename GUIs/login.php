@@ -38,18 +38,23 @@
 	</script>
 </head>
 <body>
+	<!-- mainLogo -->
 	<div id="row">
-		<div class="col-md-12 topo">
-		
+		<div class="col-md-3 topo">
+		</div>
+		<div class="col-md-6 topo">
+			<img src="Imagens/mainLogo.png" height="150px" width="100%">
 		</div>
 	</div>
+		<div class="col-md-3 topo">
+		</div>
 	<div id="row">
-		<!-- logotipo -->
-		<div class="col-md-5">
-		
+		<!-- sublogo -->
+		<div class="col-md-6">
+			<img src="Imagens/sublogo.png" class="img-responsive" alt="Responsive image">
 		</div>
 		<!-- formulário -->
-		<div class="col-md-5">
+		<div class="col-md-4 desce">
 			<form action="../Controladores/controlador.php" method="post">
 				<input type="hidden" name="classe" id="classe" value="Professor">
 				<input type="hidden" name="metodo" id="metodo" value="login"> 
@@ -73,10 +78,9 @@
 		<div class="col-md-2">
 		</div>
 	</div>
-	<div id="rodape">
-		<div id="miolo">
-			<p>I CS - Cisilio's Sistemas &copy;2014 - Todos os direitos reservados I <a href="#"></a> </p>			
-		</div>
-	</div>	
+	
+	<!-- rodapé -->
+	<?php include ("rodape.php") ?>
+	
 </body>
 </html>
