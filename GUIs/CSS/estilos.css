@@ -2,7 +2,6 @@
 .topo{
 	height: 150px;
 	background: #1E90FF;
-/* 	margin-bottom: 100px; */
 	text-align: center;
 }
 .abaixo{
@@ -14,7 +13,14 @@
 .naDireita{
 	text-align: right;
 }
-
+.menuLateral{
+	margin-left: 0px !important;
+	margin-top: 5px;
+}
+.menuLateral a:hover {
+	background-color: #428bca !important;
+	color: #FFF !important;	
+}
 #rodape {
 	background: #1E90FF;
 	width:100%;
@@ -29,4 +35,35 @@
 #rodape p {
 	color: #FFF;		
 	text-align: center;
+}
+#barra {	
+	height: 30px;		
+	border-color: red;
+	background: url(../Imagens/menu.gif) repeat-x;
+	text-align: right;	
+	-moz-box-shadow: 3px 3px 4px #708090;
+	-webkit-box-shadow: 3px 3px 4px #708090;
+	box-shadow: 3px 3px 4px #708090;
+	margin: 0 0 5px 0;
+}
+#barra ul li {
+	display: inline;
+	list-style-type: non
+	font-weight: bold;	
+	margin: 0 5px 0 0;
+}
+#barra ul li a:link, #barra ul li a:visited {
+	color: #FFFFFF;	
+	font-variant: small-caps;
+	font-weight: bold;
+	text-decoration: none;	
+	vertical-align: middle;
+}
+#barra ul li a:hover, #barra ul li a:active {
+	text-decoration: underline;		
+	font-variant: small-caps;
+	font-weight: bold;	
+}
+#barra ul li img {
+	height: 30px;	
 }

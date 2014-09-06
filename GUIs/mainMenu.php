@@ -11,7 +11,7 @@
 	
 
 ?>
-<ul>
-	<li><a href="<?php echo "home$acesso.php"; ?>">Página Inicial</a></li>
-	<?php include("opcoes$acesso.php"); ?>
-</ul>
+<div class="list-group">
+	<a href="<?php echo "home$acesso.php"; ?>" class="list-group-item active"> Página Inicial </a>
+  	<?php include("opcoes$acesso.php"); ?>
+</div>
