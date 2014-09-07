@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .topo{
 	height: 150px;
-	background: #1E90FF;
+	background: #428BCA;
 	text-align: center;
 }
 .abaixo{
@@ -18,11 +18,19 @@
 	margin-top: 5px;
 }
 .menuLateral a:hover {
-	background-color: #428bca !important;
+	background-color: #428BCA !important;
 	color: #FFF !important;	
 }
+.edits {
+	font-size: 1.2em;
+	border-width: 1px ;
+	border-style: solid;
+	border-color: #1E90FF !important;	
+	font-variant: small-caps;
+	border-radius: 5px;
+}
 #rodape {
-	background: #1E90FF;
+	background: #428BCA;
 	width:100%;
 	height:30px;
 	line-height: 30px;
@@ -36,28 +44,25 @@
 	color: #FFF;		
 	text-align: center;
 }
-#barra {	
-	height: 30px;		
-	border-color: red;
-	background: url(../Imagens/menu.gif) repeat-x;
-	text-align: right;	
+#barra {				
+	background-color: #428BCA;
+	border-color: #428BCA;		
+	text-align: right;
 	-moz-box-shadow: 3px 3px 4px #708090;
 	-webkit-box-shadow: 3px 3px 4px #708090;
-	box-shadow: 3px 3px 4px #708090;
-	margin: 0 0 5px 0;
+	box-shadow: 3px 3px 4px #708090;	
 }
 #barra ul li {
 	display: inline;
-	list-style-type: non
-	font-weight: bold;	
-	margin: 0 5px 0 0;
+	list-style-type: none;
+	font-weight: bold;		
 }
 #barra ul li a:link, #barra ul li a:visited {
 	color: #FFFFFF;	
 	font-variant: small-caps;
 	font-weight: bold;
 	text-decoration: none;	
-	vertical-align: middle;
+	vertical-align: middle;	
 }
 #barra ul li a:hover, #barra ul li a:active {
 	text-decoration: underline;		
@@ -65,5 +70,5 @@
 	font-weight: bold;	
 }
 #barra ul li img {
-	height: 30px;	
+	height: 40px;	
 }

@@ -14,28 +14,24 @@
   	</script>
 </head>
 <body>
-	<div id="row">
-		<div class="col-md-3 topo">
-		</div>
-		<div class="col-md-6 topo">
-			<img src="Imagens/mainLogo.png" height="150px" width="100%">
-		</div>	
-		<div class="col-md-3 topo">
-		</div>
-	</div>
-	
-	<div id="row">
-		<div class="col-md-12" id="barra">
+	<!-- NavBar -->
+	<nav class="navbar navbar-default" role="navigation" id="barra">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<!-- colocar alguma imagem mynota -->
+			</div>
+			<div class="collapse navbar-collapse">
 			<form action="../Controladores/controlador.php" method="post" name="logout" id="logout">
 				<input type="hidden" name="classe" value="Professor">
 				<input type="hidden" name="metodo" value="logout">
-				<ul>	
+				<ul class="nav navbar-nav navbar-right">	
 					<li> <a href="trocaSenha.php"><img src="Imagens/icone-chaves.png"></a> </li>
-					<li> <a href="javaScript:doPost('logout');"> <img src="Imagens/logout.png" > </a></li>          
+					<li> <a href="javaScript:doPost('logout');"> <img src="Imagens/logout.png" > </a></li>					         
 				</ul>
 			</form>
+			</div>
 		</div>
-	</div>
+	</nav>
 	
 	<div id="row">
 		<!-- menu lateral -->

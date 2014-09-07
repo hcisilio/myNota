@@ -13,62 +13,85 @@
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Cadastrar professor</title>
-<link rel="stylesheet" type="text/css" href="CSS/mynota.css">
-<script>
-   function doPost(formName) {
-       var theForm = document.getElementById(formName);
-       theForm.submit();
-   }
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Cadastrar professor</title>
+   	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
+	<link href="CSS/bootstrap.css" rel="stylesheet">	
+	<script src="../Ajax/jQuery.js"></script>
+	<script src="js/bootstrap.min.js"></script>	
+	<script>
+	   function doPost(formName) {
+	       var theForm = document.getElementById(formName);
+	       theForm.submit();
+	   }
+	</script>
 </head>
 
 <body>
 
-	<div id="principal">
-
-		<div id="topo">
-			Topo da página
+	<!-- NavBar -->
+	<nav class="navbar navbar-default" role="navigation" id="barra">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<!-- colocar alguma imagem mynota -->
+			</div>
+			<div class="collapse navbar-collapse">
+			<form action="../Controladores/controlador.php" method="post" name="logout" id="logout">
+				<input type="hidden" name="classe" value="Professor">
+				<input type="hidden" name="metodo" value="logout">
+				<ul class="nav navbar-nav navbar-right">	
+					<li> <a href="JavaScript:doPost('professor')"> <img src="Imagens/save.png"> </a></li>				         
+				</ul>
+			</form>
+			</div>
 		</div>
-		
-		<div id="barra">
-			<ul>
-				<li> <a href="JavaScript:doPost('professor')"> <img src="Imagens/save.png"> </a></li>           
-			</ul>
-		</div>
-		
-		<div id="menu">
+	</nav>
+	
+	<div id="row">
+		<!-- menu lateral -->
+		<div class="col-md-3 menuLateral">
 			<?php include("mainMenu.php"); ?>
 		</div>
-		
-		<div id="formulario">
+		<!-- espaçamento -->
+		<div class="col-md-1">
+		</div>
+		<!-- conteúdo -->
+		<div class="col-md-7">			
 			<form id="professor" action="../Controladores/controlador.php" method="post">
 				<input type="hidden" name="classe" value="Professor">
 				<input type="hidden" name="metodo" value="inserir">
-				<label> Login </label> <br>
-				<input type="text" name="id" class="edits" size="21" maxlength="20"> <br/>
-				<label>Nome Completo</label> <br>
-				<input type="text" name="nome" class="edits" size="50" /> <br>
-				<label>Senha</label> <br>
-				<input type="password" name="senha" class="edits" size="50" /> <br>
-				<label>Perfil de acesso</label> <br>
-				<select name="acesso" class="edits">
-					<option value="Professor"> Professor </option>
-					<option value="Diretor"> Diretor </option>
-					<option value="Administrador"> Administrador </option>
-				</select>  <BR />
-				<label>Comentários</label> <br>
-				<textarea name="obs" cols="50" rows="5" class="edits"></textarea> <br>	
-			</form>
+				<div class="input-group abaixo">
+			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
+					<input class="form-control edits" name="id" id="id" type="text" placeholder="Login" maxlength="20">
+			  	</div>
+				<div class="input-group abaixo">
+			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-pencil"></span></span>			 		
+					<input class="form-control edits" name="nome" id="nome" type="text" placeholder="Nome Completo">
+			  	</div>
+			  	<div class="input-group abaixo">
+			 		<span class="input-group-addon edits"><span class="glyphicon"><img src="Imagens/glyphicons_044_keys.png" style="width: 14px; height: 14px;"></span></span>			 		
+					<input class="form-control edits" name="senha" id="senha" type="password" placeholder="Senha">
+			  	</div>
+			  	<div class="input-group abaixo">
+			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-tags"></span></span>		
+					<select name="acesso" class="form-control edits">
+						<option value="Professor"> Professor </option>
+						<option value="Diretor"> Diretor </option>
+						<option value="Administrador"> Administrador </option>
+					</select>
+				</div>
+				<div class="input-group abaixo">
+					<textarea name="obs" cols="50" rows="5" class="form-control edits"></textarea>
+				</div>	
+			</form>			
+		</div>	
+		<!-- sobra -->
+		<div class="col-md-1">
 		</div>
 		
-		<div class="clear"> <BR> </div>
-		
-		<div id="rodape">
-			<p>I CS - Cisilio's Sistemas &copy;2014 - Todos os direitos reservados I <a href="#"></a> </p>
-		</div>	
-
 	</div>
+	
+	<!-- rodapé -->
+	<?php include ("rodape.php") ?>
 
 </body>
