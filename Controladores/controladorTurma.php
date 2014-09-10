@@ -5,7 +5,7 @@ include_once "../ClassesSQL/classeTurmaSQL.php";
 class ControladorTurma {
 
 	function inserir(){
-		if(isset($_REQUEST["dia"])) {
+		if(isset($_REQUEST["dias"])) {
 			$turma = new turma();		
 			$turma->setId($_REQUEST["id"]);
 			$professor = new ProfessorSQL();
@@ -17,14 +17,14 @@ class ControladorTurma {
 			$ok = $persistir->inserir($turma);			
 			if ($ok == true) {
 				$dia = new Dia();
-				for($i = 0; $i < count($_REQUEST["dia"]); $i++) {
-					$persistir->DiaTurma($_REQUEST["dia"][$i],$_REQUEST["id"]);
+				for($i = 0; $i < count($_REQUEST["dias"]); $i++) {
+					$persistir->DiaTurma($_REQUEST["dias"][$i],$_REQUEST["id"]);
 				}
 				$resultado = "
-				<div class='alert alert-success' role='alert'>
-					Nova turma $id registrada no sistema!
-				</div>
-			";
+					<div class='alert alert-success' role='alert'>
+						Nova turma $id registrada no sistema!
+					</div>
+				";
 			}
 			else{
 				$resultado = "
@@ -54,14 +54,20 @@ class ControladorTurma {
 		$turma = $persistir->listar($_REQUEST["turma"]);
 		$turma->setStatus(0);
 		if ($persistir->alterar($turma)) {
-			$_SESSION["msg"] = "Turma $id concluída!";
-			header ("location: ../GUIs/sucesso.php");
+			$resultado = "
+				<div class='alert alert-success' role='alert'>
+					As aulas da turma foram concluídas. <BR /> Turma finalizada!
+				</div>
+			";
 		}
 		else{
-			$_SESSION["msg"] = "Ops! Finalização da turma não realizada.";
-			$_SESSION["erro"] = mysql_error();
-			header ("location: ../GUIs/erro.php");		
+			$resultado = "
+				<div class='alert alert-danger' role='alert'>
+					Ops! A finalização da turma!. <BR />".mysql_error()."
+				</div>
+			";	
 		}
+		echo $resultado;
 	}
 	
 	function listarAtivas() {

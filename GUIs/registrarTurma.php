@@ -21,16 +21,20 @@
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
 	   function doPost() {
-		   var a = $("#dia option:selected").realVal();
-		   alert (a);
-	       /*$.ajax({			        
+		   var dias = new Array();		   
+		   for (i=0; i<7; i++) {
+			   if ($("#dias input")[i].checked) {
+				   dias.push( $($("#dias input")[i]).val() );
+			   }
+			};	
+	       	$.ajax({			        
 				type: "POST",
 				url: "../Controladores/controlador.php",
 				data: { 
 					id: $("#id").val(),
-					nome: $("#professor").val(),
+					professor: $("#professor").val(),
 					curso: $("#curso").val(),
-					dia: $("#dia").val(),				
+					dias: dias,									
 					classe: "Turma",
 					metodo: "inserir" 
 				},
@@ -46,7 +50,7 @@
 				error: function(resultado) {				
 					
 				}
-		    });*/
+		    });
 	   }
 	</script>
 </head>

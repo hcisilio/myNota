@@ -16,11 +16,34 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Cadastrar Aluno</title>
 	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
-	<link href="CSS/bootstrap.css" rel="stylesheet">
+	<link href="CSS/bootstrap.css" rel="stylesheet">	
+	<script src="../Ajax/jQuery.js"></script>
+	<script src="js/bootstrap.min.js"></script>	
 	<script>
-		function doPost(formName) {
-		    var theForm = document.getElementById(formName);
-		    theForm.submit();
+		function matricularAluno() {
+			$.ajax({			        
+				type: "POST",
+				url: "../Controladores/controlador.php",
+				data: { 
+					id: $("#id").val(),
+					nome: $("#nome").val(),
+					//mail: $("#mail").val(),
+					classe: "Aluno",
+					metodo: "inserir"
+				},
+				
+				beforeSend: function() {						
+					
+				},
+				success: function(resultado) {
+					$('#principal').hide();				
+					$('#principal').html(resultado);
+					$('#principal').show("slow");	
+				},
+				error: function(resultado) {				
+					
+				}
+			});
 		}
 	</script>
 </head>
@@ -35,7 +58,7 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	
-					<li> <a href="JavaScript:doPost('aluno')"> <img src="Imagens/save.png"> </a></li>				         
+					<li> <a href="JavaScript:matricularAluno()"> <img src="Imagens/save.png"> </a></li>				         
 				</ul>
 			</div>
 		</div>
@@ -50,10 +73,8 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div class="col-md-7">			
+		<div id="principal" class="col-md-7">			
 			<form id="aluno" action="../Controladores/controlador.php" method="post">
-				<input type="hidden" name="classe" value="Aluno">
-				<input type="hidden" name="metodo" value="inserir">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
 					<input class="form-control edits" name="id" id="id" type="text" placeholder="Matrícula" maxlength="10">

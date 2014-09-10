@@ -13,16 +13,20 @@ class ControladorAluno {
 		$persistir = new AlunoSQL();
 		$ok = $persistir->inserir($aluno);
 		if ($ok == true){
-			$_SESSION["msg"] = "
-			Aluno $id - $nome registrado no sistema!
+			$resultado = "
+				<div class='alert alert-success' role='alert'>
+					O aluno $id - $nome foi matriculado com sucesso!
+				</div>
 			";
-			header ("location: ../GUIs/sucesso.php");
 		}
 		else{
-			$_SESSION["msg"] = "Ops! Cadastro de aluno não efetuado.";
-			$_SESSION["erro"] = mysql_error();
-			header ("location: ../GUIs/erro.php");
+			$resultado = "
+				<div class='alert alert-danger' role='alert'>
+					Ops! Aluno não matriculado!. <BR />".mysql_error()."
+				</div>
+			";
 		}
+		echo $resultado;
 	}
 	
 	

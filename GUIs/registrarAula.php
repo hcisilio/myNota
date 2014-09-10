@@ -35,7 +35,7 @@
 		    });
 		}
 	
-		function insereAula(classe, metodo) {
+		function insereAula() {
 			var turma = document.getElementById("turma").options[document.getElementById("turma").selectedIndex].value;
 			var conteudo = document.getElementById("conteudo").value;	
 			/* Ajax para inserir a aula dada no banco de dados */
@@ -45,8 +45,8 @@
 				data: { 
 					turma: turma,
 					conteudo: conteudo,
-					classe: classe,
-					metodo: metodo 
+					classe: "Aula",
+					metodo: "inserir" 
 				},
 				
 				beforeSend: function() {						
@@ -63,11 +63,30 @@
 			
 		}
 	
-		function doPost(formName) {
+		function finalizarTurma() {
 			resposta = confirm("Tem certeza que deseja concluir o curso desta turma?");
 			if (resposta) {
-		    	var theForm = document.getElementById(formName);
-				theForm.submit();
+				$.ajax({			        
+					type: "POST",
+					url: "../Controladores/controlador.php",
+					data: { 
+						turma: $("#turma").val(),						
+						classe: "Turma",
+						metodo: "encerrar" 
+					},
+					
+					beforeSend: function() {						
+						
+					},
+					success: function(resultado) {						
+						$('#principal').hide();				
+						$('#principal').html(resultado);
+						$('#principal').show("slow");				
+					},
+					error: function(resultado) {				
+						
+					}
+			    });
 			}
 		}
 	</script>
@@ -83,8 +102,8 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	
-					<li> <a href="JavaScript:doPost('aula')"> <img src="Imagens/ok.png"> </a></li>
-					<li> <a href="JavaScript:insereAula('Aula','inserir')"> <img src="Imagens/save.png"> </a></li>  				         
+					<li> <a href="JavaScript:finalizarTurma()"> <img src="Imagens/ok.png"> </a></li>
+					<li> <a href="JavaScript:insereAula()"> <img src="Imagens/save.png"> </a></li>  				         
 				</ul>
 			</div>
 		</div>
@@ -99,13 +118,11 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div class="col-md-7">			
-			<form id="aula" action="../Controladores/controlador.php" method="post">
-				<input type="hidden" name="classe" value="Turma">
-				<input type="hidden" name="metodo" value="encerrar">			
+		<div id="principal" class="col-md-7">			
+			<form id="aula" action="../Controladores/controlador.php" method="post">		
 				<div class="input-group abaixo">
 					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select name="turma" class="form-control edits" id="turma" onChange="listaAulas(this.value);">
+					<select id="turma" name="turma" class="form-control edits" onChange="listaAulas(this.value);">
 						<option value='null'> Selecione uma turma </option>
 						<?php
 							include_once("../Controladores/controladorTurma.php");
@@ -120,7 +137,7 @@
 					</select>
 				</div>
 				<div class="input-group abaixo">
-					<textarea rows="11" cols="100%" name="conteudo" id="conteudo" class="form-control edits"></textarea>
+					<textarea rows="11" cols="200%" name="conteudo" id="conteudo" class="form-control edits"></textarea>
 				</div>	
 			</form>	
 			
