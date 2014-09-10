@@ -39,15 +39,13 @@
 					beforeSend: function() {						
 						//$( '#ajax' ).html('Carregando');
 					},
-					success: function(txt) {			
-						//$( '#ajax' ).html(txt);
-						document.getElementById("senha").value = null;
-						document.getElementById("confirmaSenha").value = null;
-						alert(txt);				
+					success: function(resultado) {			
+						$('#principal').hide();				
+						$('#principal').html(resultado);
+						$('#principal').show("slow");				
 					},
-					error: function(txt) {				
+					error: function(resulatdo) {				
 						//$( '#ajax' ).html('fudeu');
-						alert(txt);
 					}
 			    });
 			}
@@ -80,7 +78,7 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div class="col-md-7">			
+		<div id="principal" class="col-md-7">			
 			<form id="professor" action="../Controladores/controlador.php" method="post">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>	
@@ -88,11 +86,11 @@
 			  	</div>
 			  	<div class="input-group abaixo">
 			 		<span class="input-group-addon"><span class="glyphicon"><img src="Imagens/glyphicons_044_keys.png" style="width: 14px; height: 14px;"></span></span>	
-			 		<input type="password" name="senha" id="senha" class=" form-control edits" size="21" placeholder="Senha" />				
+			 		<input type="password" name="senha" id="senha" class=" form-control edits" size="21" placeholder="Nova Senha" />				
 			  	</div>
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon"><span class="glyphicon"><img src="Imagens/glyphicons_044_keys.png" style="width: 14px; height: 14px;"></span></span>	
-			 		<input type="password" name="confirmaSenha" id="confirmaSenha" class=" form-control edits" size="21" placeholder="Nova Senha" />				
+			 		<input type="password" name="confirmaSenha" id="confirmaSenha" class=" form-control edits" size="21" placeholder="Repetir Nova Senha" />				
 			  	</div>
 			</form>			
 		</div>

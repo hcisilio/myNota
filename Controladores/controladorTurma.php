@@ -20,20 +20,27 @@ class ControladorTurma {
 				for($i = 0; $i < count($_REQUEST["dia"]); $i++) {
 					$persistir->DiaTurma($_REQUEST["dia"][$i],$_REQUEST["id"]);
 				}
-				$_SESSION["msg"] = "
-				turma $id registrado no sistema!
-				";
-				header ("location: ../GUIs/sucesso.php");
+				$resultado = "
+				<div class='alert alert-success' role='alert'>
+					Nova turma $id registrada no sistema!
+				</div>
+			";
 			}
 			else{
-				$_SESSION["msg"] = "Ops! Cadastro de turma não efetuado.";
-				$_SESSION["erro"] = mysql_error();
-				header ("location: ../GUIs/erro.php");
+				$resultado = "
+					<div class='alert alert-danger' role='alert'>
+						Ops! O cadastro da turma falhou!. <BR />".mysql_error()."
+					</div>
+				";
 			}
 		} else {
-			$_SESSION["msg"] = "Ops! Cadastro de turma não efetuado.";
-			$_SESSION["erro"] = "Não foram selecionados os dias de aula desta turma";
+			$resultado = "
+				<div class='alert alert-danger' role='alert'>
+					Ops! Não foram selecionados os dias de aula desta turma
+				</div>
+			";
 		}
+		echo $resultado;
 	}
 	
 	function listar($id){

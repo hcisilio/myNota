@@ -15,14 +15,20 @@ class ControladorProfessor {
 		$persistir = new ProfessorSQL();
 		$ok = $persistir->inserir($professor);
 		if ($ok == true){
-			$_SESSION["msg"] = "professor registrado no sistema!";
-			header ("location: ../GUIs/sucesso.php");
+			$resultado = "
+				<div class='alert alert-success' role='alert'>
+					Professor registrado no sistema!
+				</div>
+			";
 		}
 		else{
-			$_SESSION["msg"] = "Ops! Cadastro de professor não efetuado.";
-			$_SESSION["erro"] = mysql_error();
-			header ("location: ../GUIs/erro.php");
+			$resultado = "
+				<div class='alert alert-danger' role='alert'>
+					Ops! Cadastro de professor não efetuado. <BR />".mysql_error()."
+				</div>
+			";
 		}
+		echo $resultado;
 	}
 	
 	function alterar(){
@@ -30,18 +36,20 @@ class ControladorProfessor {
 		$professor = $persistir->listar($_REQUEST["id"]);
 		$professor->setSenha(md5($_REQUEST["senha"]));
 		if ($persistir->alterar($professor)){
-			//$_SESSION["msg"] = "Senha alterada com sucesso!";
-			//header ("location: ../GUIs/saidas/sucesso.php");
-			$txt = "Senha alterada";
-			echo $txt;
+			$resultado = "
+				<div class='alert alert-success' role='alert'>
+					Senha alterada com sucesso!
+				</div>
+			";
 		}
 		else {
-			//$_SESSION["msg"] = "Ops! Senha não foi alterada!";
-			//$_SESSION["erro"] = mysql_error();
-			//header ("location: ../GUIs/saidas/erro.php");
-			$txt = mysql_error();
-			echo $txt;
+			$resultado = "
+				<div class='alert alert-danger' role='alert'>
+					Ops! A alteração de senha falhou!. <BR />".mysql_error()."
+				</div>
+			";
 		}
+		echo $resultado;
 	}
 	
 	function deletar(){
@@ -62,28 +70,20 @@ class ControladorProfessor {
 		$persistir = new ProfessorSQL();
 		$professor = $persistir->listar($login);
 		if (!$professor) {
-			//$_SESSION["erro"] = 1;
-			//header("Location: ../GUIs/login.php");
 			$saida = false;
 			echo $saida;
 		}
 		else {
 			if ($senha != $professor->getSenha()){				
-				//$_SESSION["erro"] = 2;
-				//header("Location: ../GUIs/login.php");
 				$saida = false;
 				echo $saida;
 			} 
 			else {
-				//$_SESSION["erro"] = 0;
 				$_SESSION["logado"] = "true";
 				$_SESSION["id"] = $login;
 				$_SESSION["senha"] = $senha;
 				$_SESSION["nome"] = $professor->getNome();
 				$_SESSION["acesso"] = $professor->getAcesso();
-				//$acesso = $professor->getAcesso(); 				
-				//header("Location: ../GUIs/home$acesso.php");	
-				//echo "home$acesso.php";
 				echo "home.php";
 			}
 		}

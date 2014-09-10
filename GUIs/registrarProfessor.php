@@ -20,9 +20,32 @@
 	<script src="../Ajax/jQuery.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
-	   function doPost(formName) {
-	       var theForm = document.getElementById(formName);
-	       theForm.submit();
+	   function doPost() {
+	       $.ajax({			        
+				type: "POST",
+				url: "../Controladores/controlador.php",
+				data: { 
+					id: $("#id").val(),
+					nome: $("#nome").val(),
+					senha: $("#senha").val(),
+					acesso: $("#acesso").val(),
+					obs: $("#obs").val(),				
+					classe: "Professor",
+					metodo: "inserir" 
+				},
+				
+				beforeSend: function() {						
+					
+				},
+				success: function(resultado) {
+					$('#principal').hide();				
+					$('#principal').html(resultado);
+					$('#principal').show("slow");	
+				},
+				error: function(resultado) {				
+					
+				}
+		    });
 	   }
 	</script>
 </head>
@@ -37,7 +60,7 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	
-					<li> <a href="JavaScript:doPost('professor')"> <img src="Imagens/save.png"> </a></li>				         
+					<li> <a href="JavaScript:doPost()"> <img src="Imagens/save.png"> </a></li>				         
 				</ul>
 			</div>
 		</div>
@@ -52,10 +75,8 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div class="col-md-7">			
+		<div id="principal" class="col-md-7">			
 			<form id="professor" action="../Controladores/controlador.php" method="post">
-				<input type="hidden" name="classe" value="Professor">
-				<input type="hidden" name="metodo" value="inserir">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
 					<input class="form-control edits" name="id" id="id" type="text" placeholder="Login" maxlength="20">

@@ -20,10 +20,34 @@
 	<script src="../Ajax/jQuery.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
-	function doPost(formName) {
-	    var theForm = document.getElementById(formName);
-	    theForm.submit();
-	}
+	   function doPost() {
+		   var a = $("#dia option:selected").realVal();
+		   alert (a);
+	       /*$.ajax({			        
+				type: "POST",
+				url: "../Controladores/controlador.php",
+				data: { 
+					id: $("#id").val(),
+					nome: $("#professor").val(),
+					curso: $("#curso").val(),
+					dia: $("#dia").val(),				
+					classe: "Turma",
+					metodo: "inserir" 
+				},
+				
+				beforeSend: function() {						
+					
+				},
+				success: function(resultado) {
+					$('#principal').hide();				
+					$('#principal').html(resultado);
+					$('#principal').show("slow");	
+				},
+				error: function(resultado) {				
+					
+				}
+		    });*/
+	   }
 	</script>
 </head>
 
@@ -38,7 +62,7 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	
-					<li> <a href="JavaScript:doPost('turma')"> <img src="Imagens/save.png"> </a></li>				         
+					<li> <a href="JavaScript:doPost()"> <img src="Imagens/save.png"> </a></li>				         
 				</ul>
 			</div>
 		</div>
@@ -53,10 +77,8 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div class="col-md-7">			
+		<div id="principal" class="col-md-7">			
 			<form id="turma" action="../Controladores/controlador.php" method="post">
-				<input type="hidden" name="classe" value="Turma">
-				<input type="hidden" name="metodo" value="inserir">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
 					<input class="form-control edits" name="id" id="id" type="text" placeholder="ID da turma" maxlength="10">
@@ -67,7 +89,7 @@
 						include("../ClassesSQL/classeProfessorSQL.php");
 						$persistir = new ProfessorSQL();
 						$lista = $persistir->listarTodos();
-						echo "<select name='professor' class=' form-control edits'>";
+						echo "<select id='professor' name='professor' class=' form-control edits'>";
 							for ($i = 0; $i < count($persistir->listarTodos()); $i++) {
 								$id = $lista[$i]->getId();
 								$nome = $lista[$i]->getNome();
@@ -82,7 +104,7 @@
 						include("../ClassesSQL/classeCursoSQL.php");
 						$persistir = new CursoSQL();
 						$lista = $persistir->listarTodos();
-						echo "<select name='curso' class=' form-control edits'>";
+						echo "<select id='curso' name='curso' class=' form-control edits'>";
 							for ($i = 0; $i < count($persistir->listarTodos()); $i++) {
 								$id = $lista[$i]->getId();
 								$descricao = $lista[$i]->getDescricao();
@@ -91,16 +113,16 @@
 						echo "</select>";
 					?>	
 				</div>
-				<div class="input-group abaixo">
+				<div id="dias" class="input-group abaixo">
 					<span class="input-group-addon">
 						<span class="glyphicon"><img src="icons/glyphicons_231_sun.png">
-							<input type="checkbox" name="dia[]" value="1" class="edits"> Domingo						
-							<input type="checkbox" name="dia[]" value="2" class="edits"> Segunda
-							<input type="checkbox" name="dia[]" value="3" class="edits"> Terça
-							<input type="checkbox" name="dia[]" value="4" class="edits"> Quarta
-							<input type="checkbox" name="dia[]" value="5" class="edits"> Quinta
-							<input type="checkbox" name="dia[]" value="6" class="edits"> Sexta
-							<input type="checkbox" name="dia[]" value="7" class="edits"> Sábado
+							<input type="checkbox" id="dia[]" name="dia[]" value="1" class="edits"> Domingo						
+							<input type="checkbox" id="dia[]" name="dia[]" value="2" class="edits"> Segunda
+							<input type="checkbox" id="dia[]" name="dia[]" value="3" class="edits"> Terça
+							<input type="checkbox" id="dia[]" name="dia[]" value="4" class="edits"> Quarta
+							<input type="checkbox" id="dia[]" name="dia[]" value="5" class="edits"> Quinta
+							<input type="checkbox" id="dia[]" name="dia[]" value="6" class="edits"> Sexta
+							<input type="checkbox" id="dia[]" name="dia[]" value="7" class="edits"> Sábado
 						</span>
 					</span>					
 				</div>	
