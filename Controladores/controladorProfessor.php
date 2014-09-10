@@ -81,9 +81,10 @@ class ControladorProfessor {
 				$_SESSION["senha"] = $senha;
 				$_SESSION["nome"] = $professor->getNome();
 				$_SESSION["acesso"] = $professor->getAcesso();
-				$acesso = $professor->getAcesso(); 				
+				//$acesso = $professor->getAcesso(); 				
 				//header("Location: ../GUIs/home$acesso.php");	
-				echo "home$acesso.php";
+				//echo "home$acesso.php";
+				echo "home.php";
 			}
 		}
 	}

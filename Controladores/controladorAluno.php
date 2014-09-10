@@ -32,21 +32,31 @@ class ControladorAluno {
 		$q = $_REQUEST["q"];
 		$persistir = new AlunoSQL();
 		$alunos = $persistir->buscar($q);
+		$resultado = "<table class='table table-striped'>";
+		$resultado .= "
+					<tr> 
+						<th>Matrícula</th> 
+						<th>Nome</th> 
+					</tr>
+				";
 		if ($alunos == false){
-			$_SESSION["msg"] = "Ops! Não foram localizados clientes com o nome informado.";
-			header("location: ../GUIs/notFound.php");
+			$resultado = "Não foram localizados alunos com os parâmetros informados";			
 		}
 		else {
 			$total = count($alunos);
 			for($i=0; $i<$total; $i++) {
-				$ids[] = $alunos[$i]->getId();
-				$nomes[] = $alunos[$i]->getNome();				
+				$id = $alunos[$i]->getId();
+				$nome = $alunos[$i]->getNome();
+				$resultado .= "
+					<tr> 
+						<td><a href=\"javaScript:pegueme('$id','$nome');\">$id</a></td> 
+						<td>$nome</td> 
+					</tr>
+				";			
 			}
-			$_SESSION["ids"] = $ids;			
-			$_SESSION["nomes"] = $nomes;	
-			$_SESSION["total"] = $total;		
-			header("location: ../GUIs/listarAlunos.php");
+			$resultado .= "</table>";			
 		}
+		echo $resultado;
 	}
 	
 	function listarPorTurma(){

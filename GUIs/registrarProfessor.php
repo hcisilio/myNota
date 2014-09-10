@@ -36,13 +36,9 @@
 				<!-- colocar alguma imagem mynota -->
 			</div>
 			<div class="collapse navbar-collapse">
-			<form action="../Controladores/controlador.php" method="post" name="logout" id="logout">
-				<input type="hidden" name="classe" value="Professor">
-				<input type="hidden" name="metodo" value="logout">
 				<ul class="nav navbar-nav navbar-right">	
 					<li> <a href="JavaScript:doPost('professor')"> <img src="Imagens/save.png"> </a></li>				         
 				</ul>
-			</form>
 			</div>
 		</div>
 	</nav>
@@ -50,7 +46,7 @@
 	<div id="row">
 		<!-- menu lateral -->
 		<div class="col-md-3 menuLateral">
-			<?php include("mainMenu.php"); ?>
+			<?php include("opcoes$acesso.php"); ?>
 		</div>
 		<!-- espaçamento -->
 		<div class="col-md-1">

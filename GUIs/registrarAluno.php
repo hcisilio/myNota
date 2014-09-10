@@ -13,52 +13,68 @@
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Cadastrar Aluno</title>
-<link rel="stylesheet" type="text/css" href="CSS/mynota.css">
-<script>
-function doPost(formName) {
-    var theForm = document.getElementById(formName);
-    theForm.submit();
-}
-</script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Cadastrar Aluno</title>
+	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
+	<link href="CSS/bootstrap.css" rel="stylesheet">
+	<script>
+		function doPost(formName) {
+		    var theForm = document.getElementById(formName);
+		    theForm.submit();
+		}
+	</script>
 </head>
 
 <body>
 
-	<div id="principal">
-
-		<div id="topo">
-			Topo da página
+	<!-- NavBar -->
+	<nav class="navbar navbar-default" role="navigation" id="barra">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<!-- colocar alguma imagem mynota -->
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">	
+					<li> <a href="JavaScript:doPost('aluno')"> <img src="Imagens/save.png"> </a></li>				         
+				</ul>
+			</div>
 		</div>
-		
-		<div id="barra">
-			<ul>
-				<li> <a href="JavaScript:doPost('aluno')"> <img src="Imagens/save.png"> </a></li>            
-			</ul>
-		</div>
-		
-		<div id="menu">
-			<?php include("mainMenu.php"); ?>
-		</div>
+	</nav>
 	
-		<div id="formulario">
+	<div id="row">
+		<!-- menu lateral -->
+		<div class="col-md-3 menuLateral">
+			<?php include("opcoes$acesso.php"); ?>
+		</div>
+		<!-- espaçamento -->
+		<div class="col-md-1">
+		</div>
+		<!-- conteúdo -->
+		<div class="col-md-7">			
 			<form id="aluno" action="../Controladores/controlador.php" method="post">
 				<input type="hidden" name="classe" value="Aluno">
 				<input type="hidden" name="metodo" value="inserir">
-				<label> Matrícula </label> <br>
-				<input type="text" name="id" class="edits" size="11" maxlength="10"> <br/>
-				<label>Nome Completo</label> <br>
-				<input type="text" name="nome" class="edits" size="50" /> <br>
-				<label>E-mail</label> <br>
-				<input type="text" name="mail" class="edits" size="50" /> <br>
-				<input type="submit" value="Registrar" class="botaoSubmit"/>
-			</form>
+				<div class="input-group abaixo">
+			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
+					<input class="form-control edits" name="id" id="id" type="text" placeholder="Matrícula" maxlength="10">
+			  	</div>
+			  	<div class="input-group abaixo">
+			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-pencil"></span></span>			 		
+					<input class="form-control edits" name="nome" id="nome" type="text" placeholder="Nome Completo">
+			  	</div>
+			  	<div class="input-group abaixo">
+			 		<span class="input-group-addon edits">@</span>			 		
+					<input class="form-control edits" name="mail" id="mail" type="text" placeholder="E-mail">
+			  	</div>			  	
+			</form>			
 		</div>
-		<div class="clear"> <BR> </div>
+		<!-- sobra -->
+		<div class="col-md-1">
+		</div>
 		
-		<div id="rodape">
-			<p>I CS - Cisilio's Sistemas &copy;2014 - Todos os direitos reservados I <a href="#"></a> </p>
-		</div>	
 	</div>
+	
+	<!-- rodapé -->
+	<?php include ("rodape.php") ?>
+
 </body>
