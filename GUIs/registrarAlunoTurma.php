@@ -17,7 +17,7 @@
 	<title>Matricular Aluno</title>
    	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link href="CSS/bootstrap.css" rel="stylesheet">	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>	
+	<script src="../Ajax/jQuery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 		function doPost(formName) {
@@ -83,8 +83,7 @@
 		   </div>
 		   <div class="modal-body">
 		     <form id='buscarAluno' action='../Controladores/controlador.php' method='get'>
-				<div class="input-group abaixo">
-			 		<span class="input-group-addon edits">Q</span>			 		
+				<div class="input-group abaixo"> 		
 					<input type="text" id="q" class="form-control edits" size="41" placeholder="Digite o nome ou a matrícula do aluno">
 					<span class="input-group-addon edits"><a href="JavaScript:buscarAluno()" class="glyphicon glyphicon-search"></a></span>									  	
 			  	</div>

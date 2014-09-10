@@ -1,5 +1,5 @@
 <?php 
-session_start("mynota");
+//session_start("mynota");
 include_once ("../Controladores/controladorAula.php");
 include_once ("../Controladores/controladorTurma.php");
 
@@ -13,9 +13,9 @@ for($i = 0; $i < count($diasDeAula); $i++){
 	$dias .= $diasDeAula[$i]->getNome()." ";
 }
 
-$txt = "<table border='1' class='tabela'>";
-$txt .= "<tr> <td colspan='3' align='center'> Turma: ".$_REQUEST["turma"]. " | Dia da aula: ".$dias." </td> </tr>";
-$txt .= "<tr> <td> Conteúdo </td> <td> Professor </td> <td> Data </td> </tr>";
+$txt = "<table border='1' class='table table-striped tabela-consulta'>";
+$txt .= "<tr> <th colspan='3' align='center'> Turma: ".$_REQUEST["turma"]. " | Dia da aula: ".$dias." </th> </tr>";
+$txt .= "<tr> <th> Conteúdo </th> <th> Professor </th> <th> Data </th> </tr>";
 if (count($aulas) > 0) {
 	for ($i=0;$i<count($aulas);$i++) {
 		$professor = $aulas[$i]->getProfessor()->getNome();

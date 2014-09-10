@@ -32,7 +32,7 @@ class ControladorAluno {
 		$q = $_REQUEST["q"];
 		$persistir = new AlunoSQL();
 		$alunos = $persistir->buscar($q);
-		$resultado = "<table class='table table-striped'>";
+		$resultado = "<table class='table table-striped tabela-consulta'>";
 		$resultado .= "
 					<tr> 
 						<th>Matrícula</th> 
@@ -48,8 +48,8 @@ class ControladorAluno {
 				$id = $alunos[$i]->getId();
 				$nome = $alunos[$i]->getNome();
 				$resultado .= "
-					<tr> 
-						<td><a href=\"javaScript:pegueme('$id','$nome');\">$id</a></td> 
+					<tr>						
+						<td><button type='button' class='btn btn-primary' onClick=\"javaScript:pegueme('$id','$nome');\">$id</button> </td> 
 						<td>$nome</td> 
 					</tr>
 				";			

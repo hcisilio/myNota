@@ -29,6 +29,31 @@
 	font-variant: small-caps;
 	border-radius: 5px;
 }
+.tabela-consulta {
+	text-align: center !important;
+	border-style: solid;
+	border-color: #428BCA;
+}
+.tabela-consulta tr th{
+	background-color: #428BCA !important;
+	color: #FFF !important;
+	text-align: center !important;
+}
+.celulaEmEdicao input {	
+	width: 55px;
+	font-size: 1.0em;	
+	border-width: 1px;
+	border-style: solid;
+	border-color: #1E90FF;	
+	font-variant: small-caps;
+	border-radius: 5px;
+}
+.sucesso{
+	font-variant: small-caps;
+	font-size: 2.0em;
+	font-color: #00FF00;
+	font-weight: bold;
+}
 #rodape {
 	background: #428BCA;
 	width:100%;

@@ -19,13 +19,13 @@ $persistir = new ControladorNota();
 
 
 $txt = "<script type=\"text/javascript\" src=\"../Ajax/tabelaEditavel.js\"></script>";
-$txt .= "<table border='1' class='tabela'>";
+$txt .= "<table border='1' class='table table-striped tabela-consulta'>";
 $colspan = 2+count($modulos);
-$txt .= "<tr> <td colspan='$colspan' align='center'> Turma: ".$turma->getId(). " | Dia da aula: ".$dias." </td> </tr>";
-$txt .= "<tr> <td> Matrícula </td> <td> Aluno </td>";
+$txt .= "<tr> <th colspan='$colspan' align='center'> Turma: ".$turma->getId(). " | Dia da aula: ".$dias." </th> </tr>";
+$txt .= "<tr> <th> Matrícula </td> <th> Aluno </td>";
 for ($i=0;$i<count($modulos);$i++) {
 	$nome = $modulos[$i]->getNome();
-	$txt .= "<td> $nome </td>";
+	$txt .= "<th> $nome </th>";
 }
 $txt .= "</tr>";
 for ($i=0;$i<count($alunos);$i++) {

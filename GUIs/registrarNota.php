@@ -1,19 +1,20 @@
 <?php
 	session_start("mynota");
-	//$permissao=$_SESSION["permissao"];
-	// SQLs
-	/*
-	select * from alunos where id in (select aluno from aluno_turma where turma = "Familia")
-	select * from modulos where id in ( select modulo from curso_modulo where curso in ( select curso from turmas where id = "Familia " ))
-	select * from notas where aluno in ( select aluno from aluno_turma where turma in ( select turma from turmas where id = "Familia" ))
-	*/
-	
+	if ($_SESSION["logado"] <> "true") {
+		header("Location: login.php");
+	}
+	else {
+		//acesso permitido	
+		$acesso = $_SESSION["acesso"];
+	}
 ?>
 <html>
 <head>
 	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
-	<link rel="stylesheet" media="screen" type="text/css" title="style" href="CSS/mynota.css" />	
 	<title>Lançar notas</title>
+	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
+	<link href="CSS/bootstrap.css" rel="stylesheet">	
+	<script src="js/bootstrap.min.js"></script>	
 	<script type="text/javascript" src="../Ajax/jQuery.js"></script>
 	<!--  <script type="text/javascript" src="../Ajax/tabelaEditavel.js"></script> -->
 	<script type="text/javascript">
@@ -24,17 +25,9 @@
 			data: { turma: turma },
 			
 			beforeSend: function() {
-				// enquanto a função esta sendo processada, você
-				// pode exibir na tela uma
-				// msg de carregando			
-				$( '#tabela' ).html('Carregando');
+				$("#tabela").html("<img src='Imagens/carregando.gif'/>");
 			},
 			success: function(txt) {
-				// pego o id da div que envolve o select com
-				// name="id_modelo" e a substituiu
-				// com o texto enviado pelo php, que é um novo
-				//select com dados da marca x
-				//$('#ajax_alunos').html(txt);
 				$( '#tabela' ).html(txt);						
 			},
 			error: function(txt) {
@@ -47,48 +40,60 @@
 
 <body>
 
-	<div id="principal">
+	<!-- NavBar -->
+	<nav class="navbar navbar-default" role="navigation" id="barra">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<!-- colocar alguma imagem mynota -->
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">	
+					<li> </li>				         
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-		<div id="topo">
-			Topo da página
+	<div id="row">
+		<!-- menu lateral -->
+		<div class="col-md-3 menuLateral">
+			<?php include("opcoes$acesso.php"); ?>
 		</div>
-		
-		<div id="barra">
-			<ul>
-				<li>  </li>           
-			</ul>
+		<!-- espaçamento -->
+		<div class="col-md-1">
 		</div>
-		
-		<div id="menu">
-			<?php include("mainMenu.php"); ?>
-		</div>
-
-		<div id="formulario">  
-			<label>Turma </label><BR />
-			<select name="turma" class="edits" id="turma" onChange="listaAlunos(this.value);">
-				<option value='null'> Selecione uma turma </option>
-				<?php
-					include_once("../Controladores/controladorTurma.php");
-					$persistir = new ControladorTurma();
-					$professor = $_SESSION["professor"];
-					$lista = $persistir->listarMinhas($professor);
-					for ($i = 0; $i < count($persistir->listarMinhas($professor)); $i++) {
-						$id = $lista[$i]->getId();
-						echo "<option value=$id> $id </option>";
-					} 		
-				?> 
-			</select> <br>		
+		<!-- conteúdo -->
+		<div class="col-md-7">			
+			<div class="input-group abaixo">
+				<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
+				<select name="turma" class="form-control edits" id="turma" onChange="listaAlunos(this.value);">
+					<option value='null'> Selecione uma turma </option>
+					<?php
+						include_once("../Controladores/controladorTurma.php");
+						$persistir = new ControladorTurma();
+						$professor = $_SESSION["professor"];
+						$lista = $persistir->listarMinhas($professor);
+						for ($i = 0; $i < count($persistir->listarMinhas($professor)); $i++) {
+							$id = $lista[$i]->getId();
+							echo "<option value=$id> $id </option>";
+						} 		
+					?> 
+				</select>
+			</div>
 			
 			<table id="tabela">
 			</table>
-		</div>
-		<div class="clear">  </div>
-		
-		<div id="rodape">
-			<p>I CS - Cisilio's Sistemas &copy;2014 - Todos os direitos reservados I <a href="#"></a> </p>
+			
 		</div>	
+		<!-- sobra -->
+		<div class="col-md-1">
+		</div>
 		
 	</div>
+		
+	
+	<!-- rodapé -->
+	<?php include ("rodape.php") ?>
 	
   
 </body>
