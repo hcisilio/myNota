@@ -21,6 +21,7 @@
 			},
 			success: function(saida) {				
 				if (saida==false) {
+					$("#login").hide();
 					$("#login").show("slow");
 					return false;
 				}
@@ -32,8 +33,12 @@
 			}
 	    });	    
 	}
-	function teste(){
-		window.location.href = "homeDiretor.php";
+	function chamaLogar(){
+		$("#senha").keypress(function (e) {
+			if (e.which == 13) {
+				logar();
+			}
+		})
 	}	
 	</script>
 </head>
@@ -44,10 +49,10 @@
 		</div>
 		<div class="col-md-6 topo">
 			<img src="Imagens/mainLogo.png" height="150px" width="100%">
-		</div>
-	</div>
+		</div>	
 		<div class="col-md-3 topo">
 		</div>
+	</div>
 	<div id="row">
 		<!-- sublogo -->
 		<div class="col-md-6">
@@ -56,15 +61,13 @@
 		<!-- formulário -->
 		<div class="col-md-4 desce">
 			<form action="../Controladores/controlador.php" method="post">
-				<input type="hidden" name="classe" id="classe" value="Professor">
-				<input type="hidden" name="metodo" id="metodo" value="login"> 
 				<div class="input-group abaixo">
-			 		<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>			 		
-					<input class="form-control" name="id" id="id" type="text" placeholder="Login">
+			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
+					<input class="form-control edits" name="id" id="id" type="text" placeholder="Login">
 			  	</div>
 			  	<div class="input-group abaixo">
-			 		<span class="input-group-addon"><span class="glyphicon"><img src="Imagens/glyphicons_044_keys.png" style="width: 14px; height: 14px;"></span></span>			 		
-					<input class="form-control" name="senha" id="senha" type="password" placeholder="Senha">
+			 		<span class="input-group-addon edits"><span class="glyphicon"><img src="Imagens/glyphicons_044_keys.png" style="width: 14px; height: 14px;"></span></span>			 		
+					<input class="form-control edits" name="senha" id="senha" type="password" placeholder="Senha" onKeyPress="chamaLogar()">
 			  	</div>
 			  	<div class="naDireita">	
 			  		<input type="button" class="btn btn-primary" id="btnSubmit" value="Login" onclick="logar()">
