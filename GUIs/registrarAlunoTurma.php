@@ -1,11 +1,11 @@
 <?php 
-	session_start("mynota");
+	session_start("mynota");	
 	if ($_SESSION["logado"] <> "true") {
 		header("Location: login.php");
 	}
-	else if ( ($_SESSION["acesso"] == "Gerente") || ($_SESSION["acesso"] == "Administrador") ){
+	else if ( ($_SESSION["acesso"] == "Diretor") || ($_SESSION["acesso"] == "Administrador") ){
 		//acesso permitido	
-		$acesso = $_SESSION["acesso"];
+		$acesso = $_SESSION["acesso"];		
 	}
 	else {
 		//acesso negado

@@ -3,7 +3,7 @@
 	if ($_SESSION["logado"] <> "true") {
 		header("Location: login.php");
 	}
-	else if ( ($_SESSION["acesso"] == "Gerente") || ($_SESSION["acesso"] == "Administrador") ){
+	else if ( ($_SESSION["acesso"] == "Diretor") || ($_SESSION["acesso"] == "Administrador") ){
 		//acesso permitido	
 		$acesso = $_SESSION["acesso"];
 	}
@@ -91,7 +91,7 @@
 			  	</div>
 			  	<div class="input-group abaixo">
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-tags"></span></span>		
-					<select name="acesso" class="form-control edits">
+					<select id="acesso" name="acesso" class="form-control edits">
 						<option value="Professor"> Professor </option>
 						<option value="Diretor"> Diretor </option>
 						<option value="Administrador"> Administrador </option>
