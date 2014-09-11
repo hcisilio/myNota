@@ -19,17 +19,22 @@ class controladorAlunoTurma{
 				header ("location: ../GUIs/notasIniciais.php");				
 			}
 			else{
-				$_SESSION["msg"] = "Ops! Matrícula em turma não efetuada.";
-				$_SESSION["erro"] = mysql_error();
-				header ("location: ../GUIs/erro.php");
+				$resultado = "
+					<div class='alert alert-danger' role='alert'>
+						Ops! Inclusão do aluno em turma não realizada! <BR />".mysql_error()."
+					</div>
+				";
 			}	
 		}
 		else {
-			$_SESSION["msg"] = "Ops! Matrícula em turma não efetuada.";
-			$_SESSION["erro"] = "Aluno Já está matriculado em uma turma do mesmo curso <BR /> SQL Error: ";
-			$_SESSION["erro"] .= $persistir->checarMatricula( $aluno->listar($_REQUEST["aluno"])->getId(), $turma->listar($_REQUEST["turma"])->getCurso()->getId() );
-			header ("location: ../GUIs/erro.php");
+			$resultado = "
+				<div class='alert alert-danger' role='alert'>
+					Ops! Inclusão do aluno em turma não realizada! <BR /> Aluno Já está matriculado em uma turma do mesmo curso! <BR /> SQL Error:
+					".$persistir->checarMatricula( $aluno->listar($_REQUEST["aluno"])->getId(), $turma->listar($_REQUEST["turma"])->getCurso()->getId() )."
+				</div>
+			";
 		}
+		echo $resultado;
 	} 
 	
 	function transferir(){
@@ -53,7 +58,7 @@ class controladorAlunoTurma{
 		}
 		else {
 			$_SESSION["msg"] = "Ops! Transferência não efetuada.";
-			$_SESSION["erro"] = "O aluno não está matriculado em nenhuma turma do curso indiciado <BR /> SQL Error: ";
+			$_SESSION["erro"] = "O aluno não está matriculado em nenhuma turma do curso indiciado! <BR /> SQL Error: ";
 			$_SESSION["erro"] .= $persistir->checarMatricula( $aluno->listar($_REQUEST["aluno"])->getId(), $turma->listar($_REQUEST["turma"])->getCurso()->getId() );
 			header ("location: ../GUIs/erro.php");
 		}	

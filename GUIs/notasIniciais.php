@@ -17,14 +17,17 @@
 	}
 	
 	if ($ok) {
-		$_SESSION["msg"] = "
-		Aluno matriculado na turma com sucesso!
-		";	
-		header ("location: saidas/sucesso.php");
+		$resultado = "
+			<div class='alert alert-success' role='alert'>
+				Aluno matriculado com sucesso!
+			</div>
+		";
 	} else {
-		$_SESSION["msg"] = "Matrícula não realizada!";
-		$_SESSION["erro"] = mysql_error();
-		header ("location: saidas/erro.php");	
+		$resultado = "
+			<div class='alert alert-danger' role='alert'>
+				Ops! Inclusão do aluno em turma não realizada! <BR />".mysql_error()."
+			</div>
+		";
 	}
 
 ?>

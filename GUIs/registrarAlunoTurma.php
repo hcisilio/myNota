@@ -20,18 +20,37 @@
 	<script src="../Ajax/jQuery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
-		function doPost(formName) {
-		    var theForm = document.getElementById(formName);
-		    theForm.submit();
-		}
-		function buscarAluno() {		
-			/* Ajax para consultar e listar os alunos */
-			var q = $("#q").val();
+		function doPost() {
 			$.ajax({			        
 				type: "POST",
 				url: "../Controladores/controlador.php",
 				data: { 
-					q: q,
+					aluno: $("#aluno").val(),
+					turma: $("#turma").val(),
+					classe: "AlunoTurma",
+					metodo: "inserir" 
+				},
+				
+				beforeSend: function() {						
+					
+				},
+				success: function(resultado) {
+					$('#principal').hide();				
+					$('#principal').html(resultado);
+					$('#principal').show("slow");								
+				},
+				error: function(txt) {				
+					
+				}
+		    });
+		}
+		function buscarAluno() {		
+			/* Ajax para consultar e listar os alunos */
+			$.ajax({			        
+				type: "POST",
+				url: "../Controladores/controlador.php",
+				data: { 
+					q: $("#q").val(),
 					classe: "Aluno",
 					metodo: "buscar" 
 				},
@@ -66,7 +85,7 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	
-					<li> <a href="JavaScript:doPost('alunoTurma')"> <img src="Imagens/save.png"> </a></li>				         
+					<li> <a href="JavaScript:doPost('')"> <img src="Imagens/save.png"> </a></li>				         
 				</ul>
 			</div>
 		</div>
@@ -104,11 +123,9 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div class="col-md-7">			
+		<div id="principal" class="col-md-7">			
 			<form id="alunoTurma" action="../Controladores/controlador.php" method="post">
-				<input type="hidden" name="classe" value="AlunoTurma">
-				<input type="hidden" name="metodo" value="inserir">
-				<input type="hidden" id="aluno" name="aluno" id="aluno">			
+				<input type="hidden" id="aluno" name="aluno">			
 				<div class="input-group abaixo" data-toggle="modal" data-target="#selecionarAluno">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
 					<input type="text" name="nome" id="nome" class="form-control edits" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
@@ -120,7 +137,7 @@
 						include("../Controladores/controladorTurma.php");
 						$persistir = new ControladorTurma();
 						$lista = $persistir->listarAtivas();
-						echo "<select name='turma' class='form-control edits'>";
+						echo "<select id='turma' name='turma' class='form-control edits'>";
 							for ($i = 0; $i < count($persistir->listarAtivas()); $i++) {
 								$id = $lista[$i]->getId();
 								echo "<option value=$id> $id </option>";
