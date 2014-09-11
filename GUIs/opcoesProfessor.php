@@ -1,6 +1,7 @@
 <?php 
 echo "
-	<li><a href='registrarNota.php'>Lançar Notas</a></li>
-	<li><a href='registrarAula.php'>Registrar Aula</a></li>
+	<a href='home.php' class='list-group-item active'> Página Inicial </a>
+	<a href='registrarNota.php' class='list-group-item'>Lançar Notas</a>
+	<a href='registrarAula.php' class='list-group-item'>Registrar Aula</a>
 ";
 ?>
