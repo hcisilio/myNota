@@ -15,7 +15,7 @@ class ControladorAluno {
 		if ($ok == true){
 			$resultado = "
 				<div class='alert alert-success' role='alert'>
-					O aluno $id - $nome foi matriculado com sucesso!
+					O aluno ".$_REQUEST["id"]." - ".$_REQUEST["nome"]." foi matriculado com sucesso!
 				</div>
 			";
 		}

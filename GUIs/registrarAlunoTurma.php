@@ -85,7 +85,7 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	
-					<li> <a href="JavaScript:doPost('')"> <img src="Imagens/save.png"> </a></li>				         
+					<li> <a href="JavaScript:doPost()"> <img src="Imagens/save.png"> </a></li>				         
 				</ul>
 			</div>
 		</div>

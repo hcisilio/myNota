@@ -19,7 +19,7 @@
 	if ($ok) {
 		$resultado = "
 			<div class='alert alert-success' role='alert'>
-				Aluno matriculado com sucesso!
+				Aluno ".$_SESSION["aluno"]." matriculado com sucesso na turma ".$_SESSION["turma"]."!
 			</div>
 		";
 	} else {
@@ -29,5 +29,6 @@
 			</div>
 		";
 	}
+	echo $resultado;
 
 ?>
