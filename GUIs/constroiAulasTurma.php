@@ -20,8 +20,7 @@ if (count($aulas) > 0) {
 	for ($i=0;$i<count($aulas);$i++) {
 		$id = $aulas[$i]->getId();
 		$professor = $aulas[$i]->getProfessor()->getNome();
-		$dt = explode("-", $aulas[$i]->getData());
-		$data = $dt[2]."/".$dt[1]."/".$dt[0];
+		$data = implode("/", array_reverse(explode("-", $aulas[$i]->getData())));
 		$conteudo = $aulas[$i]->getConteudo();
 		$txt .= "<tr><td align=left width='50%'>$conteudo</td> <td td align=left >$professor</td> <td>$data</td> <td> <img src='Imagens/delete-icon.png' height='30px' onclick='removeAula($id)'> </td> ";
 	}	
