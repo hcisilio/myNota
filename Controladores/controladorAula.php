@@ -11,8 +11,8 @@ class ControladorAula {
 		$aula->setTurma($persistir->listar($_REQUEST["turma"]));
 		$persistir = new ProfessorSQL();
 		$aula->setProfessor($persistir->listar($_SESSION["id"]));
-		$aula->setConteudo($_REQUEST["conteudo"]);
-		$aula->setData(date("Y-m-d"));
+		$aula->setConteudo($_REQUEST["conteudo"]);	
+		$aula->setData( implode("-", array_reverse(explode("/", $_REQUEST["data"]))) );
 		$persistir = new AulaSQL();
 		$ok = $persistir->inserir($aula);
 		if ($ok == true){
@@ -23,6 +23,11 @@ class ControladorAula {
 			$_SESSION["erro"] = mysql_error();
 			header ("location: ../GUIs/erro.php");
 		}
+	}
+	
+	function deletar(){
+		$persistir = new AulaSQL();
+		return $persistir->deletar($_REQUEST["id"]);
 	}
 	
 	function listarPorTurma($turma){

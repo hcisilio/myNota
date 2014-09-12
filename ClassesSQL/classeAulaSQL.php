@@ -16,8 +16,13 @@ class AulaSQL{
 		return mysql_query($this->sql);
 	}
 	
+	function deletar($id) {
+		$this->sql = "delete from aulas where id = $id";
+		return mysql_query($this->sql);
+	}
+	
 	function listarPorTurma($turma){
-		$this->sql = "select * from aulas where turma = \"$turma\" order by data desc";		
+		$this->sql = "select * from aulas where turma = \"$turma\" order by id desc";		
 		$query = mysql_query($this->sql);
 		$aulaArr = array();		
 		$persistir = new ProfessorSQL();

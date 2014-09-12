@@ -36,15 +36,14 @@
 		}
 	
 		function insereAula() {
-			var turma = document.getElementById("turma").options[document.getElementById("turma").selectedIndex].value;
-			var conteudo = document.getElementById("conteudo").value;	
 			/* Ajax para inserir a aula dada no banco de dados */
 			$.ajax({			        
 				type: "POST",
 				url: "../Controladores/controlador.php",
 				data: { 
-					turma: turma,
-					conteudo: conteudo,
+					turma: $("#turma").val(),
+					conteudo: $("#conteudo").val(),
+					data: $("#data").val(),
 					classe: "Aula",
 					metodo: "inserir" 
 				},
@@ -53,8 +52,8 @@
 					
 				},
 				success: function(txt) {						
-					listaAulas(turma);
-					document.getElementById("conteudo").value = null;				
+					listaAulas($("#turma").val());
+					$("#conteudo").val(null);				
 				},
 				error: function(txt) {				
 					
@@ -70,7 +69,7 @@
 					type: "POST",
 					url: "../Controladores/controlador.php",
 					data: { 
-						turma: $("#turma").val(),						
+						turma: $("#turma").val(),										
 						classe: "Turma",
 						metodo: "encerrar" 
 					},
@@ -82,6 +81,31 @@
 						$('#principal').hide();				
 						$('#principal').html(resultado);
 						$('#principal').show("slow");				
+					},
+					error: function(resultado) {				
+						
+					}
+			    });
+			}
+		}
+
+		function removeAula(aula){			
+			resposta = confirm("Tem certeza que deseja excluir esta aula?");
+			if (resposta) {
+				$.ajax({			        
+					type: "POST",
+					url: "../Controladores/controlador.php",
+					data: { 
+						id: aula,										
+						classe: "Aula",
+						metodo: "deletar" 
+					},
+					
+					beforeSend: function() {						
+						
+					},
+					success: function(resultado) {						
+						listaAulas($("#turma").val());			
 					},
 					error: function(resultado) {				
 						
@@ -118,8 +142,8 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div id="principal" class="col-md-7">			
-			<form id="aula" action="../Controladores/controlador.php" method="post">		
+		<div id="principal" class="abaixo col-md-7">			
+			<form id="aula" class="form-inline" role="form" action="../Controladores/controlador.php" method="post">		
 				<div class="input-group abaixo">
 					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
 					<select id="turma" name="turma" class="form-control edits" onChange="listaAulas(this.value);">
@@ -134,10 +158,14 @@
 								echo "<option value=$id> $id </option>";
 							} 		
 						?> 
-					</select>
+					</select>																													
 				</div>
 				<div class="input-group abaixo">
-					<textarea rows="11" cols="200%" name="conteudo" id="conteudo" class="form-control edits"></textarea>
+			 		<span class="input-group-addon edits"><span class=" glyphicon glyphicon-calendar"></span></span>			 		
+					<input readonly class="form-control edits" name="data" id="data" type="text" value="<?php echo date("d/m/Y") ?>" placeholder="dd/mm/YYYY">
+			  	</div>
+				<div class="input-group abaixo">
+					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits"></textarea>
 				</div>	
 			</form>	
 			
