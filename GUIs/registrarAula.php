@@ -113,10 +113,30 @@
 			    });
 			}
 		}
+
+		function trocaPesquisa(tipo){
+			$.ajax({
+				type: "POST",
+				url: "../Controladores/controlador.php",
+				data: {
+					classe: "Turma",
+					metodo: "criarCombo",
+					tipo: tipo
+				},
+				beforeSend: function(){
+					$("#turma").empty();				
+					$("#turma").append('<option>Carregando...</option>');
+				},
+				success: function(combo) {	
+					$("#turma").empty();				
+					$("#turma").append(combo);						
+				}
+			});
+		}
 	</script>
 </head>
 
-<body>
+<body onLoad="trocaPesquisa('minhas')">
 
 	<!-- NavBar -->
 	<nav class="navbar navbar-default" role="navigation" id="barra">
@@ -142,22 +162,20 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div id="principal" class="abaixo col-md-7">			
-			<form id="aula" class="form-inline" role="form" action="../Controladores/controlador.php" method="post">		
-				<div class="input-group abaixo">
+		<div id="principal" class="abaixo col-md-7">
+			<div class="input-group abaixo">
+			  	<label class="radio-inline">
+				  	<input type="radio" name="pesquisa" id="minhas" value="minhas" checked onClick="trocaPesquisa(this.value)"> Minhas turmas
+				</label>
+				<label class="radio-inline">
+				  	<input type="radio" name="pesquisa" id="todas" value="todas" onClick="trocaPesquisa(this.value)"> Todas as turmas
+				</label>
+			</div>		
+			<form id="aula" class="form-inline" role="form" action="../Controladores/controlador.php" method="post">						
+				<div class="input-group abaixo">													
 					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
 					<select id="turma" name="turma" class="form-control edits" onChange="listaAulas(this.value);">
 						<option value='null'> Selecione uma turma </option>
-						<?php
-							include_once("../Controladores/controladorTurma.php");
-							$persistir = new ControladorTurma();
-							$professor = $_SESSION["professor"];
-							$lista = $persistir->listarMinhas($professor);
-							for ($i = 0; $i < count($persistir->listarMinhas($professor)); $i++) {
-								$id = $lista[$i]->getId();
-								echo "<option value=$id> $id </option>";
-							} 		
-						?> 
 					</select>																													
 				</div>
 				<div class="input-group abaixo">

@@ -16,7 +16,10 @@ for($i = 0; $i < count($diasDeAula); $i++){
 $txt = "<table border='1' class='table table-striped tabela-consulta'>";
 $txt .= "<tr> <th colspan='4' align='center'> Turma: ".$_REQUEST["turma"]. " | Dia da aula: ".$dias." </th> </tr>";
 $txt .= "<tr> <th> Conteúdo </th> <th> Professor </th> <th> Data </th> <th> Remover </th> </tr>";
-if (count($aulas) > 0) {
+if (empty($dias)) {
+	$txt .= "<tr> <td colspan='4' align='center'> Turma ".$_REQUEST["turma"]." não existe no sistema </td> </tr>";
+}
+else if (count($aulas) > 0) {
 	for ($i=0;$i<count($aulas);$i++) {
 		$id = $aulas[$i]->getId();
 		$professor = $aulas[$i]->getProfessor()->getNome();
@@ -26,7 +29,7 @@ if (count($aulas) > 0) {
 	}	
 } 
 else {
-	$txt .= "<tr> <td colspan='3' align='center'> Ainda não foi registrada aula para a turma selecionada </td> </tr>";
+	$txt .= "<tr> <td colspan='4' align='center'> Ainda não foi registrada aula para a turma selecionada </td> </tr>";
 }
 
 

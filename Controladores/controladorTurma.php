@@ -48,6 +48,11 @@ class ControladorTurma {
 		return $persistir->listar($id);		
 	}
 	
+	function listarTodos(){
+		$persistir = new turmaSQL();
+		return $persistir->listarTodos();
+	}
+	
 	### outras funções
 	function encerrar(){
 		$persistir = new TurmaSQL();
@@ -68,6 +73,29 @@ class ControladorTurma {
 			";	
 		}
 		echo $resultado;
+	}
+	
+	function criarCombo() {
+		$persistir = new TurmaSQL();
+		$combo = "<option value='null'> Selecione uma turma </option>";
+		if ($_REQUEST["tipo"] == "minhas"){
+			$lista = $persistir->listarMinhas($_SESSION["id"]);
+			for ($i = 0; $i < count($persistir->listarMinhas($_SESSION["id"])); $i++) {
+				$id = $lista[$i]->getId();
+				$combo .= "<option value=$id> $id </option>";
+			}
+		} 
+		else if ($_REQUEST["tipo"] == "todas"){
+		$lista = $persistir->listarAtivas();
+			for ($i = 0; $i < count($persistir->listarAtivas()); $i++) {
+				$id = $lista[$i]->getId();
+				$combo .= "<option value=$id> $id </option>";
+			}
+		}
+		else {
+			$combo .=  "<option> ".$_REQUEST["tipo"]." </option>";
+		}
+		echo $combo;
 	}
 	
 	function listarAtivas() {
