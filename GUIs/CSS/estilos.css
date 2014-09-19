@@ -40,6 +40,9 @@
 	text-align: center !important;
 	border-style: solid;
 	border-color: #428BCA;
+	border-bottom-color: #FFF !important;
+	vertical-align: middle !important;
+	display:table-cell;
 }
 .tabela-consulta tr td {
 	border-style: solid;
@@ -48,13 +51,21 @@
 	display:table-cell;
 }
 .celulaEmEdicao input {	
-	width: 55px;
+	width: 50px;
 	font-size: 1.0em;	
 	border-width: 1px;
 	border-style: solid;
 	border-color: #1E90FF;	
 	font-variant: small-caps;
 	border-radius: 5px;
+}
+.em_pe{
+	transform: rotate(90deg);
+	-moz-transform: rotate(90deg);     /*Firefox*/
+	-ms-transform: rotate(90deg);      /*Microsoft Internet Explorer*/
+	-webkit-transform: rotate(90deg);  /*Chrome, Safari*/
+	-o-transform: rotate(90deg);       /*Opera*/
+	margin: 15px 0px 15px 0px;
 }
 #rodape {
 	background: #428BCA;

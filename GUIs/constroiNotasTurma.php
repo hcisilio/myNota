@@ -25,13 +25,13 @@ $txt .= "<tr> <th colspan='$colspan' align='center'> Turma: ".$turma->getId(). "
 $txt .= "<tr> <th> Matrícula </td> <th> Aluno </td>";
 for ($i=0;$i<count($modulos);$i++) {
 	$nome = $modulos[$i]->getNome();
-	$txt .= "<th> $nome </th>";
+	$txt .= "<th> <label class='em_pe'> $nome </label> </th>";
 }
 $txt .= "</tr>";
 for ($i=0;$i<count($alunos);$i++) {
 	$id = $alunos[$i]->getId();
 	$nome= $alunos[$i]->getNome();
-	$txt .= "<tr><td>$id</td> <td>$nome</td>";
+	$txt .= "<tr><td>$id</td> <td width='70%'>$nome</td>";
 	for ($j=0;$j<count($modulos);$j++) {
 		$nota = $persistir->pegarNota($alunos[$i],$modulos[$j]);		
 		$valor = $nota->getNota();
