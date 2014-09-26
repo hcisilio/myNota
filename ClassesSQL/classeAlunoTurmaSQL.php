@@ -29,10 +29,10 @@ class AlunoTurmaSQL{
 		
 	}
 	
-	/*function checarMatricula($aluno, $curso){
+	function checarMatricula($aluno, $curso){
 		$this->sql = "select * from aluno_turma where aluno='$aluno' and turma in (select id from turmas where curso = $curso)";
 		$query = mysql_query($this->sql);
-		/-$linha=mysql_fetch_array($query);
+		/*$linha=mysql_fetch_array($query);
 		$alunoTurmaArr = array();
 		while ($linha=mysql_fetch_array($query)) {
 			$aluno_turma = new AlunoTurma();
@@ -43,10 +43,10 @@ class AlunoTurmaSQL{
 			$alunoTurmaArr[] = $aluno_turma;
 			unset ($aluno_turma);
 		}
-		return $alunoTurmaArr[];-/	
+		return $alunoTurmaArr[];*/	
 		$check = mysql_num_rows($query);
 		return $check;		
-	}*/	
+	}
 	
 }
 

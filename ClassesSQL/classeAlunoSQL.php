@@ -7,9 +7,10 @@ class AlunoSQL{
 	var $sql;
 	
 	function inserir($aluno){
-		$this->sql = "insert into alunos (id, nome) values (
+		$this->sql = "insert into alunos (id, nome, email) values (
 		'".$aluno->getId()."',
-		'".$aluno->getNome()."'
+		'".$aluno->getNome()."',
+		'".$aluno->getMail()."'
 		)";
 		return mysql_query($this->sql);
 	}
@@ -29,6 +30,7 @@ class AlunoSQL{
 		$aluno = new Aluno();
 		$aluno->setId($linha["id"]);
 		$aluno->setNome($linha["nome"]);
+		$aluno->setMail($linha["email"]);
 		return $aluno;
 	}
 	
@@ -44,6 +46,7 @@ class AlunoSQL{
 			$aluno = new Aluno();
 				$aluno->setId($linha["id"]);
 				$aluno->setNome($linha["nome"]);
+				$aluno->setMail($linha["email"]);
 				$alunoArr [] = $aluno;
 				unset($aluno);
 			}
@@ -67,6 +70,7 @@ class AlunoSQL{
 				$aluno = new Aluno();
 				$aluno->setId($linha["id"]);
 				$aluno->setNome($linha["nome"]);
+				$aluno->setMail($linha["email"]);
 				$alunoArr[] = $aluno;
 				unset($aluno);
 			}
@@ -83,6 +87,7 @@ class AlunoSQL{
 			$aluno = new Aluno();
 			$aluno->setId($linha["id"]);
 			$aluno->setNome($linha["nome"]);
+			$aluno->setMail($linha["email"]);
 			$alunoArr [] = $aluno;
 			unset($aluno);
 		}

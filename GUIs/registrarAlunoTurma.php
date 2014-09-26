@@ -20,8 +20,8 @@
 	<script src="../Ajax/jQuery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
-		function doPost() {
-			$.ajax({			        
+		function doPost() {			
+			$.ajax({		
 				type: "POST",
 				url: "../Controladores/controlador.php",
 				data: { 

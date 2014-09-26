@@ -2,6 +2,7 @@
 class Aluno{
 	var $id;
 	var $nome;
+	var $mail;
 
 	//metodos GET
 	function getId(){
@@ -10,6 +11,9 @@ class Aluno{
 	function getNome(){
 		return $this->nome;
 	}
+	function getMail(){
+		return $this->mail;
+	}
 	
 	//métodos SET
 	function setId($id){
@@ -17,6 +21,9 @@ class Aluno{
 	}
 	function setNome($nome){
 		$this->nome = $nome;
+	}
+	function setMail($mail){
+		$this->mail = $mail;
 	}
 	
 }

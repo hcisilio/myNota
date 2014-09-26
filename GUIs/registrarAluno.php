@@ -27,7 +27,7 @@
 				data: { 
 					id: $("#id").val(),
 					nome: $("#nome").val(),
-					//mail: $("#mail").val(),
+					mail: $("#mail").val(),
 					classe: "Aluno",
 					metodo: "inserir"
 				},
