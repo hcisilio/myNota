@@ -29,6 +29,10 @@
 	font-variant: small-caps;
 	border-radius: 5px;
 }
+.erro {
+	border-width: 2px !important;
+	border-color: red !important;	
+}
 .tabela-consulta {
 	text-align: center !important;
 	border-style: solid;

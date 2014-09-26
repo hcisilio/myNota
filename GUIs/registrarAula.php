@@ -17,6 +17,17 @@
 	<script src="js/bootstrap.min.js"></script>	
 	<script type="text/javascript" src="../Ajax/jQuery.js"></script>
 	<script type="text/javascript">
+		function validaForm(){
+			if ($("#turma").val() == 'null') {
+				$("#turma").addClass("erro");
+				return false;
+				
+			}
+			if ($("#conteudo").val() == "") {
+				$("#conteudo").addClass("erro");
+				return false;
+			}
+		}
 		function listaAulas(turma) {				
 		    $.ajax({			        
 				type: "POST",
@@ -36,30 +47,39 @@
 		}
 	
 		function insereAula() {
-			/* Ajax para inserir a aula dada no banco de dados */
-			$.ajax({			        
-				type: "POST",
-				url: "../Controladores/controlador.php",
-				data: { 
-					turma: $("#turma").val(),
-					conteudo: $("#conteudo").val(),
-					data: $("#data").val(),
-					classe: "Aula",
-					metodo: "inserir" 
-				},
-				
-				beforeSend: function() {						
+			/* Chega se todos os campos foram devidamente preenchidos */
+			if (validaForm() == false) {
+				alert ('Favor preencher todos os Campos');
+			}
+			else {
+				/* Ajax para inserir a aula dada no banco de dados */
+				$.ajax({			        
+					type: "POST",
+					url: "../Controladores/controlador.php",
+					data: { 
+						turma: $("#turma").val(),
+						conteudo: $("#conteudo").val(),
+						data: $("#data").val(),
+						classe: "Aula",
+						metodo: "inserir" 
+					},
 					
-				},
-				success: function(txt) {						
-					listaAulas($("#turma").val());
-					$("#conteudo").val(null);				
-				},
-				error: function(txt) {				
-					
-				}
-		    });
-			
+					beforeSend: function() {						
+						
+					},
+					success: function(txt) {
+						//$("#aula div").children().each(function(){
+						$("#aula .erro").each(function(){
+							$(this).removeClass("erro");
+						});		
+						listaAulas($("#turma").val());
+						$("#conteudo").val(null);				
+					},
+					error: function(txt) {				
+						
+					}
+			    });
+			}
 		}
 	
 		function finalizarTurma() {
