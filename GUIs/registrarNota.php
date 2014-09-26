@@ -63,7 +63,7 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div class="col-md-7">			
+		<div id="principal" class="abaixo col-md-7">			
 			<div class="input-group abaixo">
 				<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
 				<select name="turma" class="form-control edits" id="turma" onChange="listaAlunos(this.value);">

@@ -75,7 +75,7 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div id="principal" class="col-md-7">			
+		<div id="principal" class="abaixo col-md-7">			
 			<form id="professor" action="../Controladores/controlador.php" method="post">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		

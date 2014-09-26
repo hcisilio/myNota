@@ -103,7 +103,7 @@
 		   <div class="modal-body">
 		     <form id='buscarAluno' action='../Controladores/controlador.php' method='get'>
 				<div class="input-group abaixo"> 		
-					<input type="text" id="q" class="form-control edits" size="41" placeholder="Digite o nome ou a matrícula do aluno">
+					<input type="text" id="q" class="form-control edits" size="41" onKeyUp="JavaScript:buscarAluno()" placeholder="Digite o nome ou a matrícula do aluno">
 					<span class="input-group-addon edits"><a href="JavaScript:buscarAluno()" class="glyphicon glyphicon-search"></a></span>									  	
 			  	</div>
 			  	<font class="obs"> Obs.: Deixe em branco para buscar todos os alunos </font>
@@ -123,7 +123,7 @@
 		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div id="principal" class="col-md-7">			
+		<div id="principal" class="abaixo col-md-7">			
 			<form id="alunoTurma" action="../Controladores/controlador.php" method="post">
 				<input type="hidden" id="aluno" name="aluno">			
 				<div class="input-group abaixo" data-toggle="modal" data-target="#selecionarAluno">
