@@ -20,9 +20,7 @@
 	<script src="../Ajax/jQuery.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
-		function doPost(formName) {
-		    var theForm = document.getElementById(formName);
-		    theForm.submit();
+		function transferir() {			
 		    $.ajax({			        
 				type: "POST",
 				url: "../Controladores/controlador.php",
@@ -31,7 +29,7 @@
 					novaTurma: $("#novaTurma").val(),
 					aluno: $("#aluno").val(),								
 					classe: "AlunoTurma",
-					metodo: "tansferir" 
+					metodo: "transferir" 
 				},
 				
 				beforeSend: function() {						
@@ -136,7 +134,7 @@
 				<input type="hidden" name="classe" value="Professor">
 				<input type="hidden" name="metodo" value="logout">
 				<ul class="nav navbar-nav navbar-right">					
-					<li> <a href="javaScript:doPost();"> <img src="Imagens/transfer.png" > </a></li>					         
+					<li> <a href="javaScript:transferir();"> <img src="Imagens/transfer.png" > </a></li>					         
 				</ul>
 			</form>
 			</div>
