@@ -127,7 +127,7 @@
 			<form id="alunoTurma" action="../Controladores/controlador.php" method="post">
 				<input type="hidden" id="aluno" name="aluno">			
 				<div class="input-group abaixo" data-toggle="modal" data-target="#selecionarAluno">
-			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
+			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
 					<input type="text" name="nome" id="nome" class="form-control edits" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-search"></span></span>
 			  	</div>				
