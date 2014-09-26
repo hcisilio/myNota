@@ -75,28 +75,6 @@ class ControladorTurma {
 		echo $resultado;
 	}
 	
-	function criarCombo() {
-		$persistir = new TurmaSQL();
-		$combo = "<option value='null'> Selecione uma turma </option>";
-		if ($_REQUEST["tipo"] == "minhas"){
-			$lista = $persistir->listarMinhas($_SESSION["id"]);
-			for ($i = 0; $i < count($persistir->listarMinhas($_SESSION["id"])); $i++) {
-				$id = $lista[$i]->getId();
-				$combo .= "<option value=$id> $id </option>";
-			}
-		} 
-		else if ($_REQUEST["tipo"] == "todas"){
-		$lista = $persistir->listarAtivas();
-			for ($i = 0; $i < count($persistir->listarAtivas()); $i++) {
-				$id = $lista[$i]->getId();
-				$combo .= "<option value=$id> $id </option>";
-			}
-		}
-		else {
-			$combo .=  "<option> ".$_REQUEST["tipo"]." </option>";
-		}
-		echo $combo;
-	}
 	
 	function listarAtivas() {
 		$persistir = new TurmaSQL();
@@ -109,9 +87,47 @@ class ControladorTurma {
 		return $persistir->listarMinhas($professor);
 	}
 	
+	
 	function diasDeAula($turma){
 		$persistir = new turmaSQL();
 		return $persistir->diasDeAula($turma);
+	}
+	
+function criarCombo() {
+		$persistir = new TurmaSQL();
+		$combo = "<option value='null'> Selecione uma turma </option>";
+		if ($_REQUEST["tipo"] == "minhas"){
+			$lista = $persistir->listarMinhas($_SESSION["id"]);
+			for ($i = 0; $i < count($lista); $i++) {
+				$id = $lista[$i]->getId();
+				$combo .= "<option value=$id> $id </option>";
+			}
+		} 
+		else if ($_REQUEST["tipo"] == "todas"){
+			$lista = $persistir->listarAtivas();
+			for ($i = 0; $i < count($lista); $i++) {
+				$id = $lista[$i]->getId();
+				$combo .= "<option value=$id> $id </option>";
+			}
+		}
+		else if ($_REQUEST["tipo"] == "porAluno") {
+			$lista = $persistir->turmasDoAluno($_REQUEST["aluno"]);
+			for ($i = 0; $i < count($lista); $i++) {
+				$id = $lista[$i]->getId();
+				$combo .= "<option value=$id> $id </option>";
+			}
+		}
+		else if ($_REQUEST["tipo"] == "deMesmoCurso") {
+			$lista = $persistir->deMesmoCurso($_REQUEST["turma"]);
+			for ($i = 0; $i < count($lista); $i++) {
+				$id = $lista[$i]->getId();
+				$combo .= "<option value=$id> $id </option>";
+			}
+		}
+		else {
+			$combo .=  "<option> ".$_REQUEST["tipo"]." </option>";
+		}
+		echo $combo;
 	}
 
 }

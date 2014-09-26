@@ -62,7 +62,7 @@ class controladorAlunoTurma{
 			$_SESSION["erro"] .= $persistir->checarMatricula( $aluno->listar($_REQUEST["aluno"])->getId(), $turma->listar($_REQUEST["turma"])->getCurso()->getId() );
 			header ("location: ../GUIs/erro.php");
 		}	
-	}
+	}	
 
 }
 

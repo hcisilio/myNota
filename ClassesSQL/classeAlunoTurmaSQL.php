@@ -48,9 +48,6 @@ class AlunoTurmaSQL{
 		return $check;		
 	}	
 	
-	function listarTodos(){
-		
-	}
 }
 
 ?>
