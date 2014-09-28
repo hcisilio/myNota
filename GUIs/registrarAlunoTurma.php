@@ -18,31 +18,34 @@
    	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link href="CSS/bootstrap.css" rel="stylesheet">	
 	<script src="../Ajax/jQuery.js"></script>
+	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
-		function doPost() {			
-			$.ajax({		
-				type: "POST",
-				url: "../Controladores/controlador.php",
-				data: { 
-					aluno: $("#aluno").val(),
-					turma: $("#turma").val(),
-					classe: "AlunoTurma",
-					metodo: "inserir" 
-				},
-				
-				beforeSend: function() {						
+		function doPost() {
+			if ( nuloOUvazio("#alunoTurma") ) {			
+				$.ajax({		
+					type: "POST",
+					url: "../Controladores/controlador.php",
+					data: { 
+						aluno: $("#aluno").val(),
+						turma: $("#turma").val(),
+						classe: "AlunoTurma",
+						metodo: "inserir" 
+					},
 					
-				},
-				success: function(resultado) {
-					$('#principal').hide();				
-					$('#principal').html(resultado);
-					$('#principal').show("slow");								
-				},
-				error: function(txt) {				
-					
-				}
-		    });
+					beforeSend: function() {						
+						
+					},
+					success: function(resultado) {
+						$('#principal').hide();				
+						$('#principal').html(resultado);
+						$('#principal').show("slow");								
+					},
+					error: function(txt) {				
+						
+					}
+			    });
+			}
 		}
 		function buscarAluno() {		
 			/* Ajax para consultar e listar os alunos */
@@ -128,7 +131,7 @@
 				<input type="hidden" id="aluno" name="aluno">			
 				<div class="input-group abaixo" data-toggle="modal" data-target="#selecionarAluno">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
-					<input type="text" name="nome" id="nome" class="form-control edits" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
+					<input type="text" name="nome" id="nome" class="form-control edits meValide" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-search"></span></span>
 			  	</div>				
 				<div class="input-group abaixo">
@@ -137,7 +140,7 @@
 						include("../Controladores/controladorTurma.php");
 						$persistir = new ControladorTurma();
 						$lista = $persistir->listarAtivas();
-						echo "<select id='turma' name='turma' class='form-control edits'>";
+						echo "<select id='turma' name='turma' class='form-control edits meValide'>";
 							for ($i = 0; $i < count($persistir->listarAtivas()); $i++) {
 								$id = $lista[$i]->getId();
 								echo "<option value=$id> $id </option>";

@@ -18,39 +18,42 @@
 	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link href="CSS/bootstrap.css" rel="stylesheet">	
 	<script src="../Ajax/jQuery.js"></script>
+	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
 	   function doPost() {
-		   var dias = new Array();		   
-		   for (i=0; i<7; i++) {
-			   if ($("#dias input")[i].checked) {
-				   dias.push( $($("#dias input")[i]).val() );
-			   }
-			};	
-	       	$.ajax({			        
-				type: "POST",
-				url: "../Controladores/controlador.php",
-				data: { 
-					id: $("#id").val(),
-					professor: $("#professor").val(),
-					curso: $("#curso").val(),
-					dias: dias,									
-					classe: "Turma",
-					metodo: "inserir" 
-				},
-				
-				beforeSend: function() {						
+		   if ( nuloOUvazio("#turma") ) {
+			   var dias = new Array();		   
+			   for (i=0; i<7; i++) {
+				   if ($("#dias input")[i].checked) {
+					   dias.push( $($("#dias input")[i]).val() );
+				   }
+				};	
+		       	$.ajax({			        
+					type: "POST",
+					url: "../Controladores/controlador.php",
+					data: { 
+						id: $("#id").val(),
+						professor: $("#professor").val(),
+						curso: $("#curso").val(),
+						dias: dias,									
+						classe: "Turma",
+						metodo: "inserir" 
+					},
 					
-				},
-				success: function(resultado) {
-					$('#principal').hide();				
-					$('#principal').html(resultado);
-					$('#principal').show("slow");	
-				},
-				error: function(resultado) {				
-					
-				}
-		    });
+					beforeSend: function() {						
+						
+					},
+					success: function(resultado) {
+						$('#principal').hide();				
+						$('#principal').html(resultado);
+						$('#principal').show("slow");	
+					},
+					error: function(resultado) {				
+						
+					}
+			    });
+		   }
 	   }
 	</script>
 </head>
@@ -85,7 +88,7 @@
 			<form id="turma" action="../Controladores/controlador.php" method="post">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<input class="form-control edits" name="id" id="id" type="text" placeholder="ID da turma" maxlength="10">
+					<input class="form-control edits meValide" name="id" id="id" type="text" placeholder="ID da turma" maxlength="10">
 			  	</div>
 			  	<div class="input-group abaixo">
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>	
@@ -93,7 +96,7 @@
 						include("../ClassesSQL/classeProfessorSQL.php");
 						$persistir = new ProfessorSQL();
 						$lista = $persistir->listarTodos();
-						echo "<select id='professor' name='professor' class=' form-control edits'>";
+						echo "<select id='professor' name='professor' class=' form-control edits meValide'>";
 							for ($i = 0; $i < count($persistir->listarTodos()); $i++) {
 								$id = $lista[$i]->getId();
 								$nome = $lista[$i]->getNome();
@@ -108,7 +111,7 @@
 						include("../ClassesSQL/classeCursoSQL.php");
 						$persistir = new CursoSQL();
 						$lista = $persistir->listarTodos();
-						echo "<select id='curso' name='curso' class=' form-control edits'>";
+						echo "<select id='curso' name='curso' class=' form-control edits meValide'>";
 							for ($i = 0; $i < count($persistir->listarTodos()); $i++) {
 								$id = $lista[$i]->getId();
 								$descricao = $lista[$i]->getDescricao();

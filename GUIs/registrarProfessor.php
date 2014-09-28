@@ -18,34 +18,37 @@
    	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link href="CSS/bootstrap.css" rel="stylesheet">	
 	<script src="../Ajax/jQuery.js"></script>
+	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
 	   function doPost() {
-	       $.ajax({			        
-				type: "POST",
-				url: "../Controladores/controlador.php",
-				data: { 
-					id: $("#id").val(),
-					nome: $("#nome").val(),
-					senha: $("#senha").val(),
-					acesso: $("#acesso").val(),
-					obs: $("#obs").val(),				
-					classe: "Professor",
-					metodo: "inserir" 
-				},
-				
-				beforeSend: function() {						
+		   if ( nuloOUvazio("#professor") ) {
+		       $.ajax({			        
+					type: "POST",
+					url: "../Controladores/controlador.php",
+					data: { 
+						id: $("#id").val(),
+						nome: $("#nome").val(),
+						senha: $("#senha").val(),
+						acesso: $("#acesso").val(),
+						obs: $("#obs").val(),				
+						classe: "Professor",
+						metodo: "inserir" 
+					},
 					
-				},
-				success: function(resultado) {
-					$('#principal').hide();				
-					$('#principal').html(resultado);
-					$('#principal').show("slow");	
-				},
-				error: function(resultado) {				
-					
-				}
-		    });
+					beforeSend: function() {						
+						
+					},
+					success: function(resultado) {
+						$('#principal').hide();				
+						$('#principal').html(resultado);
+						$('#principal').show("slow");	
+					},
+					error: function(resultado) {				
+						
+					}
+			    });
+		   }
 	   }
 	</script>
 </head>
@@ -79,15 +82,15 @@
 			<form id="professor" action="../Controladores/controlador.php" method="post">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
-					<input class="form-control edits" name="id" id="id" type="text" placeholder="Login" maxlength="20">
+					<input class="form-control edits meValide" name="id" id="id" type="text" placeholder="Login" maxlength="20">
 			  	</div>
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-pencil"></span></span>			 		
-					<input class="form-control edits" name="nome" id="nome" type="text" placeholder="Nome Completo">
+					<input class="form-control edits meValide" name="nome" id="nome" type="text" placeholder="Nome Completo">
 			  	</div>
 			  	<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon"><img src="Imagens/glyphicons_044_keys.png" style="width: 14px; height: 14px;"></span></span>			 		
-					<input class="form-control edits" name="senha" id="senha" type="password" placeholder="Senha">
+					<input class="form-control edits meValide" name="senha" id="senha" type="password" placeholder="Senha">
 			  	</div>
 			  	<div class="input-group abaixo">
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-tags"></span></span>		

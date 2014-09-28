@@ -16,18 +16,8 @@
 	<link href="CSS/bootstrap.css" rel="stylesheet">	
 	<script src="js/bootstrap.min.js"></script>	
 	<script type="text/javascript" src="../Ajax/jQuery.js"></script>
+	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
 	<script type="text/javascript">
-		function validaForm(){
-			if ($("#turma").val() == 'null') {
-				$("#turma").addClass("erro");
-				return false;
-				
-			}
-			if ($("#conteudo").val() == "") {
-				$("#conteudo").addClass("erro");
-				return false;
-			}
-		}
 		function listaAulas(turma) {				
 		    $.ajax({			        
 				type: "POST",
@@ -47,11 +37,7 @@
 		}
 	
 		function insereAula() {
-			/* Chega se todos os campos foram devidamente preenchidos */
-			if (validaForm() == false) {
-				alert ('Favor preencher todos os Campos');
-			}
-			else {
+			if ( nuloOUvazio("#aula") ) {
 				/* Ajax para inserir a aula dada no banco de dados */
 				$.ajax({			        
 					type: "POST",
@@ -68,10 +54,7 @@
 						
 					},
 					success: function(txt) {
-						//$("#aula div").children().each(function(){
-						$("#aula .erro").each(function(){
-							$(this).removeClass("erro");
-						});		
+						removeFalhaValidacao("#aula");		
 						listaAulas($("#turma").val());
 						$("#conteudo").val(null);				
 					},
@@ -194,7 +177,7 @@
 			<form id="aula" class="form-inline" role="form" action="../Controladores/controlador.php" method="post">						
 				<div class="input-group abaixo">													
 					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select id="turma" name="turma" class="form-control edits" onChange="listaAulas(this.value);">
+					<select id="turma" name="turma" class="form-control edits meValide" onChange="listaAulas(this.value);">
 						<option value='null'> Selecione uma turma </option>
 					</select>																													
 				</div>
@@ -203,7 +186,7 @@
 					<input readonly class="form-control edits" name="data" id="data" type="text" value="<?php echo date("d/m/Y") ?>" placeholder="dd/mm/YYYY">
 			  	</div>
 				<div class="input-group abaixo">
-					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits"></textarea>
+					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits meValide"></textarea>
 				</div>	
 			</form>	
 			

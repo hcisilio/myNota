@@ -18,32 +18,35 @@
 	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link href="CSS/bootstrap.css" rel="stylesheet">	
 	<script src="../Ajax/jQuery.js"></script>
+	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
-		function transferir() {			
-		    $.ajax({			        
-				type: "POST",
-				url: "../Controladores/controlador.php",
-				data: { 
-					turmaAtual: $("#turmaAtual").val(),
-					novaTurma: $("#novaTurma").val(),
-					aluno: $("#aluno").val(),								
-					classe: "AlunoTurma",
-					metodo: "transferir" 
-				},
-				
-				beforeSend: function() {						
+		function transferir() {	
+			if ( nuloOUvazio("#aluno_turma") ) {		
+			    $.ajax({			        
+					type: "POST",
+					url: "../Controladores/controlador.php",
+					data: { 
+						turmaAtual: $("#turmaAtual").val(),
+						novaTurma: $("#novaTurma").val(),
+						aluno: $("#aluno").val(),								
+						classe: "AlunoTurma",
+						metodo: "transferir" 
+					},
 					
-				},
-				success: function(resultado) {
-					$('#principal').hide();				
-					$('#principal').html(resultado);
-					$('#principal').show("slow");	
-				},
-				error: function(resultado) {				
-					
-				}
-		    });
+					beforeSend: function() {						
+						
+					},
+					success: function(resultado) {
+						$('#principal').hide();				
+						$('#principal').html(resultado);
+						$('#principal').show("slow");	
+					},
+					error: function(resultado) {				
+						
+					}
+			    });
+			}
 		}
 		function buscarAluno() {		
 			/* Ajax para consultar e listar os alunos */
@@ -178,18 +181,18 @@
 				<input type="hidden" id="aluno" name="aluno">		
 				<div class="input-group abaixo" data-toggle="modal" data-target="#selecionarAluno">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
-					<input type="text" name="nome" id="nome" class="form-control edits" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
+					<input type="text" name="nome" id="nome" class="form-control edits meValide" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-search"></span></span>
 			  	</div>	
 				<div class="input-group abaixo">													
 					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select id="turmaAtual" name="turmaAtual" class="form-control edits" onChange="turmasAlvo(this.value);">
+					<select id="turmaAtual" name="turmaAtual" class="form-control edits meValide" onChange="turmasAlvo(this.value);">
 						<option value='null'> Selecione o aluno acima </option>
 					</select>																													
 				</div>				
 				<div class="input-group abaixo">													
 					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select id="novaTurma" name="novaTurma" class="form-control edits">
+					<select id="novaTurma" name="novaTurma" class="form-control edits meValide">
 						<option value='null'> Selecione a turma atual do aluno </option>
 					</select>																													
 				</div>					

@@ -18,32 +18,35 @@
 	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link href="CSS/bootstrap.css" rel="stylesheet">	
 	<script src="../Ajax/jQuery.js"></script>
+	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
 		function matricularAluno() {
-			$.ajax({			        
-				type: "POST",
-				url: "../Controladores/controlador.php",
-				data: { 
-					id: $("#id").val(),
-					nome: $("#nome").val(),
-					mail: $("#mail").val(),
-					classe: "Aluno",
-					metodo: "inserir"
-				},
-				
-				beforeSend: function() {						
+			if ( nuloOUvazio("#aluno") ) {
+				$.ajax({			        
+					type: "POST",
+					url: "../Controladores/controlador.php",
+					data: { 
+						id: $("#id").val(),
+						nome: $("#nome").val(),
+						mail: $("#mail").val(),
+						classe: "Aluno",
+						metodo: "inserir"
+					},
 					
-				},
-				success: function(resultado) {
-					$('#principal').hide();				
-					$('#principal').html(resultado);
-					$('#principal').show("slow");	
-				},
-				error: function(resultado) {				
-					
-				}
-			});
+					beforeSend: function() {						
+						
+					},
+					success: function(resultado) {
+						$('#principal').hide();				
+						$('#principal').html(resultado);
+						$('#principal').show("slow");	
+					},
+					error: function(resultado) {				
+						
+					}
+				});
+			}
 		}
 	</script>
 </head>
@@ -77,11 +80,11 @@
 			<form id="aluno" action="../Controladores/controlador.php" method="post">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<input class="form-control edits" name="id" id="id" type="text" placeholder="Matrícula" maxlength="10">
+					<input class="form-control edits meValide" name="id" id="id" type="text" placeholder="Matrícula" maxlength="10">
 			  	</div>
 			  	<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-pencil"></span></span>			 		
-					<input class="form-control edits" name="nome" id="nome" type="text" placeholder="Nome Completo">
+					<input class="form-control edits meValide" name="nome" id="nome" type="text" placeholder="Nome Completo">
 			  	</div>
 			  	<div class="input-group abaixo">
 			 		<span class="input-group-addon edits">@</span>			 		
