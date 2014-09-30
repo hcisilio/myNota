@@ -177,7 +177,7 @@
 			<form id="aula" class="form-inline" role="form" action="../Controladores/controlador.php" method="post">						
 				<div class="input-group abaixo">													
 					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select id="turma" name="turma" class="form-control edits meValide" onChange="listaAulas(this.value);">
+					<select id="turma" name="turma" class="form-control edits nuloOUvazio" onChange="listaAulas(this.value);">
 						<option value='null'> Selecione uma turma </option>
 					</select>																													
 				</div>
@@ -186,7 +186,7 @@
 					<input readonly class="form-control edits" name="data" id="data" type="text" value="<?php echo date("d/m/Y") ?>" placeholder="dd/mm/YYYY">
 			  	</div>
 				<div class="input-group abaixo">
-					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits meValide"></textarea>
+					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits nuloOUvazio"></textarea>
 				</div>	
 			</form>	
 			

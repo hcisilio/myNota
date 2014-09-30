@@ -181,18 +181,18 @@
 				<input type="hidden" id="aluno" name="aluno">		
 				<div class="input-group abaixo" data-toggle="modal" data-target="#selecionarAluno">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
-					<input type="text" name="nome" id="nome" class="form-control edits meValide" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
+					<input type="text" name="nome" id="nome" class="form-control edits nuloOUvazio" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-search"></span></span>
 			  	</div>	
 				<div class="input-group abaixo">													
 					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select id="turmaAtual" name="turmaAtual" class="form-control edits meValide" onChange="turmasAlvo(this.value);">
+					<select id="turmaAtual" name="turmaAtual" class="form-control edits nuloOUvazio" onChange="turmasAlvo(this.value);">
 						<option value='null'> Selecione o aluno acima </option>
 					</select>																													
 				</div>				
 				<div class="input-group abaixo">													
 					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select id="novaTurma" name="novaTurma" class="form-control edits meValide">
+					<select id="novaTurma" name="novaTurma" class="form-control edits nuloOUvazio">
 						<option value='null'> Selecione a turma atual do aluno </option>
 					</select>																													
 				</div>					

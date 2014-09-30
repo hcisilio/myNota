@@ -7,7 +7,7 @@ function removeFalhaValidacao(idForm){
 }
 function nuloOUvazio(idForm){	
 	contador = 0;
-	$(idForm+" .meValide").each(function(){
+	$(idForm+" .nuloOUvazio").each(function(){
 		if ($(this).val() == '' || $(this).val() == 'null' ){
 			$(this).addClass("erro");
 			contador++;

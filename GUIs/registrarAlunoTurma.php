@@ -131,7 +131,7 @@
 				<input type="hidden" id="aluno" name="aluno">			
 				<div class="input-group abaixo" data-toggle="modal" data-target="#selecionarAluno">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
-					<input type="text" name="nome" id="nome" class="form-control edits meValide" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
+					<input type="text" name="nome" id="nome" class="form-control edits nuloOUvazio" size="30" placeholder="Clique para selecionar o aluno" readonly/>				
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-search"></span></span>
 			  	</div>				
 				<div class="input-group abaixo">
@@ -140,7 +140,7 @@
 						include("../Controladores/controladorTurma.php");
 						$persistir = new ControladorTurma();
 						$lista = $persistir->listarAtivas();
-						echo "<select id='turma' name='turma' class='form-control edits meValide'>";
+						echo "<select id='turma' name='turma' class='form-control edits nuloOUvazio'>";
 							for ($i = 0; $i < count($persistir->listarAtivas()); $i++) {
 								$id = $lista[$i]->getId();
 								echo "<option value=$id> $id </option>";

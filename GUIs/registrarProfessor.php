@@ -82,15 +82,15 @@
 			<form id="professor" action="../Controladores/controlador.php" method="post">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
-					<input class="form-control edits meValide" name="id" id="id" type="text" placeholder="Login" maxlength="20">
+					<input class="form-control edits nuloOUvazio" name="id" id="id" type="text" placeholder="Login" maxlength="20">
 			  	</div>
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-pencil"></span></span>			 		
-					<input class="form-control edits meValide" name="nome" id="nome" type="text" placeholder="Nome Completo">
+					<input class="form-control edits nuloOUvazio" name="nome" id="nome" type="text" placeholder="Nome Completo">
 			  	</div>
 			  	<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon"><img src="Imagens/glyphicons_044_keys.png" style="width: 14px; height: 14px;"></span></span>			 		
-					<input class="form-control edits meValide" name="senha" id="senha" type="password" placeholder="Senha">
+					<input class="form-control edits nuloOUvazio" name="senha" id="senha" type="password" placeholder="Senha">
 			  	</div>
 			  	<div class="input-group abaixo">
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-tags"></span></span>		
