@@ -93,7 +93,7 @@ class ControladorTurma {
 		return $persistir->diasDeAula($turma);
 	}
 	
-function criarCombo() {
+	function criarCombo() {
 		$persistir = new TurmaSQL();
 		$combo = "<option value='null'> Selecione uma turma </option>";
 		if ($_REQUEST["tipo"] == "minhas"){
