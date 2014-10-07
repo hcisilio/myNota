@@ -25,7 +25,14 @@ else if (count($aulas) > 0) {
 		$professor = $aulas[$i]->getProfessor()->getNome();
 		$data = implode("/", array_reverse(explode("-", $aulas[$i]->getData())));
 		$conteudo = $aulas[$i]->getConteudo();
-		$txt .= "<tr><td align=left width='50%'>$conteudo</td> <td td align=left >$professor</td> <td>$data</td> <td> <img src='Imagens/delete-icon.png' height='30px' onclick='removeAula($id)'> </td> ";
+		$txt .= "<tr><td align=left width='50%'>$conteudo</td> <td td align=left >$professor</td> <td>$data</td>";
+		// Opção de lançar aulas irá aparecer apenas para o professor que cadastrou a aula
+		if ($aulas[$i]->getProfessor()->getId() == $_SESSION["id"]){
+			$txt .= "<td> <img src='Imagens/delete-icon.png' height='30px' onclick='removeAula($id)'> </td> ";
+		} 
+		else {
+			$txt .= "<td>$a</td>";
+		}
 	}	
 } 
 else {
