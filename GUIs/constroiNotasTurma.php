@@ -31,7 +31,7 @@ $txt .= "</tr>";
 for ($i=0;$i<count($alunos);$i++) {
 	$id = $alunos[$i]->getId();
 	$nome= $alunos[$i]->getNome();
-	$txt .= "<tr><td>$id</td> <td width='70%'>$nome</td>";
+	$txt .= "<tr><td>$id</td> <td width='70%' align='left'>$nome</td>";
 	for ($j=0;$j<count($modulos);$j++) {
 		$nota = $persistir->pegarNota($alunos[$i],$modulos[$j]);		
 		$valor = $nota->getNota();
@@ -44,6 +44,7 @@ for ($i=0;$i<count($alunos);$i++) {
 
 
 $txt .= "</table>";
+$txt .= "<div class='obs'> Obs.: Dê um duplo clique na nota que será editada e use ponto (.) para separar as casas decimais. </div>";
 echo $txt;
 
 ?>

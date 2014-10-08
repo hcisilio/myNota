@@ -81,8 +81,8 @@
 				</select>
 			</div>
 			
-			<table id="tabela">
-			</table>
+			<div id="tabela" class="abaixo"
+			</div>
 			
 		</div>	
 		<!-- sobra -->

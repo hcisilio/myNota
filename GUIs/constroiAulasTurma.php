@@ -41,6 +41,7 @@ else {
 
 
 $txt .= "</table>";
+$txt .= "<p class='obs'> Obs.: O botão de excluir aula aparece apenas paras as aulas que você cadastrou! </p>";
 
 echo nl2br($txt);
 

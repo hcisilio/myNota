@@ -10,8 +10,7 @@
 			height: 80%;
 		}
 		.navbar-text {
-			color: #fff !important;
-			font-size: 28px;
+			color: #fff !important;			
 		}
 	</style>	
 	<script src="../Ajax/jQuery.js"></script>
@@ -24,7 +23,7 @@
 	<nav class="navbar navbar-default" role="navigation" id="barra">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<p class="navbar-text navbar-center">Você não está autorizado a acessar esta página </p>
+				<h1 class="navbar-text navbar-center">Você não está autorizado a acessar esta página </h1>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	

@@ -194,7 +194,7 @@
 				</div>	
 			</form>	
 			
-			<div id="tabela">
+			<div id="tabela" class="abaixo">
 			</div>
 			
 		</div>	
