@@ -159,7 +159,7 @@
 					<input type="text" id="q" class="form-control edits" size="41" onKeyUp="JavaScript:buscarAluno()" placeholder="Digite o nome ou a matrícula do aluno">
 					<span class="input-group-addon edits"><a href="JavaScript:buscarAluno()" class="glyphicon glyphicon-search"></a></span>									  	
 			  	</div>
-			  	<font class="obs"> Obs.: Deixe em branco para buscar todos os alunos </font>
+			  	<p class="obs"> Obs.: Deixe em branco para buscar todos os alunos </p>
 			</form>
 			<div id="resultado"></div>
 		   </div>
