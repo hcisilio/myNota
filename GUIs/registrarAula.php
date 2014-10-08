@@ -3,9 +3,13 @@
 	if ($_SESSION["logado"] <> "true") {
 		header("Location: login.php");
 	}
-	else {
+	else if ( ($_SESSION["acesso"] == "Professor") || ($_SESSION["acesso"] == "Administrador") ) {
 		//acesso permitido	
 		$acesso = $_SESSION["acesso"];
+	}
+	else {
+		//acesso negado
+		header("Location: acessoNegado.php");
 	}
 ?>
 <html>

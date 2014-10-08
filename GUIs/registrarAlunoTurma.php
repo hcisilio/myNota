@@ -9,6 +9,7 @@
 	}
 	else {
 		//acesso negado
+		header("Location: acessoNegado.php");
 	}
 ?>
 <html>
