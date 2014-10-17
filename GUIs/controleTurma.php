@@ -113,10 +113,12 @@
 		<!-- conteúdo -->
 		<div id="principal" class="abaixo col-md-7">	
 			<div class="input-group abaixo">													
-				<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
+				<!-- <span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
 				<select id="turma" name="turma" class="form-control edits" onChange="listaAulas(this.value);listaAlunos(this.value);">
 					<option value='null'> Selecione uma turma </option>
-				</select>																													
+				</select> -->
+				<input type="text" id="turma" name="turma" class="form-control edits" placeholder="Digite o código da turma">
+				<span class="input-group-addon edits"><a href="JavaScript:listaAulas($('#turma').val());listaAlunos($('#turma').val());" class="glyphicon glyphicon-search"></a></span>																														
 			</div>	
 			<!-- Nav tabs -->	
 			<ul id="tab" class="nav nav-tabs" role="tablist">			  	

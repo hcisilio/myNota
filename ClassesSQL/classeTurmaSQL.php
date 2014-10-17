@@ -153,7 +153,7 @@ class TurmaSQL{
 	}
 	
 	function diasDeAula($turma) {
-		$this->sql = "select * from dias where id in (select dia from turma_dia where turma = \"$turma\")";
+		$this->sql = "select * from dias where id in (select dia from turma_dia where turma = '".$turma->getId()."')";
 		$query = mysql_query($this->sql);
 		$diasArr = array();
 		while ($linha=mysql_fetch_array($query)){
