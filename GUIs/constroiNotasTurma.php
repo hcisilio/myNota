@@ -7,7 +7,7 @@ include ("../Controladores/controladorNota.php");
 $persistir = new ControladorTurma();
 $turma = $persistir->listar($_REQUEST["turma"]);
 if ($turma->getId()) {
-	$diasDeAula = $persistir->diasDeAula($_REQUEST["turma"]);
+	$diasDeAula = $persistir->diasDeAula($turma);
 	$dias="";
 	for($i = 0; $i < count($diasDeAula); $i++){
 		$dias .= $diasDeAula[$i]->getNome(). " ";
