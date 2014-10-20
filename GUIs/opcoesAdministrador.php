@@ -6,6 +6,7 @@ echo "
 <a href='registrarAluno.php' class='list-group-item'>Matricular Aluno</a>
 <a href='registrarAlunoTurma.php' class='list-group-item'>Incluir Aluno em Turma</a>
 <a href='transferenciaTurma.php' class='list-group-item'>Transferir Aluno de Turma</a>
+<a href='minhaNota.php' class='list-group-item'>Consultar nota de aluno</a>
 <a href='registrarNota.php' class='list-group-item'>Lançar Notas</a>
 <a href='registrarAula.php' class='list-group-item'>Registrar Aula</a>
 ";

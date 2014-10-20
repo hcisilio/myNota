@@ -12,6 +12,7 @@
 echo "
 <a href='home.php' class='list-group-item active'> Página Inicial </a>
 <a href='controleTurma.php' class='list-group-item'>Controle de Turmas</a>
+<a href='minhaNota.php' class='list-group-item'>Consultar nota de aluno</a>
 ";
 
 ?>
