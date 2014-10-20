@@ -30,6 +30,11 @@ class ControladorAluno {
 		echo $resultado;
 	}
 	
+	function listar($id) {
+		$persistir = new AlunoSQL();
+		return $persistir->listar($id);
+	}
+	
 	
 	### outras funções
 	

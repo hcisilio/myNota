@@ -112,9 +112,14 @@ class ControladorTurma {
 		}
 		else if ($_REQUEST["tipo"] == "porAluno") {
 			$lista = $persistir->turmasDoAluno($_REQUEST["aluno"]);
-			for ($i = 0; $i < count($lista); $i++) {
-				$id = $lista[$i]->getId();
-				$combo .= "<option value=$id> $id </option>";
+			if (count($lista) > 0) {
+				for ($i = 0; $i < count($lista); $i++) {
+					$id = $lista[$i]->getId();
+					$combo .= "<option value=$id> $id </option>";
+				}
+			}
+			else {
+				$combo = 0;
 			}
 		}
 		else if ($_REQUEST["tipo"] == "deMesmoCurso") {
