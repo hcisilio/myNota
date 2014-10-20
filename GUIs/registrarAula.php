@@ -187,7 +187,7 @@
 				</div>
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class=" glyphicon glyphicon-calendar"></span></span>			 		
-					<input readonly class="form-control edits" name="data" id="data" type="text" value="<?php echo date("d/m/Y") ?>" placeholder="dd/mm/YYYY">
+					<input class="form-control edits nuloOUvazio" name="data" id="data" type="date" value="<?php echo date("d/m/Y") ?>" placeholder="dd/mm/YYYY">
 			  	</div>
 				<div class="input-group abaixo">
 					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits nuloOUvazio"></textarea>
