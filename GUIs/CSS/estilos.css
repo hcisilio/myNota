@@ -1,0 +1,140 @@
+@charset "UTF-8";
+.topo{
+	height: 150px;
+	background: #428BCA;
+	text-align: center;
+}
+
+/*classe para afastar conteúdo para baixo da div atual*/
+.abaixo{
+	margin-bottom: 20px;
+}
+
+/*Classe para abaixar a div atual*/
+.desce {
+	margin-top: 120px
+}
+
+/*Classe para flutuar conteúdo para direita*/
+.naDireita{
+	text-align: right;
+}
+
+/*Classes para estilização do menu lateral do site*/
+.menuLateral{
+	margin-left: 0px !important;
+	margin-top: 5px;
+}
+.menuLateral a:hover {
+	background-color: #428BCA !important;
+	color: #FFF !important;	
+}
+
+/*Classe para estilizar os campos dos formulário*/
+.edits {
+	font-size: 1.2em;
+	border-width: 1px ;
+	border-style: solid;
+	border-color: #1E90FF !important;	
+	font-variant: small-caps;
+	border-radius: 5px;
+}
+
+/*Classe para destacar campos de formulário preenchido indevidamente*/
+.erro {
+	border-width: 2px !important;
+	border-color: red !important;	
+}
+
+/*Classes para estilizar as tabelas do site*/
+.tabela-consulta {
+	text-align: center;
+	border-style: solid;
+	border-color: #428BCA;
+}
+.tabela-consulta tr th{
+	background-color: #428BCA !important;
+	color: #FFF !important;
+	text-align: center !important;
+	border-style: solid;
+	border-color: #428BCA;
+	border-bottom-color: #FFF !important;
+	vertical-align: middle !important;
+	display:table-cell;
+}
+.tabela-consulta tr td {
+	border-style: solid;
+	border-color: #428BCA;
+	vertical-align: middle !important;
+	display:table-cell;
+}
+/*Classe para estlizar a célula da tabela que está em edição (tabela de lançamentos de nota)*/
+.celulaEmEdicao input {	
+	width: 50px;
+	font-size: 1.0em;	
+	border-width: 1px;
+	border-style: solid;
+	border-color: #1E90FF;	
+	font-variant: small-caps;
+	border-radius: 5px;
+}
+/*Classe para colocar os cabeçalhos da tabela no sentido vertical*/
+.em_pe{
+	transform: rotate(90deg);
+	-moz-transform: rotate(90deg);     /*Firefox*/
+	-ms-transform: rotate(90deg);      /*Microsoft Internet Explorer*/
+	-webkit-transform: rotate(90deg);  /*Chrome, Safari*/
+	-o-transform: rotate(90deg);       /*Opera*/
+	margin: 15px 0px 15px 0px;
+}
+
+/*Classe para mensagens de observações*/
+.obs{
+	color: #CD2626;
+	text-align: right;
+	width:100%;
+}
+
+/*Classes para estilizar o rodapé das páginas*/
+#rodape {
+	background: #428BCA;
+	width:100%;
+	height:30px;
+	line-height: 30px;
+	position: fixed;
+	bottom: 0;	
+}
+#rodape p {
+	color: #FFF;		
+	text-align: center;
+}
+
+/*Classes para estilizar a barra superior (navbar)*/
+#barra {				
+	background-color: #428BCA;
+	border-color: #428BCA;		
+	text-align: right;
+	-moz-box-shadow: 3px 3px 4px #708090;
+	-webkit-box-shadow: 3px 3px 4px #708090;
+	box-shadow: 3px 3px 4px #708090;	
+}
+#barra ul li {
+	display: inline;
+	list-style-type: none;
+	font-weight: bold;		
+}
+#barra ul li a:link, #barra ul li a:visited {
+	color: #FFFFFF;	
+	font-variant: small-caps;
+	font-weight: bold;
+	text-decoration: none;	
+	vertical-align: middle;	
+}
+#barra ul li a:hover, #barra ul li a:active {
+	text-decoration: underline;		
+	font-variant: small-caps;
+	font-weight: bold;	
+}
+#barra ul li img {
+	height: 40px;	
+}
