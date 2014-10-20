@@ -73,8 +73,8 @@
 			  		<input type="button" class="btn btn-primary" id="btnSubmit" value="Login" onclick="logar()">
 			  	</div>
 			</form>	
+			<p align="right"> <a href="minhaNota.php"> Ou clique aqui para consultar sua nota </a> </p>
 			<div class="alert alert-danger" role="alert" id="login" style="display:none">
-			<p align="right"> <a href="minhaNota.php"> Ou clique aqui para consultar sua nota </a> </p>	
 				Usuário ou senha inválidos
 			</div>			
 		</div>
