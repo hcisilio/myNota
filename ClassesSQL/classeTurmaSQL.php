@@ -108,7 +108,7 @@ class TurmaSQL{
 	}
 	
 	function turmasDoAluno($aluno){
-		$this->sql = "select * from turmas where status = 1 and id in (select turma from aluno_turma where aluno = '$aluno')";		
+		$this->sql = "select * from turmas where id in (select turma from aluno_turma where aluno = '$aluno')";		
 		$query = mysql_query($this->sql);
 		$turmaArr = array();
 		while ($linha=mysql_fetch_array($query)){
@@ -153,7 +153,7 @@ class TurmaSQL{
 	}
 	
 	function diasDeAula($turma) {
-		$this->sql = "select * from dias where id in (select dia from turma_dia where turma = '".$turma->getId()."')";
+		$this->sql = "select * from dias where id in (select dia from turma_dia where turma = '$turma')";
 		$query = mysql_query($this->sql);
 		$diasArr = array();
 		while ($linha=mysql_fetch_array($query)){

@@ -1,3 +1,6 @@
+<?php 
+	session_start("mynota");
+?>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -8,58 +11,25 @@
 	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
-		function listarTurmas() {		
+		function consultarNotas() {
 			$.ajax({			        
 				type: "POST",
-				url: "../Controladores/controlador.php",
+				url: "constroiNotasAluno.php",
 				data: { 
-					aluno: $("#aluno").val(),					
-					tipo: "porAluno",					
-					classe: "Turma",
-					metodo: "criarCombo"
+					aluno: $("#aluno").val(),										
 				},
 				
 				beforeSend: function() {
-					$("#turma").empty();				
-					$("#turma").append('<option>Carregando...</option>');					
+					$("#notas").html("<img src='Imagens/carregando.gif'/>");				
 				},
-				success: function(combo) {
-					if (combo!= 0){
-						$("#turma").empty();				
-						$("#turma").append(combo);
-						$('#aluno').prop('readonly', true);
-					}
-					else {
-						$("#turma").empty();				
-						$("#turma").append("<option value='null'>Matrícula informada não existe</option>");						
-					}	
+				success: function(txt) {			
+					$("#notas").html(txt);	
 				},
-				error: function(combo) {				
+				error: function(txt) {	
+					$("#notas").html("fudeu");			
 				}
 			});
-		}
-
-		function consultarNotas() {
-			if ($("#turma").val() != "null"){
-				$.ajax({			        
-					type: "POST",
-					url: "constroiNotasAluno.php",
-					data: { 
-						aluno: $("#aluno").val(),					
-						turma: $("#turma").val()
-					},
-					
-					beforeSend: function() {
-						$("#notas").html("<img src='Imagens/carregando.gif'/>");				
-					},
-					success: function(txt) {				
-						$("#notas").html(txt);	
-					},
-					error: function(txt) {	
-						$("#notas").html("fudeu");			
-					}
-				});
-			}
+			
 		}
 	</script>
 </head>
@@ -81,29 +51,32 @@
 	</nav>
 	
 	<div id="row">
+		<!-- menu lateral -->
+		<div class="col-md-3 menuLateral">
+			<?php 
+				if ($_SESSION["logado"] == "true"){
+					$acesso = $_SESSION["acesso"];
+					include("opcoes$acesso.php"); 
+				}
+			?>
+		</div>
 		<!-- espaçamento -->
-		<div class="col-md-3">
+		<div class="col-md-1">
 		</div>
 		<!-- conteúdo -->
-		<div class="abaixo col-md-6">			
+		<div class="abaixo col-md-7">			
 			<form class="form-inline" action="../Controladores/controlador.php" method="post">
 				<div class="input-group abaixo">			 				 	
 					<input class="form-control edits" name="aluno" id="aluno" type="text" placeholder="Matrícula" maxlength="10">
 					<span class="input-group-btn">
-				    	<button class="btn btn-default edits" type="button" OnClick="listarTurmas()">OK</button>
+				    	<button class="btn btn-default edits" type="button" OnClick="consultarNotas()">OK</button>
 				    </span>
-			  	</div>
-			  	<div class="input-group abaixo">
-			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select class="form-control edits" name="turma" id="turma" onChange="consultarNotas()">
-						<option value="null"> Informe a matrícula do aluno </option>
-					</select>
 			  	</div>
 			</form>	
 			<div id="notas"></div>	
 		</div>
 		<!-- sobra -->
-		<div class="col-md-3">
+		<div class="col-md-1">
 		</div>		
 	</div>
 	

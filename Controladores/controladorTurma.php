@@ -53,6 +53,11 @@ class ControladorTurma {
 		return $persistir->listarTodos();
 	}
 	
+	function turmasDoAluno($aluno){
+		$persistir = new TurmaSQL();
+		return $persistir->turmasDoAluno($aluno->getId());
+	}
+	
 	### outras funções
 	function encerrar(){
 		$persistir = new TurmaSQL();
@@ -90,7 +95,7 @@ class ControladorTurma {
 	
 	function diasDeAula($turma){
 		$persistir = new turmaSQL();
-		return $persistir->diasDeAula($turma);
+		return $persistir->diasDeAula($turma->getId());
 	}
 	
 	function criarCombo() {
