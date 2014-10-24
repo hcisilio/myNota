@@ -30,7 +30,7 @@ if ($turma->getId()){
 				$txt .= "<td> <img src='Imagens/delete-icon.png' height='30px' onclick='removeAula($id)'> </td> ";
 			} 
 			else {
-				$txt .= "<td>$a</td>";
+				$txt .= "<td></td>";
 			}
 		}	
 	} 
