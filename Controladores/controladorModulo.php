@@ -1,6 +1,6 @@
 <?php
 session_start("mynota");
-include ("controladorTurma.php");
+include_once ("controladorTurma.php");
 include ("../ClassesSQL/classeModuloSQL.php");
 
 
