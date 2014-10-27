@@ -54,9 +54,8 @@
 		<!-- menu lateral -->
 		<div class="col-md-3 menuLateral">
 			<?php 
-				if ($_SESSION["logado"] == "true"){
-					$acesso = $_SESSION["acesso"];
-					include("opcoes$acesso.php"); 
+				if ($_SESSION["logado"] == "true"){					
+					include("opcoes".$_SESSION["acesso"].".php"); 
 				}
 			?>
 		</div>

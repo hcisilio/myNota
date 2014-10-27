@@ -1,15 +1,5 @@
 <?php 
-	session_start("mynota");
- 	
-	if ($_SESSION["logado"] <> "true") {
-		header("Location: login.php");
-	}
-	else {
-		$acesso = $_SESSION["acesso"];
-		$nome = $_SESSION["nome"];
-	}
-	
-
+	include ("../permissao.php");
 ?>
 <html>
 <head>
@@ -50,12 +40,12 @@
 		<!-- menu lateral -->
 		<div class="col-md-3 menuLateral">
 			<div class="list-group">				
-			  	<?php include("opcoes$acesso.php"); ?>
+			  	<?php include("opcoes".$_SESSION["acesso"].".php"); ?>
 			</div>
 		</div>
 		<!-- conteúdo -->
 		<div class="col-md-9">
-			<h1><?php echo "Bem vindo $acesso $nome!" ?></h1>
+			<h1><?php echo "Bem vindo $acesso ".$_SESSION["nome"]."!" ?></h1>
 		</div>	
 	</div>
 	
