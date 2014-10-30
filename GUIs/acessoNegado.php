@@ -1,7 +1,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>Controle da turma</title>
+	<title>Acesso Negado</title>
 	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link href="CSS/bootstrap.css" rel="stylesheet">
 	<style>

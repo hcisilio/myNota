@@ -45,7 +45,7 @@
 		</div>
 		<!-- conteúdo -->
 		<div class="col-md-9">
-			<h1><?php echo "Bem vindo $acesso ".$_SESSION["nome"]."!" ?></h1>
+			<h1><?php echo "Bem vindo ".$_SESSION["acesso"]." ".$_SESSION["nome"]."!" ?></h1>
 		</div>	
 	</div>
 	
