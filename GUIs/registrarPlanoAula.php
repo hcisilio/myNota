@@ -128,6 +128,27 @@
 				}
 			});
 		}
+
+		function imprimePlano(id){			
+			$.ajax({
+				type: "POST",
+				url: "../Controladores/controlador.php",
+				data: {
+					classe: "PlanoAula",
+					metodo: "imprimir",					
+					id: id
+				},
+				beforeSend: function(){
+					
+				},
+				success: function(saida) {	
+					location.href="impressora.php?saida="+saida;				
+				},
+				error: function() {
+					
+				}
+			});
+		}
 	</script>
 </head>
 

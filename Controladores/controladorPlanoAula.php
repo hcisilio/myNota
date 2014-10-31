@@ -1,8 +1,9 @@
 <?php
 session_start("mynota");
-include ("../ClassesSQL/classePlanoAulaSQL.php");
-include ("../ClassesSQL/classeTurmaSQL.php");
-include ("../ClassesSQL/classeModuloSQL.php");
+include_once ("../ClassesSQL/classePlanoAulaSQL.php");
+include_once ("../ClassesSQL/classeTurmaSQL.php");
+include_once ("../ClassesSQL/classeModuloSQL.php");
+include_once ("../ClassesSQL/classeProfessorSQL.php");
 
 class ControladorPlanoAula {	
 	
@@ -25,9 +26,30 @@ class ControladorPlanoAula {
 		return $persistir->deletar($_REQUEST["id"]);
 	}
 	
+	function listar($id){
+		$persistir = new PlanoAulaSQL();
+		return $persistir->listar($id);		
+	}
+	
 	function listarPorTurma($turma){
 		$persistir = new PlanoAulaSQL();
 		return $persistir->listarPorTurma($turma);		
+	}
+	
+	function imprimir(){		
+		$plano = $this->listar($_REQUEST["id"]);		
+		$saida = "
+		<link rel='stylesheet' type='text/css' href='../GUIs/CSS/estilos.css'>
+		<div align='center'> <img src='../GUIs/Imagens/microlins.png' height='150px'> </div>
+		<br />
+		<center> <h1> Relatório de plano de aula </h1> </center> 
+		<div class='relatorio'> Turma: ".$plano->getTurma()->getId()." </div>
+		<div class='relatorio'> Módulo: ".$plano->getModulo()->getNome()." </div>
+		<div class='relatorio'> Professor: ".$plano->getProfessor()->getNome()." </div>
+		<div class='relatorio'> Conteúdo: <br/><br/>".$plano->getConteudo()." </div>
+		";
+		echo $saida;
+
 	}
 	
 }
