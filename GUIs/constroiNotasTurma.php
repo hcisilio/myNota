@@ -1,8 +1,8 @@
 <?php 
-include ("../Controladores/controladorAluno.php");
-include ("../Controladores/controladorTurma.php");
-include ("../Controladores/controladorModulo.php");
-include ("../Controladores/controladorNota.php");
+include_once ("../Controladores/controladorAluno.php");
+include_once ("../Controladores/controladorTurma.php");
+include_once ("../Controladores/controladorModulo.php");
+include_once ("../Controladores/controladorNota.php");
 
 $persistir = new ControladorTurma();
 $turma = $persistir->listar($_REQUEST["turma"]);
@@ -33,7 +33,7 @@ if ($turma->getId()) {
 		for ($i=0;$i<count($alunos);$i++) {
 			$id = $alunos[$i]->getId();
 			$nome= $alunos[$i]->getNome();
-			$txt .= "<tr><td>$id</td> <td width='70%' align='left'>$nome</td>";
+			$txt .= "<tr><td>$id</td> <td width='100%' align='left'>$nome</td>";
 			for ($j=0;$j<count($modulos);$j++) {
 				$nota = $persistir->pegarNota($alunos[$i],$modulos[$j]);		
 				$valor = $nota->getNota();

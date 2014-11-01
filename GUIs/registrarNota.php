@@ -27,7 +27,27 @@
 				$( '#tabela' ).html('fudeu');
 			}
 	    });
-	}		
+	}
+	function imprimeNotas(){			
+		$.ajax({
+			type: "POST",
+			url: "constroiNotasTurma.php",
+			data: {
+				classe: "Notas",
+				metodo: "imprimir",					
+				turma: $("#turma").val()
+			},
+			beforeSend: function(){
+				
+			},
+			success: function(txt) {	
+				location.href="impressora.php?saida="+txt;				
+			},
+			error: function() {
+				
+			}
+		});
+	}
 	</script>
 </head>
 
@@ -41,7 +61,7 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	
-					<li> </li>				         
+					<li> <a href="JavaScript:imprimeNotas()"> <img src="Imagens/print.png"> </li>				         
 				</ul>
 			</div>
 		</div>
@@ -74,7 +94,7 @@
 				</select>
 			</div>
 			
-			<div id="tabela" class="abaixo"
+			<div id="tabela" class="abaixo">
 			</div>
 			
 		</div>	

@@ -38,10 +38,7 @@ class ControladorPlanoAula {
 	
 	function imprimir(){		
 		$plano = $this->listar($_REQUEST["id"]);		
-		$saida = "
-		<link rel='stylesheet' type='text/css' href='../GUIs/CSS/estilos.css'>
-		<div align='center'> <img src='../GUIs/Imagens/microlins.png' height='150px'> </div>
-		<br />
+		$saida = "		
 		<center> <h1> Relatório de plano de aula </h1> </center> 
 		<div class='relatorio'> Turma: ".$plano->getTurma()->getId()." </div>
 		<div class='relatorio'> Módulo: ".$plano->getModulo()->getNome()." </div>
