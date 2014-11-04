@@ -6,6 +6,7 @@ class Professor{
 	var $comentario;
 	var $senha;
 	var $acesso;
+	var $ativo;
 	
 	//metodos get
 	function getId(){
@@ -23,6 +24,9 @@ class Professor{
 	function getAcesso(){
 		return $this->acesso;
 	}
+	function getAtivo(){
+		return $this->ativo;
+	}
 	
 	//metodos set
 	function setId($id){
@@ -39,6 +43,9 @@ class Professor{
 	}
 	function setAcesso($acesso){
 		$this->acesso = $acesso;
+	}
+	function setAtivo($ativo){
+		$this->ativo = $ativo;
 	}
 	
 }

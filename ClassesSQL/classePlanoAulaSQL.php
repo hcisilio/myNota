@@ -40,8 +40,28 @@ class PlanoAulaSQL{
 		return $planoAula;
 	}
 	
-	function listarPorTurma($turma){
-		$this->sql = "select * from planos_aula where turma = '".$turma->getId()."' order by id desc";		
+	function listarMuitos($parametros){
+		//Motando a clausura where a partir dos parâmetros
+		if ($parametros){
+			$wheres = " where ";
+			while ($parametro = current($parametros)) {
+				if (is_object($parametro)) {
+					$wheres .= key($parametros)."='".$parametro->getId()."'";
+				}
+				else {
+					$wheres .= key($parametros)."='".$parametro."'";
+				}
+								
+				if (next($parametros)){
+					$wheres .= " and ";
+				}				
+			}
+			$this->sql = "select * from planos_aula".$wheres." order by data desc";
+		}
+		else {
+			$this->sql = "select * from planos_aula order by data desc";
+		}
+		//Executando a Query			
 		$query = mysql_query($this->sql);
 		$aulaArr = array();		
 		while ($linha=mysql_fetch_array($query)){

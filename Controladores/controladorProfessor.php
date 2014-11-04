@@ -61,7 +61,29 @@ class ControladorProfessor {
 	}
 	
 	function listarTodos(){
-		
+		$persistir = new ProfessorSQL();
+		$parametros = False;
+		return $persistir->listarMuitos($parametros);
+	}
+	
+	function listarAtivos(){
+		$persistir = new ProfessorSQL();
+		$parametros = array("ativo" => 1);
+		return $persistir->listarMuitos($parametros);
+	}
+	
+	function criarCombo(){
+		$combo = "<option value='null'> Selecione um Professor </option>";
+		if ($_REQUEST["tipo"] == "todos"){
+			$professores = $this->listarTodos();
+		}
+		else if ($_REQUEST["tipo"] == "ativos"){
+			$professores = $this->listarAtivos();
+		}
+		foreach ($professores as $professor) {
+			$combo .= "<option value=".$professor->getId()."> ".$professor->getNome()." </option>";
+		}
+		echo $combo;
 	}
 	
 	function login(){
@@ -69,13 +91,20 @@ class ControladorProfessor {
 		$senha = md5($_REQUEST["senha"]);
 		$persistir = new ProfessorSQL();
 		$professor = $persistir->listar($login);
-		if (!$professor) {
-			$saida = false;
+		if (!$professor->getId()) {
+			//Professor não cadastrado
+			$saida = 0;
+			echo $saida;
+		}
+		else if (!$professor->getAtivo()){
+			//Professor inativo
+			$saida = 1;
 			echo $saida;
 		}
 		else {
 			if ($senha != $professor->getSenha()){				
-				$saida = false;
+				//senha incorreta
+				$saida = 2;
 				echo $saida;
 			} 
 			else {

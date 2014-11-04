@@ -31,8 +31,9 @@ class ControladorAula {
 	}
 	
 	function listarPorTurma($turma){
+		$parametros = array("turma" => $turma);
 		$persistir = new AulaSQL();
-		return $persistir->listarPorTurma($turma);		
+		return $persistir->listarMuitos($parametros);		
 	}
 	
 }

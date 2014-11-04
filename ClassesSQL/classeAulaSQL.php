@@ -21,8 +21,22 @@ class AulaSQL{
 		return mysql_query($this->sql);
 	}
 	
-	function listarPorTurma($turma){
-		$this->sql = "select * from aulas where turma = \"$turma\" order by id desc";		
+	function listarMuitos($parametros){
+		//Motando a clausura where a partir dos parâmetros
+		if ($parametros){
+			$wheres = " where ";
+			while ($parametro = current($parametros)) {
+				$wheres .= key($parametros)."='".$parametro."'";				
+				if (next($parametros)){
+					$wheres .= " and ";
+				}
+			}
+			$this->sql = "select * from aulas".$wheres." order by data desc";
+		}
+		else {
+			$this->sql = "select * from aulas order by data desc";
+		}
+		//Executando a Query				
 		$query = mysql_query($this->sql);
 		$aulaArr = array();		
 		$persistir = new ProfessorSQL();

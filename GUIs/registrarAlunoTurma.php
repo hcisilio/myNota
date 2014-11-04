@@ -59,6 +59,25 @@
 				}
 		    });		
 		}
+		function listarTurmas(tipo){
+			$.ajax({
+				type: "POST",
+				url: "../Controladores/controlador.php",
+				data: {
+					classe: "Turma",
+					metodo: "criarCombo",
+					tipo: tipo
+				},
+				beforeSend: function(){
+					$("#turma").empty();				
+					$("#turma").append('<option>Carregando...</option>');
+				},
+				success: function(combo) {	
+					$("#turma").empty();				
+					$("#turma").append(combo);						
+				}
+			});
+		}
 		function pegueme(aluno, nome) {			
 			//parent.document.getElementById("email").value = "teste";
 			$( '#aluno' ).attr('value', aluno);
@@ -68,7 +87,7 @@
 	</script>
 </head>
 
-<body>
+<body OnLoad="listarTurmas('ativas')">
 
 	<!-- NavBar -->
 	<nav class="navbar navbar-default" role="navigation" id="barra">
@@ -126,17 +145,7 @@
 			  	</div>				
 				<div class="input-group abaixo">
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>	
-			  		<?php
-						include("../Controladores/controladorTurma.php");
-						$persistir = new ControladorTurma();
-						$lista = $persistir->listarAtivas();
-						echo "<select id='turma' name='turma' class='form-control edits nuloOUvazio'>";
-							for ($i = 0; $i < count($persistir->listarAtivas()); $i++) {
-								$id = $lista[$i]->getId();
-								echo "<option value=$id> $id </option>";
-							} 
-						echo "</select>";
-					?>
+			  		<select id='turma' name='turma' class='form-control edits nuloOUvazio'> </select>
 				</div>
 			</form>			
 		</div>					

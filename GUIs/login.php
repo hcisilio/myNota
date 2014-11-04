@@ -20,9 +20,22 @@
 			beforeSend: function() {							
 			},
 			success: function(saida) {				
-				if (saida==false) {
-					$("#login").hide();
-					$("#login").show("slow");
+				if (saida==0) {
+					$("#mensagemErro").hide();
+					$("#mensagemErro").html("Professor, você não está cadastrado no sistema!");
+					$("#mensagemErro").show("slow");
+					return false;
+				}
+				else if (saida==1) {
+					$("#mensagemErro").hide();
+					$("#mensagemErro").html("Professor, seu cadastro está inativo no sistema!");
+					$("#mensagemErro").show("slow");
+					return false;
+				}
+				else if (saida==2) {
+					$("#mensagemErro").hide();
+					$("#mensagemErro").html("Professor, seu login ou senha estão incorretos!");
+					$("#mensagemErro").show("slow");
 					return false;
 				}
 				else {
@@ -74,9 +87,7 @@
 			  	</div>
 			</form>	
 			<p align="right"> <a href="minhaNota.php"> Ou clique aqui para consultar sua nota </a> </p>
-			<div class="alert alert-danger" role="alert" id="login" style="display:none">
-				Usuário ou senha inválidos
-			</div>			
+			<div class="alert alert-danger" role="alert" id="mensagemErro" style="display:none"> </div>			
 		</div>
 		<!-- sobra -->
 		<div class="col-md-2">

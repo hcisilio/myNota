@@ -45,10 +45,56 @@
 			    });
 		   }
 	   }
+
+	   function listarProfessores(){
+		   $.ajax({			        
+				type: "POST",
+				url: "../Controladores/controlador.php",
+				data: { 					
+					tipo: "ativos",					
+					classe: "Professor",
+					metodo: "criarCombo"					
+				},				
+				beforeSend: function(){
+					$("#professor").empty();				
+					$("#professor").append('<option>Carregando...</option>');
+				},
+				success: function(combo) {	
+					$("#professor").empty();				
+					$("#professor").append(combo);
+				},
+				error: function() {				
+					
+				}
+		    });
+	   }
+	   
+	   function listarCursos(){
+		   $.ajax({			        
+				type: "POST",
+				url: "../Controladores/controlador.php",
+				data: { 														
+					classe: "Curso",
+					metodo: "criarCombo",
+					tipo: "todos"
+				},				
+				beforeSend: function(){
+					$("#curso").empty();				
+					$("#curso").append('<option>Carregando...</option>');
+				},
+				success: function(combo) {	
+					$("#curso").empty();				
+					$("#curso").append(combo);
+				},
+				error: function() {				
+					
+				}
+		    });
+	   }
 	</script>
 </head>
 
-<body>
+<body OnLoad="listarProfessores(), listarCursos()">
 
 
 	<!-- NavBar -->
@@ -82,33 +128,11 @@
 			  	</div>
 			  	<div class="input-group abaixo">
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>	
-			  		<?php
-						include("../ClassesSQL/classeProfessorSQL.php");
-						$persistir = new ProfessorSQL();
-						$lista = $persistir->listarTodos();
-						echo "<select id='professor' name='professor' class=' form-control edits nuloOUvazio'>";
-							for ($i = 0; $i < count($persistir->listarTodos()); $i++) {
-								$id = $lista[$i]->getId();
-								$nome = $lista[$i]->getNome();
-								echo "<option value=$id> $nome </option>";
-							} 
-						echo "</select>";
-					?>	
+					<select id='professor' name='professor' class='form-control edits nuloOUvazio'> </select>  			
 				</div>
 				<div class="input-group abaixo">
 			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-shopping-cart"></span></span>	
-			  		<?php
-						include("../ClassesSQL/classeCursoSQL.php");
-						$persistir = new CursoSQL();
-						$lista = $persistir->listarTodos();
-						echo "<select id='curso' name='curso' class=' form-control edits nuloOUvazio'>";
-							for ($i = 0; $i < count($persistir->listarTodos()); $i++) {
-								$id = $lista[$i]->getId();
-								$descricao = $lista[$i]->getDescricao();
-								echo "<option value=$id> $descricao </option>";
-							} 
-						echo "</select>";
-					?>	
+			  		<select id='curso' name='curso' class='form-control edits nuloOUvazio'> </select>
 				</div>
 				<div id="dias" class="input-group abaixo">
 					<span class="input-group-addon">

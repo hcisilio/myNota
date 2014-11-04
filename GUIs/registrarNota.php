@@ -28,6 +28,25 @@
 			}
 	    });
 	}
+	function listarTurmas(tipo){
+		$.ajax({
+			type: "POST",
+			url: "../Controladores/controlador.php",
+			data: {
+				classe: "Turma",
+				metodo: "criarCombo",
+				tipo: tipo
+			},
+			beforeSend: function(){
+				$("#turma").empty();				
+				$("#turma").append('<option>Carregando...</option>');
+			},
+			success: function(combo) {	
+				$("#turma").empty();				
+				$("#turma").append(combo);						
+			}
+		});
+	}
 	function imprimeNotas(){			
 		$.ajax({
 			type: "POST",
@@ -51,7 +70,7 @@
 	</script>
 </head>
 
-<body>
+<body OnLoad="listarTurmas('minhas')">
 
 	<!-- NavBar -->
 	<nav class="navbar navbar-default" role="navigation" id="barra">
@@ -79,19 +98,7 @@
 		<div id="principal" class="abaixo col-md-7">			
 			<div class="input-group abaixo">
 				<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-				<select name="turma" class="form-control edits" id="turma" onChange="listaAlunos(this.value);">
-					<option value='null'> Selecione uma turma </option>
-					<?php
-						include_once("../Controladores/controladorTurma.php");
-						$persistir = new ControladorTurma();
-						$professor = $_SESSION["professor"];
-						$lista = $persistir->listarMinhas($professor);
-						for ($i = 0; $i < count($persistir->listarMinhas($professor)); $i++) {
-							$id = $lista[$i]->getId();
-							echo "<option value=$id> $id </option>";
-						} 		
-					?> 
-				</select>
+				<select name="turma" class="form-control edits" id="turma" onChange="listaAlunos(this.value);"> </select>
 			</div>
 			
 			<div id="tabela" class="abaixo">

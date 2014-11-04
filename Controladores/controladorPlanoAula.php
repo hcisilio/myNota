@@ -33,7 +33,8 @@ class ControladorPlanoAula {
 	
 	function listarPorTurma($turma){
 		$persistir = new PlanoAulaSQL();
-		return $persistir->listarPorTurma($turma);		
+		$parametros = array("turma" => $turma);
+		return $persistir->listarMuitos($parametros);		
 	}
 	
 	function imprimir(){		

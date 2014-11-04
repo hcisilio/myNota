@@ -29,8 +29,22 @@ class CursoSQL {
 		return $curso;
 	}
 	
-	function listarTodos(){
-		$this->sql = "select * from cursos";
+	function listarMuitos($parametros){
+		//Motando a clausura where a partir dos parâmetros
+		if ($parametros){
+			$wheres = " where ";
+			while ($parametro = current($parametros)) {
+				$wheres .= key($parametros)."='".$parametro."'";				
+				if (next($parametros)){
+					$wheres .= " and ";
+				}
+			}
+			$this->sql = "select * from cursos".$wheres." order by descricao";
+		}
+		else {
+			$this->sql = "select * from cursos order by descricao";
+		}
+		//Executando a Query		
 		$query = mysql_query($this->sql);
 		$cursoArr = array();
 		while ($linha=mysql_fetch_array($query)){

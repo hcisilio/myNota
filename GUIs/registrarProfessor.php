@@ -91,7 +91,7 @@
 					</select>
 				</div>
 				<div class="input-group abaixo">
-					<textarea name="obs" cols="200%" rows="5" class="form-control edits"></textarea>
+					<textarea name="obs" id="obs" cols="200%" rows="5" class="form-control edits"></textarea>
 				</div>	
 			</form>			
 		</div>	

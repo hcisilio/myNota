@@ -1,6 +1,7 @@
 <?php
 session_start("mynota");
 include_once "../ClassesSQL/classeTurmaSQL.php";
+include_once "controladorAluno.php";
 
 class ControladorTurma {
 
@@ -43,21 +44,42 @@ class ControladorTurma {
 		echo $resultado;
 	}
 	
+	#funções para consulta de turma
 	function listar($id){
 		$persistir = new TurmaSQL();
 		return $persistir->listar($id);		
 	}
 	
 	function listarTodos(){
+		$parametros = False;
 		$persistir = new turmaSQL();
-		return $persistir->listarTodos();
+		return $persistir->listarMuitos($parametros);
+	}	
+	
+	function listarAtivas() {
+		$parametro = array("status" => 1);
+		$persistir = new TurmaSQL();
+		return $persistir->listarMuitos($parametro);
+	}
+	
+	function listarMinhas(){
+		$parametro = array("professor" => $_SESSION["id"], "status" => 1);		
+		$persistir = new turmaSQL();
+		return $persistir->listarMuitos($parametro);
+	}
+	
+	function deMesmoCurso(){
+		$turma = $this->listar($_REQUEST["turma"]);
+		$parametro = array("curso" => $turma->getCurso()->getId(), "status" => 1);
+		$persistir = new TurmaSQL();
+		return $persistir->listarMuitos($parametro);
 	}
 	
 	function turmasDoAluno($aluno){
 		$persistir = new TurmaSQL();
-		return $persistir->turmasDoAluno($aluno->getId());
+		return $persistir->turmasDoAluno($aluno);
 	}
-	
+
 	### outras funções
 	function encerrar(){
 		$persistir = new TurmaSQL();
@@ -78,64 +100,33 @@ class ControladorTurma {
 			";	
 		}
 		echo $resultado;
-	}
-	
-	
-	function listarAtivas() {
-		$persistir = new TurmaSQL();
-		return $persistir->listarAtivas();
-	}
-	
-	function listarMinhas(){
-		$professor = $_SESSION["id"];		
-		$persistir = new turmaSQL();
-		return $persistir->listarMinhas($professor);
-	}
-	
+	}	
 	
 	function diasDeAula($turma){
 		$persistir = new turmaSQL();
 		return $persistir->diasDeAula($turma->getId());
 	}
 	
-	function criarCombo() {
-		$persistir = new TurmaSQL();
+	
+	function criarCombo() {		
 		$combo = "<option value='null'> Selecione uma turma </option>";
 		if ($_REQUEST["tipo"] == "minhas"){
-			$lista = $persistir->listarMinhas($_SESSION["id"]);
-			for ($i = 0; $i < count($lista); $i++) {
-				$id = $lista[$i]->getId();
-				$combo .= "<option value=$id> $id </option>";
-			}
+			$turmas = $this->listarMinhas();
 		} 
-		else if ($_REQUEST["tipo"] == "todas"){
-			$lista = $persistir->listarAtivas();
-			for ($i = 0; $i < count($lista); $i++) {
-				$id = $lista[$i]->getId();
-				$combo .= "<option value=$id> $id </option>";
-			}
+		else if ($_REQUEST["tipo"] == "ativas"){
+			$turmas = $this->listarAtivas();
 		}
 		else if ($_REQUEST["tipo"] == "porAluno") {
-			$lista = $persistir->turmasDoAluno($_REQUEST["aluno"]);
-			if (count($lista) > 0) {
-				for ($i = 0; $i < count($lista); $i++) {
-					$id = $lista[$i]->getId();
-					$combo .= "<option value=$id> $id </option>";
-				}
-			}
-			else {
-				$combo = 0;
-			}
+			$aluno = new ControladorAluno();
+			$aluno = $aluno->listar($_REQUEST["aluno"]);
+			$turmas = $this->turmasDoAluno($aluno);
 		}
 		else if ($_REQUEST["tipo"] == "deMesmoCurso") {
-			$lista = $persistir->deMesmoCurso($_REQUEST["turma"]);
-			for ($i = 0; $i < count($lista); $i++) {
-				$id = $lista[$i]->getId();
-				$combo .= "<option value=$id> $id </option>";
-			}
+			$turmas = $this->deMesmoCurso($_REQUEST["turma"]);
 		}
-		else {
-			$combo .=  "<option> ".$_REQUEST["tipo"]." </option>";
+		
+		foreach ($turmas as $turma) {
+			$combo .= "<option value=".$turma->getId()."> ".$turma->getId()." </option>";
 		}
 		echo $combo;
 	}

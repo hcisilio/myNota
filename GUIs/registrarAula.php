@@ -164,7 +164,7 @@
 				  	<input type="radio" name="pesquisa" id="minhas" value="minhas" checked onClick="trocaPesquisa(this.value)"> Minhas turmas
 				</label>
 				<label class="radio-inline">
-				  	<input type="radio" name="pesquisa" id="todas" value="todas" onClick="trocaPesquisa(this.value)"> Todas as turmas
+				  	<input type="radio" name="pesquisa" id="todas" value="ativas" onClick="trocaPesquisa(this.value)"> Todas as turmas
 				</label>
 			</div>		
 			<form id="aula" class="form-inline" role="form" action="../Controladores/controlador.php" method="post">						

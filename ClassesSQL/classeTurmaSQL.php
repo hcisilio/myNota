@@ -48,30 +48,23 @@ class TurmaSQL{
 		$turma->setStatus($linha["status"]);
 		return $turma;
 	}
-
-	function listarTodos(){
-		$this->sql = "select * from turmas";
-		$query = mysql_query($this->sql);
-		$turmaArr = array();
-		while ($linha=mysql_fetch_array($query)){
-			$turma = new Turma();
-			$turma->setId($linha["id"]);
-			$professor = new ProfessorSQL();
-			$turma->setProfessor($professor->listar($linha["professor"]));
-			$curso = new CursoSQL();
-			$turma->setCurso($curso->listar($linha["curso"]));
-			$turma->setStatus($linha["status"]);
-			$turma->setDia($linha["dia"]);
-			$turmaArr[] = $turma;
-			unset ($turma);
+	
+	function listarMuitos($parametros){
+		//Motando a clausura where a partir dos parâmetros
+		if ($parametros){
+			$wheres = " where ";
+			while ($parametro = current($parametros)) {
+				$wheres .= key($parametros)."='".$parametro."'";				
+				if (next($parametros)){
+					$wheres .= " and ";
+				}
+			}
+			$this->sql = "select * from turmas".$wheres;
 		}
-		return $turmaArr;
-	}
-	
-	### outras funções
-	
-	function listarAtivas(){
-		$this->sql = "select * from turmas where status = 1 order by id";
+		else {
+			$this->sql = "select * from turmas";
+		}
+		//Executando a Query		
 		$query = mysql_query($this->sql);
 		$turmaArr = array();
 		while ($linha=mysql_fetch_array($query)){
@@ -89,26 +82,10 @@ class TurmaSQL{
 		return $turmaArr;
 	}
 	
-	function listarMinhas($professor){		
-		$this->sql = "select * from turmas where professor = \"$professor\" and status=1";
-		$query = mysql_query($this->sql);
-		$turmaArr = array();
-		while ($linha=mysql_fetch_array($query)){
-			$turma = new Turma();
-			$turma->setId($linha["id"]);
-			$professor = new ProfessorSQL();
-			$turma->setProfessor($professor->listar($linha["professor"]));
-			$curso = new CursoSQL();
-			$turma->setCurso($curso->listar($linha["curso"]));
-			//$turma->setStatus($linha["status"]);			
-			$turmaArr[] = $turma;
-			unset ($turma);
-		}
-		return $turmaArr;
-	}
+	### outras funções	
 	
 	function turmasDoAluno($aluno){
-		$this->sql = "select * from turmas where id in (select turma from aluno_turma where aluno = '$aluno')";		
+		$this->sql = "select * from turmas where id in (select turma from aluno_turma where aluno = '".$aluno->getId()."')";		
 		$query = mysql_query($this->sql);
 		$turmaArr = array();
 		while ($linha=mysql_fetch_array($query)){
@@ -124,26 +101,7 @@ class TurmaSQL{
 			unset ($turma);
 		}
 		return $turmaArr;
-	}
-	
-	function deMesmoCurso($turma){
-		$this->sql = "select * from turmas where curso = (select curso from turmas where id = '$turma')";		
-		$query = mysql_query($this->sql);
-		$turmaArr = array();
-		while ($linha=mysql_fetch_array($query)){
-			$turma = new Turma();
-			$turma->setId($linha["id"]);
-			$professor = new ProfessorSQL();
-			$turma->setProfessor($professor->listar($linha["professor"]));
-			$curso = new CursoSQL();
-			$turma->setCurso($curso->listar($linha["curso"]));
-			$turma->setStatus($linha["status"]);
-			//$turma->setDia($linha["dia"]);
-			$turmaArr[] = $turma;
-			unset ($turma);
-		}
-		return $turmaArr;
-	}
+	}	
 	
 	//funções para manipular os dias de aula das turmas
 	
