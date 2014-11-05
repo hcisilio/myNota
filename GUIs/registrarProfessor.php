@@ -25,10 +25,6 @@
 						classe: "Professor",
 						metodo: "inserir" 
 					},
-					
-					beforeSend: function() {						
-						
-					},
 					success: function(resultado) {
 						$('#principal').hide();				
 						$('#principal').html(resultado);

@@ -35,10 +35,6 @@
 			type: "POST",
 			url: "constroiAulasTurma.php",
 			data: { turma: turma },
-			
-			beforeSend: function() {						
-				
-			},
 			success: function(txt) {		
 				$( '#aulas' ).html(txt);						
 			},
@@ -53,10 +49,6 @@
 			type: "GET",
 			url: "constroiNotasTurma.php",
 			data: { turma: turma },
-			
-			beforeSend: function() {
-				
-			},
 			success: function(txt) {
 				$( '#notas' ).html(txt);						
 			},
@@ -71,10 +63,6 @@
 			type: "GET",
 			url: "constroiPlanosAulaTurma.php",
 			data: { turma: turma },
-			
-			beforeSend: function() {
-				
-			},
 			success: function(txt) {
 				$( '#planos' ).html(txt);						
 			},
@@ -103,9 +91,6 @@
 				classe: "PlanoAula",
 				metodo: "imprimir",					
 				id: id
-			},
-			beforeSend: function(){
-				
 			},
 			success: function(saida) {	
 				location.href="impressora.php?saida="+saida;				
@@ -150,7 +135,9 @@
 					<option value='null'> Selecione uma turma </option>
 				</select> -->
 				<input type="text" id="turma" name="turma" class="form-control edits" placeholder="Digite o código da turma">
-				<span class="input-group-addon edits"><a href="JavaScript:listaPlanosAula($('#turma').val());listaAulas($('#turma').val());listaAlunos($('#turma').val());" class="glyphicon glyphicon-search"></a></span>																														
+				<span class="input-group-addon edits">
+					<a href="JavaScript:listaPlanosAula($('#turma').val());listaAulas($('#turma').val());listaAlunos($('#turma').val());" class="glyphicon glyphicon-search"></a>
+				</span>																														
 			</div>	
 			<!-- Nav tabs -->	
 			<ul id="tab" class="nav nav-tabs" role="tablist">			  	

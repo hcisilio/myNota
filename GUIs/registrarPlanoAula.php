@@ -47,10 +47,6 @@
 						classe: "PlanoAula",
 						metodo: "inserir" 
 					},
-					
-					beforeSend: function() {						
-						
-					},
 					success: function(txt) {						
 						removeFalhaValidacao("#aula");		
 						listaPlanos($("#turma").val());
@@ -78,10 +74,6 @@
 						id: aula,										
 						classe: "PlanoAula",
 						metodo: "deletar" 
-					},
-					
-					beforeSend: function() {						
-						
 					},
 					success: function(resultado) {						
 						listaPlanos($("#turma").val());			
@@ -146,9 +138,6 @@
 					classe: "PlanoAula",
 					metodo: "imprimir",					
 					id: id
-				},
-				beforeSend: function(){
-					
 				},
 				success: function(saida) {	
 					location.href="impressora.php?saida="+saida;				

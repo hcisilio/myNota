@@ -42,10 +42,6 @@
 						classe: "Aula",
 						metodo: "inserir" 
 					},
-					
-					beforeSend: function() {						
-						
-					},
 					success: function(txt) {
 						removeFalhaValidacao("#aula");		
 						listaAulas($("#turma").val());
@@ -69,10 +65,6 @@
 						classe: "Turma",
 						metodo: "encerrar" 
 					},
-					
-					beforeSend: function() {						
-						
-					},
 					success: function(resultado) {						
 						$('#principal').hide();				
 						$('#principal').html(resultado);
@@ -95,10 +87,6 @@
 						id: aula,										
 						classe: "Aula",
 						metodo: "deletar" 
-					},
-					
-					beforeSend: function() {						
-						
 					},
 					success: function(resultado) {						
 						listaAulas($("#turma").val());			

@@ -23,10 +23,6 @@
 						classe: "AlunoTurma",
 						metodo: "transferir" 
 					},
-					
-					beforeSend: function() {						
-						
-					},
 					success: function(resultado) {
 						$('#principal').hide();				
 						$('#principal').html(resultado);
@@ -47,10 +43,6 @@
 					q: $("#q").val(),
 					classe: "Aluno",
 					metodo: "buscar" 
-				},
-				
-				beforeSend: function() {						
-					
 				},
 				success: function(resultado) {
 					$("#resultado").html(resultado);								

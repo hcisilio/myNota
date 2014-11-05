@@ -27,11 +27,7 @@
 						senha: senha,
 						classe: classe,
 						metodo: metodo 
-					},
-					
-					beforeSend: function() {						
-						//$( '#ajax' ).html('Carregando');
-					},
+					},				
 					success: function(resultado) {			
 						$('#principal').hide();				
 						$('#principal').html(resultado);
