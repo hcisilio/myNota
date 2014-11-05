@@ -47,25 +47,8 @@
 			}
 		});
 	}
-	function imprimeNotas(){			
-		$.ajax({
-			type: "POST",
-			url: "constroiNotasTurma.php",
-			data: {
-				classe: "Notas",
-				metodo: "imprimir",					
-				turma: $("#turma").val()
-			},
-			beforeSend: function(){
-				
-			},
-			success: function(txt) {	
-				location.href="impressora.php?saida="+txt;				
-			},
-			error: function() {
-				
-			}
-		});
+	function imprimeNotas(){		
+		location.href="impressora.php?saida="+$("#tabela").html();
 	}
 	</script>
 </head>

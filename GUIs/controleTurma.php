@@ -66,6 +66,24 @@
 	    });
 	}
 
+	function listaPlanosAula(turma) {		
+	    $.ajax({	    
+			type: "GET",
+			url: "constroiPlanosAulaTurma.php",
+			data: { turma: turma },
+			
+			beforeSend: function() {
+				
+			},
+			success: function(txt) {
+				$( '#planos' ).html(txt);						
+			},
+			error: function(txt) {
+				$( '#planos' ).html('fudeu');
+			}
+	    });
+	}
+
 	function mudaAba(){
 		$('#tab a').click(function (e) {
 		  e.preventDefault()
@@ -74,19 +92,23 @@
 	}
 
 	function imprimeNotas(){			
+		location.href="impressora.php?saida="+$("#notas").html();
+	}
+
+	function imprimePlano(id){			
 		$.ajax({
 			type: "POST",
-			url: "constroiNotasTurma.php",
+			url: "../Controladores/controlador.php",
 			data: {
-				classe: "Notas",
+				classe: "PlanoAula",
 				metodo: "imprimir",					
-				turma: $("#turma").val()
+				id: id
 			},
 			beforeSend: function(){
 				
 			},
-			success: function(txt) {	
-				location.href="impressora.php?saida="+txt;				
+			success: function(saida) {	
+				location.href="impressora.php?saida="+saida;				
 			},
 			error: function() {
 				
@@ -128,17 +150,19 @@
 					<option value='null'> Selecione uma turma </option>
 				</select> -->
 				<input type="text" id="turma" name="turma" class="form-control edits" placeholder="Digite o código da turma">
-				<span class="input-group-addon edits"><a href="JavaScript:listaAulas($('#turma').val());listaAlunos($('#turma').val());" class="glyphicon glyphicon-search"></a></span>																														
+				<span class="input-group-addon edits"><a href="JavaScript:listaPlanosAula($('#turma').val());listaAulas($('#turma').val());listaAlunos($('#turma').val());" class="glyphicon glyphicon-search"></a></span>																														
 			</div>	
 			<!-- Nav tabs -->	
 			<ul id="tab" class="nav nav-tabs" role="tablist">			  	
 			 	<li class="active"><a href="#aulas" onclick="mudaAba()">Aulas</a></li>
 			  	<li><a href="#notas" onclick="mudaAba()">Notas</a></li>
+			  	<li><a href="#planos" onclick="mudaAba()">Planos de Aula</a></li>
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content">				
 				<div class="tab-pane active" id="aulas"> Selecione a turma </div>
 				<div class="tab-pane" id="notas"> Selecione a turma </div>				
+				<div class="tab-pane" id="planos"> Selecione a turma </div>
 			</div>	
 		</div>
 		<!-- sobra -->

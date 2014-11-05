@@ -15,7 +15,13 @@ class ControladorPlanoAula {
 		$planoAula->setModulo($persistir->listar($_REQUEST["modulo"]));
 		$persistir = new ProfessorSQL();
 		$planoAula->setProfessor($persistir->listar($_SESSION["id"]));
-		$planoAula->setConteudo($_REQUEST["conteudo"]);	
+		$planoAula->setConteudo(
+			"Tema:\n"."Capitulo(s) ".$_REQUEST["caps"]."\n\n".
+			"Conteúdo:\n".$_REQUEST["conteudo"]."\n\n".
+			"Desenvolvimento do tema:\n".$_REQUEST["desenvolvimento"]."\n\n".
+			"Recursos Ditáticos:\n".$_REQUEST["recursos"]."\n\n".
+			"Avaliações Programadas:\n".$_REQUEST["avaliacoes"]
+		);	
 		$planoAula->setData( implode("-", array_reverse(explode("/", $_REQUEST["data"]))) );
 		$persistir = new PlanoAulaSQL();
 		$persistir->inserir($planoAula);
@@ -41,12 +47,14 @@ class ControladorPlanoAula {
 		$plano = $this->listar($_REQUEST["id"]);		
 		$saida = "		
 		<center> <h1> Relatório de plano de aula </h1> </center> 
-		<div class='relatorio'> Turma: ".$plano->getTurma()->getId()." </div>
-		<div class='relatorio'> Módulo: ".$plano->getModulo()->getNome()." </div>
-		<div class='relatorio'> Professor: ".$plano->getProfessor()->getNome()." </div>
-		<div class='relatorio'> Conteúdo: <br/><br/>".$plano->getConteudo()." </div>
+		<div class='relatorio'> 
+			Turma: ".$plano->getTurma()->getId()."
+			Módulo: ".$plano->getModulo()->getNome()."
+			Professor: ".$plano->getProfessor()->getNome()."
+		</div>
+		<div class='relatorio'>".$plano->getConteudo()." </div>
 		";
-		echo $saida;
+		echo nl2br($saida);
 
 	}
 	

@@ -38,7 +38,11 @@
 					data: { 
 						turma: $("#turma").val(),
 						modulo: $("#modulo").val(),
+						caps: $("#caps").val(),
 						conteudo: $("#conteudo").val(),
+						recursos: $("#recursos").val(),
+						desenvolvimento: $("#desenvolvimento").val(),
+						avaliacoes: $("#avaliacoes").val(),
 						data: $("#data").val(),
 						classe: "PlanoAula",
 						metodo: "inserir" 
@@ -50,7 +54,12 @@
 					success: function(txt) {						
 						removeFalhaValidacao("#aula");		
 						listaPlanos($("#turma").val());
-						$("#conteudo").val(null);					
+						$("#caps").val(null);
+						$("#conteudo").val(null);
+						$("#recursos").val();
+						$("#desenvolvimento").val();
+						$("#avaliacoes").val();
+											
 					},
 					error: function(txt) {				
 						$("#tabela").html('fudeu');
@@ -196,7 +205,19 @@
 					<input class="form-control edits nuloOUvazio" name="data" id="data" type="date" placeholder="dd/mm/YYYY">
 			  	</div>
 				<div class="input-group abaixo">
-					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits nuloOUvazio"></textarea>
+					<textarea rows="1" cols="50%" name="caps" id="caps" placeholder="Capítulos da apostila" class="form-control edits nuloOUvazio"></textarea>
+				</div>
+				<div class="input-group abaixo">
+					<textarea rows="1" cols="50%" name="recursos" id="recursos" placeholder="Recursos ditáticos" class="form-control edits nuloOUvazio"></textarea>
+				</div>
+				<div class="input-group abaixo">
+					<textarea rows="5" cols="50%" name="conteudo" id="conteudo" placeholder="Conteúdo" class="form-control edits nuloOUvazio"></textarea>
+				</div>
+				<div class="input-group abaixo">
+					<textarea rows="5" cols="50%" name="desenvolvimento" id="desenvolvimento" placeholder="Desenvolvimento do tema" class="form-control edits nuloOUvazio"></textarea>
+				</div>				
+				<div class="input-group abaixo">
+					<textarea rows="5" cols="100%" name="avaliacoes" id="avaliacoes" placeholder="Avaliações" class="form-control edits nuloOUvazio"></textarea>
 				</div>	
 			</form>	
 			
