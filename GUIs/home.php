@@ -43,10 +43,17 @@
 			  	<?php include("opcoes".$_SESSION["acesso"].".php"); ?>
 			</div>
 		</div>
+		<!-- espaçamento -->
+		<div class="col-md-1">
+		</div>
 		<!-- conteúdo -->
-		<div class="col-md-9">
+		<div class="col-md-7 abaixo">
 			<h1><?php echo "Bem vindo ".$_SESSION["acesso"]." ".$_SESSION["nome"]."!" ?></h1>
+			<?php include_once "destaques.php" ?>
 		</div>	
+		<!-- sobra -->
+		<div class="col-md-1">
+		</div>
 	</div>
 	
 	<!-- rodapé -->

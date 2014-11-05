@@ -167,7 +167,7 @@
 					<input class="form-control edits nuloOUvazio br-data-widget hasDatepicker" name="data" id="data" type="date" value="<?php echo date("d/m/Y") ?>" placeholder="dd/mm/YYYY">
 			  	</div>
 				<div class="input-group abaixo">
-					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits nuloOUvazio"></textarea>
+					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits nuloOUvazio" placeholder="Conteúdo ministrado"></textarea>
 				</div>	
 			</form>	
 			

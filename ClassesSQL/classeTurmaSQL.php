@@ -75,7 +75,8 @@ class TurmaSQL{
 			$curso = new CursoSQL();
 			$turma->setCurso($curso->listar($linha["curso"]));
 			$turma->setStatus($linha["status"]);
-			//$turma->setDia($linha["dia"]);
+			//$dias = $this->diasDeAula($linha["id"]);
+			//$turma->setDia($dias);
 			$turmaArr[] = $turma;
 			unset ($turma);
 		}
@@ -104,7 +105,7 @@ class TurmaSQL{
 	}	
 	
 	//funções para manipular os dias de aula das turmas
-	
+
 	function DiaTurma($dia,$turma){
 		$this->sql = "insert into turma_dia values ('$turma',$dia)";
 		return mysql_query($this->sql);

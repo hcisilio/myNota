@@ -43,6 +43,12 @@ class ControladorPlanoAula {
 		return $persistir->listarMuitos($parametros);		
 	}
 	
+	function listarPorTurmaHoje($turma){
+		$persistir = new PlanoAulaSQL();
+		$parametros = array("turma" => $turma, "data" => date("Y-m-d"));
+		return $persistir->listarMuitos($parametros);		
+	}
+	
 	function imprimir(){		
 		$plano = $this->listar($_REQUEST["id"]);		
 		$saida = "		

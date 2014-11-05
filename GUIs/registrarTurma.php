@@ -133,13 +133,13 @@
 				<div id="dias" class="input-group abaixo">
 					<span class="input-group-addon">
 						<span class="glyphicon"><img src="icons/glyphicons_231_sun.png">
-							<input type="checkbox" id="dia[]" name="dia[]" value="1" class="edits"> Domingo						
-							<input type="checkbox" id="dia[]" name="dia[]" value="2" class="edits"> Segunda
-							<input type="checkbox" id="dia[]" name="dia[]" value="3" class="edits"> Terça
-							<input type="checkbox" id="dia[]" name="dia[]" value="4" class="edits"> Quarta
-							<input type="checkbox" id="dia[]" name="dia[]" value="5" class="edits"> Quinta
-							<input type="checkbox" id="dia[]" name="dia[]" value="6" class="edits"> Sexta
-							<input type="checkbox" id="dia[]" name="dia[]" value="7" class="edits"> Sábado
+							<input type="checkbox" id="dia[]" name="dia[]" value="0" class="edits"> Domingo						
+							<input type="checkbox" id="dia[]" name="dia[]" value="1" class="edits"> Segunda
+							<input type="checkbox" id="dia[]" name="dia[]" value="2" class="edits"> Terça
+							<input type="checkbox" id="dia[]" name="dia[]" value="3" class="edits"> Quarta
+							<input type="checkbox" id="dia[]" name="dia[]" value="4" class="edits"> Quinta
+							<input type="checkbox" id="dia[]" name="dia[]" value="5" class="edits"> Sexta
+							<input type="checkbox" id="dia[]" name="dia[]" value="6" class="edits"> Sábado
 						</span>
 					</span>					
 				</div>	
