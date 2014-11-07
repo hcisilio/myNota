@@ -80,25 +80,11 @@
 	}
 
 	function imprimeNotas(){			
-		location.href="impressora.php?saida="+$("#notas").html();
+		location.href="../Controladores/controlador.php?classe=Nota&metodo=imprimir&turma="+$("#turma").val();
 	}
 
 	function imprimePlano(id){			
-		$.ajax({
-			type: "POST",
-			url: "../Controladores/controlador.php",
-			data: {
-				classe: "PlanoAula",
-				metodo: "imprimir",					
-				id: id
-			},
-			success: function(saida) {	
-				location.href="impressora.php?saida="+saida;				
-			},
-			error: function() {
-				
-			}
-		});
+		location.href="../Controladores/controlador.php?classe=PlanoAula&metodo=imprimir&id="+id;
 	}
 	</script>
 </head>

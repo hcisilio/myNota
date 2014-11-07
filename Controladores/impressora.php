@@ -10,7 +10,7 @@ class Impressora {
 			<br />
 		".$relatorio;
 		$mpdf->WriteHTML($relatorio);
-		return $mpdf->Output($arquivo, 'D');
+		return $mpdf->Output($arquivo.'.pdf', 'D');
 	}
 }
 ?>
