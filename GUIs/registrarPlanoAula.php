@@ -130,22 +130,8 @@
 			});
 		}
 
-		function imprimePlano(id){			
-			$.ajax({
-				type: "POST",
-				url: "../Controladores/controlador.php",
-				data: {
-					classe: "PlanoAula",
-					metodo: "imprimir",					
-					id: id
-				},
-				success: function(saida) {	
-					location.href="impressora.php?saida="+saida;				
-				},
-				error: function() {
-					
-				}
-			});
+		function imprimePlano(id){
+			location.href="../Controladores/controlador.php?classe=PlanoAula&metodo=imprimir&id="+id;
 		}
 	</script>
 </head>

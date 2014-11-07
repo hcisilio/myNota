@@ -60,8 +60,8 @@ class ControladorPlanoAula {
 		</div>
 		<div class='relatorio'>".$plano->getConteudo()." </div>
 		";
-		echo nl2br($saida);
-
+		include_once ("../Controladores/impressora.php");
+		return $impressora = new Impressora('Plano'.$plano->getTurma()->getId().'em'.$plano->getData(), nl2br($saida));	
 	}
 	
 }

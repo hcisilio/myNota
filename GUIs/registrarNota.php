@@ -47,8 +47,8 @@
 			}
 		});
 	}
-	function imprimeNotas(){		
-		location.href="impressora.php?saida="+$("#tabela").html();
+	function imprimeNotas(){
+		location.href="../Controladores/controlador.php?classe=Nota&metodo=imprimir&turma="+$("#turma").val();
 	}
 	</script>
 </head>
