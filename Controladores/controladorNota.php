@@ -24,7 +24,9 @@ class ControladorNota {
 	}
 	
 	function imprimir(){
+		ob_start();
 		include_once("../GUIs/constroiNotasTurma.php");
+		ob_end_clean();
 		include_once ("../Controladores/impressora.php");
 		return $impressora = new Impressora('Notas'.$_REQUEST["turma"], $txt);		
 	}
