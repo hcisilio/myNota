@@ -116,7 +116,11 @@
 	text-align: right;
 	-moz-box-shadow: 3px 3px 4px #708090;
 	-webkit-box-shadow: 3px 3px 4px #708090;
-	box-shadow: 3px 3px 4px #708090;	
+	box-shadow: 3px 3px 4px #708090;		
+}
+#barra p{
+	color: #FFF;
+	font-size: 1.8em;	
 }
 #barra ul li {
 	display: inline;
@@ -128,13 +132,12 @@
 	font-variant: small-caps;
 	font-weight: bold;
 	text-decoration: none;	
-	vertical-align: middle;	
 }
 #barra ul li a:hover, #barra ul li a:active {
 	text-decoration: underline;		
 	font-variant: small-caps;
 	font-weight: bold;	
 }
-#barra ul li img {
+#barra img {
 	height: 40px;	
 }

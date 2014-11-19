@@ -97,7 +97,7 @@
 	<nav class="navbar navbar-default" role="navigation" id="barra">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<!-- colocar alguma imagem mynota -->
+				<a class="navbar-brand" href="../GUIs/home.php"> <img alt="Brand" src="Imagens/sublogo_branco.png"> </a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	
