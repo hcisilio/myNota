@@ -1,5 +1,7 @@
 <?php
-	include ("../permissao.php");	
+	include_once ("../Controladores/controladorPermissao.php");
+	$persistir = new ControladorPermissao();
+	$persistir->autorizarAcesso( end(explode("/", $_SERVER['PHP_SELF'])) );	
 ?>
 <html>
 <head>
