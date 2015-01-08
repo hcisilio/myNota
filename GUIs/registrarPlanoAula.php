@@ -157,7 +157,7 @@
 	<div id="row">
 		<!-- menu lateral -->
 		<div class="col-md-3 menuLateral">
-			<?php include("opcoes".$_SESSION["acesso"].".php"); ?>
+			<?php $persistir->criarMenu() ?>
 		</div>
 		<!-- espaçamento -->
 		<div class="col-md-1">

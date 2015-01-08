@@ -43,7 +43,7 @@
 		<!-- menu lateral -->
 		<div class="col-md-3 menuLateral">
 			<div class="list-group">				
-			  	<?php $persistir = new ControladorPermissao(); $persistir->criarMenu() ?>
+			  	<?php $persistir->criarMenu() ?>
 			</div>
 		</div>
 		<!-- espaçamento -->
