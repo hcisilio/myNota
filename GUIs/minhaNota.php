@@ -54,8 +54,10 @@
 		<!-- menu lateral -->
 		<div class="col-md-3 menuLateral">
 			<?php 
-				if ($_SESSION["logado"] == "true"){					
-					include("opcoes".$_SESSION["acesso"].".php"); 
+				if ($_SESSION["logado"] == "true"){
+					include_once ("../Controladores/controladorPermissao.php");
+					$persistir = new ControladorPermissao();					
+					$persistir->criarMenu(); 
 				}
 			?>
 		</div>

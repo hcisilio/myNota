@@ -1,5 +1,7 @@
 <?php 
-	include ("../permissao.php");
+	include_once ("../Controladores/controladorPermissao.php");
+	$persistir = new ControladorPermissao();
+	$persistir->autorizarAcesso( end(explode("/", $_SERVER['PHP_SELF'])) );
 ?>
 <html>
 <head>
@@ -95,7 +97,7 @@
 	<nav class="navbar navbar-default" role="navigation" id="barra">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<!-- colocar alguma imagem mynota -->
+				<a class="navbar-brand" href="../GUIs/home.php"> <img alt="Brand" src="Imagens/sublogo_branco.png"> </a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">	
@@ -108,7 +110,7 @@
 	<div id="row">
 		<!-- menu lateral -->
 		<div class="col-md-3 menuLateral">
-			<?php include("opcoes".$_SESSION["acesso"].".php"); ?>
+			<?php $persistir->criarMenu() ?>
 		</div>
 		<!-- espaçamento -->
 		<div class="col-md-1">

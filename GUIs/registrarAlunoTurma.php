@@ -1,5 +1,7 @@
 <?php 
-	include ("../permissao.php");	
+	include_once ("../Controladores/controladorPermissao.php");
+	$persistir = new ControladorPermissao();
+	$persistir->autorizarAcesso( end(explode("/", $_SERVER['PHP_SELF'])) );
 ?>
 <html>
 <head>
@@ -125,7 +127,7 @@
 	<div id="row">
 		<!-- menu lateral -->
 		<div class="col-md-3 menuLateral">
-			<?php include("opcoes".$_SESSION["acesso"].".php"); ?>
+			<?php $persistir->criarMenu() ?>
 		</div>
 		<!-- espaçamento -->
 		<div class="col-md-1">
