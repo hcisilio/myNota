@@ -1,9 +1,6 @@
 <?php
-
 include("../conexao.php");
 include_once("../Classes/classeAlunoTurma.php");
-include_once("../ClassesSQL/classeAlunoSQL.php");
-include_once("../ClassesSQL/classeTurmaSQL.php");
 
 class AlunoTurmaSQL{
 	
@@ -32,18 +29,6 @@ class AlunoTurmaSQL{
 	function checarMatricula($aluno, $curso){
 		$this->sql = "select * from aluno_turma where aluno='$aluno' and turma in (select id from turmas where curso = $curso)";
 		$query = mysql_query($this->sql);
-		/*$linha=mysql_fetch_array($query);
-		$alunoTurmaArr = array();
-		while ($linha=mysql_fetch_array($query)) {
-			$aluno_turma = new AlunoTurma();
-			$aluno = new AlunoSQL();
-			$aluno_turma->setAluno($aluno->listar($linha["aluno"]));
-			$turma = new TurmaSQL();
-			$aluno_turma->setTurma($turma->listar($linha["turma"]));
-			$alunoTurmaArr[] = $aluno_turma;
-			unset ($aluno_turma);
-		}
-		return $alunoTurmaArr[];*/	
 		$check = mysql_num_rows($query);
 		return $check;		
 	}

@@ -1,6 +1,6 @@
 <?php
-include("../conexao.php");
-include("../ClassesSQL/classeNotaSQL.php");
+include_once("controladorModulo.php");
+include_once("../ClassesSQL/classeNotaSQL.php");
 
 class ControladorNota {
 
@@ -21,6 +21,32 @@ class ControladorNota {
 	function pegarNota($aluno,$modulo){
 		$persistir = new NotaSQL();
 		return $persistir->pegarNota($aluno,$modulo);
+	}
+
+	function notasIniciais($aluno, $turma){
+		$persistir = new controladorModulo();
+		$modulos = $persistir->listarPorTurma($turma->getId());
+		$nota = new Nota();
+		foreach ($modulos as $modulo) {
+			$nota->setAluno($aluno);
+			$nota->setModulo($modulo);
+			$nota->setNota(0);
+			$ok = $this->inserir($nota);
+		}
+		if ($ok) {
+			$resultado = "
+				<div class='alert alert-success' role='alert'>
+					Aluno ".$aluno->getNome()." matriculado com sucesso na turma ".$turma->getId()."!
+				</div>
+			";
+		} else {
+			$resultado = "
+				<div class='alert alert-danger' role='alert'>
+					Ops! Inclusão do aluno em turma não realizada! <BR />".mysql_error()."
+				</div>
+			";
+		}
+		echo $resultado;
 	}
 	
 	function imprimir(){
