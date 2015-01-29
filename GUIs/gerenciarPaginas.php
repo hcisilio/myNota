@@ -92,13 +92,9 @@
 				<a class="navbar-brand" href="../GUIs/home.php"> <img alt="Brand" src="Imagens/sublogo_branco.png"> </a>
 			</div>
 			<div class="collapse navbar-collapse">
-			<form action="../Controladores/controlador.php" method="post" name="logout" id="logout">
-				<input type="hidden" name="classe" value="Professor">
-				<input type="hidden" name="metodo" value="logout">
 				<ul class="nav navbar-nav navbar-right">
 					<li> <a href="" data-toggle="modal" data-target="#registrarNovaPagina"> <img src="Imagens/new-page.png"> </a></li>
 				</ul>
-			</form>
 			</div>
 		</div>
 	</nav>

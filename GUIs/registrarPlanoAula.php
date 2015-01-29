@@ -9,9 +9,9 @@
 	<title>Registrar Plano de Aula</title>
 	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link href="CSS/bootstrap.css" rel="stylesheet">	
-	<script src="js/bootstrap.min.js"></script>	
-	<script type="text/javascript" src="../Ajax/jQuery.js"></script>
+	<script src="../Ajax/jQuery.js"></script>
 	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
+	<script src="js/bootstrap.min.js"></script>	
 	<script type="text/javascript">
 		function listaPlanos(turma) {				
 		    $.ajax({			        
@@ -49,6 +49,9 @@
 						classe: "PlanoAula",
 						metodo: "inserir" 
 					},
+					beforeSend: function(){
+						$( "#novoPlanoAula").modal('toggle');
+					},
 					success: function(txt) {						
 						removeFalhaValidacao("#aula");		
 						listaPlanos($("#turma").val());
@@ -57,7 +60,6 @@
 						$("#recursos").val(null);
 						$("#desenvolvimento").val(null);
 						$("#avaliacoes").val(null);
-											
 					},
 					error: function(txt) {				
 						$("#tabela").html('fudeu');
@@ -148,11 +150,54 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li> <a href="JavaScript:inserePlano()"> <img src="Imagens/save.png"> </a></li>  				         
+					<li> <a href="" data-toggle="modal" data-target="#novoPlanoAula"> <img src="Imagens/new-page.png"> </a></li>  
 				</ul>
 			</div>
 		</div>
 	</nav>
+	<!-- Modal -->
+	<div id="novoPlanoAula" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+		<div class="modal-content">
+		   	<div class="modal-header">
+		     	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		     	<h4 class="modal-title" id="myModalLabel">Registrar novo plano de aula</h4>
+		   	</div>
+		   	<div class="modal-body">
+			   <form id="planoAula" class="form-inline" role="form" action="../Controladores/controlador.php" method="post">
+			   		<div class="input-group abaixo">													
+						<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
+						<select id="modulo" name="modulo" class="form-control edits nuloOUvazio">
+							<option value='null'> Selecione primeiro uma turma! </option>
+						</select>					
+					</div>
+					<div class="input-group abaixo">				
+						<span class="input-group-addon edits"><span class=" glyphicon glyphicon-calendar"></span></span>			 		
+						<input class="form-control edits nuloOUvazio" name="data" id="data" type="date" placeholder="dd/mm/YYYY">																												
+					</div>
+					<div class="input-group abaixo">
+						<textarea rows="1" cols="100%" name="caps" id="caps" placeholder="Capítulos da apostila" class="form-control edits nuloOUvazio"></textarea>
+					</div>
+					<div class="input-group abaixo">
+						<textarea rows="1" cols="100%" name="recursos" id="recursos" placeholder="Recursos ditáticos" class="form-control edits nuloOUvazio"></textarea>
+					</div>
+					<div class="input-group abaixo">
+						<textarea rows="5" cols="100%" name="conteudo" id="conteudo" placeholder="Conteúdo" class="form-control edits nuloOUvazio"></textarea>
+					</div>
+					<div class="input-group abaixo">
+						<textarea rows="5" cols="100%" name="desenvolvimento" id="desenvolvimento" placeholder="Desenvolvimento do tema" class="form-control edits nuloOUvazio"></textarea>
+					</div>				
+					<div class="input-group abaixo">
+						<textarea rows="5" cols="100%" name="avaliacoes" id="avaliacoes" placeholder="Avaliações" class="form-control edits nuloOUvazio"></textarea>
+					</div>
+					<div align="right">
+						<input type="button" class="btn btn-primary" id="btnSubmit" value="Salvar" onclick="JavaScript:inserePlano()">						
+					</div>
+				</form>
+		   	</div>
+		</div>
+	  </div>
+	</div>
 
 	<div id="row">
 		<!-- menu lateral -->
@@ -164,43 +209,14 @@
 		</div>
 		<!-- conteúdo -->
 		<div id="principal" class="abaixo col-md-7">
-			<form id="planoAula" class="form-inline" role="form" action="../Controladores/controlador.php" method="post">						
-				<div class="input-group abaixo">													
-					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select id="turma" name="turma" class="form-control edits nuloOUvazio" onChange='listarModulos(this.value); listaPlanos(this.value)'>
-						<option value='null'> Selecione uma turma </option>
-					</select>																													
-				</div>
-				<div class="input-group abaixo">													
-					<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
-					<select id="modulo" name="modulo" class="form-control edits nuloOUvazio">
-						<option value='null'> Selecione primeiro uma turma! </option>
-					</select>																													
-				</div>
-				<div class="input-group abaixo">
-			 		<span class="input-group-addon edits"><span class=" glyphicon glyphicon-calendar"></span></span>			 		
-					<input class="form-control edits nuloOUvazio" name="data" id="data" type="date" placeholder="dd/mm/YYYY">
-			  	</div>
-				<div class="input-group abaixo">
-					<textarea rows="1" cols="50%" name="caps" id="caps" placeholder="Capítulos da apostila" class="form-control edits nuloOUvazio"></textarea>
-				</div>
-				<div class="input-group abaixo">
-					<textarea rows="1" cols="50%" name="recursos" id="recursos" placeholder="Recursos ditáticos" class="form-control edits nuloOUvazio"></textarea>
-				</div>
-				<div class="input-group abaixo">
-					<textarea rows="5" cols="50%" name="conteudo" id="conteudo" placeholder="Conteúdo" class="form-control edits nuloOUvazio"></textarea>
-				</div>
-				<div class="input-group abaixo">
-					<textarea rows="5" cols="50%" name="desenvolvimento" id="desenvolvimento" placeholder="Desenvolvimento do tema" class="form-control edits nuloOUvazio"></textarea>
-				</div>				
-				<div class="input-group abaixo">
-					<textarea rows="5" cols="100%" name="avaliacoes" id="avaliacoes" placeholder="Avaliações" class="form-control edits nuloOUvazio"></textarea>
-				</div>	
-			</form>	
-			
+			<div class="input-group abaixo">													
+				<span class="input-group-addon edits"><span class="glyphicon glyphicon-barcode"></span></span>			 		
+				<select id="turma" name="turma" class="form-control edits nuloOUvazio" onChange='listarModulos(this.value); listaPlanos(this.value)'>
+					<option value='null'> Selecione uma turma </option>
+				</select>																													
+			</div>			
 			<div id="tabela" class="abaixo">
 			</div>
-			
 		</div>	
 		<!-- sobra -->
 		<div class="col-md-1">

@@ -1,5 +1,4 @@
 <?php
-
 include("../conexao.php");
 include("../Classes/classeNota.php");
 
@@ -9,8 +8,8 @@ class NotaSQL {
 	
 	function inserir($nota){
 		$this->sql = "insert into notas values (
-		'".$nota->getAluno()."',
-		'".$nota->getModulo()."',
+		'".$nota->getAluno()->getId()."',
+		'".$nota->getModulo()->getId()."',
 		'".$nota->getNota()."'
 		)";
 		return mysql_query($this->sql);		

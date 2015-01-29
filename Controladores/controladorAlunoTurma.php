@@ -1,10 +1,11 @@
 <?php
 session_start("mynota");
 include_once("../ClassesSQL/classeAlunoTurmaSQL.php");
+include_once("controladorNota.php");
 
 class controladorAlunoTurma{
 	
-	function inserir(){		
+	function inserir(){
 		$alunoTurma = new AlunoTurma();
 		$aluno = new AlunoSQL();
 		$alunoTurma->setAluno($aluno->listar($_REQUEST["aluno"]));
@@ -12,11 +13,9 @@ class controladorAlunoTurma{
 		$alunoTurma->setTurma($turma->listar($_REQUEST["turma"]));
 		$persistir = new AlunoTurmaSQL();
 		if ($persistir->checarMatricula( $aluno->listar($_REQUEST["aluno"])->getId(), $turma->listar($_REQUEST["turma"])->getCurso()->getId() ) == 0) {
-			$ok = $persistir->inserir($alunoTurma);
-			if ($ok == true){				
-				$_SESSION["aluno"] = $_REQUEST["aluno"];
-				$_SESSION["turma"] = $_REQUEST["turma"];
-				header ("location: ../GUIs/notasIniciais.php");				
+			if ($persistir->inserir($alunoTurma)){
+				$persistir = new controladorNota();
+				$resultado = $persistir->notasIniciais($aluno->listar($_REQUEST["aluno"]), $turma->listar($_REQUEST["turma"]));
 			}
 			else{
 				$resultado = "
