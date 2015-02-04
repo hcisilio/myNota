@@ -13,7 +13,7 @@ class ProfessorSQL{
 		'".$professor->getComentario()."',
 		'".$professor->getSenha()."',
 		'".$professor->getAcesso()."',
-		1
+		'Ativo'
 		)";
 		return mysql_query($this->sql);
 	}
@@ -52,7 +52,7 @@ class ProfessorSQL{
 		if ($parametros){
 			$wheres = " where ";
 			while ($parametro = current($parametros)) {
-				$wheres .= key($parametros)."='".$parametro."'";				
+				$wheres .= key($parametros)."='".$parametro."'";
 				if (next($parametros)){
 					$wheres .= " and ";
 				}
@@ -63,7 +63,6 @@ class ProfessorSQL{
 			$this->sql = "select * from professores";
 		}
 		//Executando a Query
-		
 		$query = mysql_query($this->sql);
 		$professorArr = array();
 		while ($linha=mysql_fetch_array($query)){

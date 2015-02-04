@@ -49,7 +49,7 @@
 				type: "POST",
 				url: "../Controladores/controlador.php",
 				data: { 					
-					tipo: "ativos",					
+					tipo: "Ativo",					
 					classe: "Professor",
 					metodo: "criarCombo"					
 				},				
