@@ -50,8 +50,16 @@
 						beforeSend: function(){							
 							
 						},
-						success: function() {
-							window.location.reload();
+						success: function(resultado) {
+							$("#msg").hide();
+							$("#msg").html(resultado);
+							$("#msg").show('slow');
+							if (valor == 'Ativo') {
+								listarProfessores('Inativo');
+							} 
+							else if (valor == 'Inativo') {
+								listarProfessores('Ativo');
+							}
 						}
 					});
 				}
@@ -130,6 +138,7 @@
 					$("#msg").hide();
 					$("#msg").html(resultado);
 					$("#msg").show('slow');
+					listarProfessores('Ativo');
 				}
 			});
 		}
@@ -153,6 +162,7 @@
 					$('#msg').hide();				
 					$('#msg').html(resultado);
 					$('#msg').show("slow");	
+					listarProfessores('Ativo');
 				}
 		    });
 	   }
