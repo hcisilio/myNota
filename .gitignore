@@ -1,0 +1,8 @@
+*~
+.buildpath
+.gitignore
+.project
+.settings
+teste.php
+autoload.php
+conexao.php

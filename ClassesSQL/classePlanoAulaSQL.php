@@ -63,7 +63,7 @@ class PlanoAulaSQL{
 		}
 		//Executando a Query			
 		$query = mysql_query($this->sql);
-		$aulaArr = array();		
+		$planoAulaArr = array();		
 		while ($linha=mysql_fetch_array($query)){
 			$planoAula = new PlanoAula();
 			$planoAula->setId($linha["id"]);

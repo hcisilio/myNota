@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link href="CSS/bootstrap.css" rel="stylesheet">	
 	<script src="../Ajax/jQuery.js"></script>
+	<script src="../Ajax/tabs.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
 	function trocaPesquisa(tipo){
@@ -72,13 +73,6 @@
 				$( '#planos' ).html('fudeu');
 			}
 	    });
-	}
-
-	function mudaAba(){
-		$('#tab a').click(function (e) {
-		  e.preventDefault()
-		  $(this).tab('show')
-		})
 	}
 
 	function imprimeNotas(){			
