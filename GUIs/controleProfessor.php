@@ -27,7 +27,7 @@
 				$("#"+tipo).empty();				
 				$("#"+tipo).append('<option>Carregando...</option>');
 			},
-			success: function(tabela) {	
+			success: function(tabela){			
 				$("#"+tipo).empty();				
 				$("#"+tipo).append(tabela);						
 			}
@@ -228,7 +228,7 @@
 						</select>
 					</div>
 					<div class="input-group abaixo">
-						<textarea name="comentario" id="comentario" cols="200%" rows="5" class="form-control edits"></textarea>
+						<textarea name="comentario" id="comentario" cols="200%" rows="5" class="form-control edits" placeholder="Comentários"></textarea>
 					</div>
 					<div align='right'>
 						<input type='button' class='btn btn-primary' value='Salvar' onclick='JavaScript:registrarProfessor()'>						

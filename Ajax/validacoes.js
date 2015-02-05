@@ -1,5 +1,3 @@
-//$("#aula div").children().each(function(){
-
 function removeFalhaValidacao(idForm){
 	$(idForm+" .erro").each(function(){
 		$(this).removeClass("erro");

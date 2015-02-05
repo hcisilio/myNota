@@ -89,7 +89,7 @@
 					</select>
 				</div>
 				<div class="input-group abaixo">
-					<textarea name="comentario" id="comentario" cols="200%" rows="5" class="form-control edits"></textarea>
+					<textarea name="comentario" id="comentario" cols="200%" rows="5" class="form-control edits" placeholder="Comentários"></textarea>
 				</div>	
 			</form>			
 		</div>	

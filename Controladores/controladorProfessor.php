@@ -139,7 +139,7 @@ class ControladorProfessor {
 					</select>
 				</div>
 				<div class='input-group abaixo'>
-					<textarea name='comentario' id='comentario' cols='200%' rows='5' class='form-control edits'>".$professor->getComentario()."</textarea>
+					<textarea name='comentario' id='comentario' cols='200%' rows='5' class='form-control edits' placeholder='Comentários'>".$professor->getComentario()."</textarea>
 				</div>
 				<div align='right'>
 					<input type='button' class='btn btn-primary' value='Salvar' onclick='JavaScript:editarProfessor()'>						
@@ -151,24 +151,25 @@ class ControladorProfessor {
 
 	function criarTabela(){
 		$tabela = "<table border='1' id='professores' class='table table-striped tabela-consulta'>";
-		$tabela .= "<tr> <th> Login </th> <th> Nome Completo </th> <th> Acesso </th> <th> Controle </th> </tr>";
+		$tabela .= "<tr> <th> Login </th> <th> Nome Completo </th> <th> Comentário </th> <th> Acesso </th> <th> Controle </th> </tr>";
 		$professores = $this->listarPorStatus($_REQUEST['tipo']);
 		if ($_REQUEST['tipo'] == 'Ativo' ) {
 			$linha = "<td> 
-				<a href='' onClick=\"preparaEdicao()\" data-toggle='modal' data-target='#editarProfessorModal' class='btn btn-warning'> <span class='glyphicon glyphicon-edit'> </span> </a>
-				<a href='#' onClick=\"restaurarSenha('0000')\" class='btn btn-warning'> <span class='glyphicon glyphicon-repeat' </span> </a>
-				<a href='#' onClick=\"alterarStatus('Inativo')\" class='btn btn-danger'> <span class='glyphicon glyphicon-log-out'> </a> 
+				<p> <a href='' onClick=\"preparaEdicao()\" data-toggle='modal' data-target='#editarProfessorModal' class='btn btn-warning'> <span class='glyphicon glyphicon-edit'> </span> </a> </p>
+				<p> <a href='#' onClick=\"restaurarSenha('0000')\" class='btn btn-warning'> <span class='glyphicon glyphicon-repeat' </span> </a> </p>
+				<p> <a href='#' onClick=\"alterarStatus('Inativo')\" class='btn btn-danger'> <span class='glyphicon glyphicon-log-out'> </a> </p>
 			</td>";
 		}
 		else if ($_REQUEST['tipo'] == 'Inativo'){
-			$linha = "<td> <a href='#' onClick=\"alterarStatus('Ativo')\" class='btn btn-success'> <span class='glyphicon glyphicon-log-in'> </a> </td>";
+			$linha = "<td> <p> <a href='#' onClick=\"alterarStatus('Ativo')\" class='btn btn-success'> <span class='glyphicon glyphicon-log-in'> </a> </p> </td>";
 		}
 
 		if ($professores){
 			foreach ($professores as $professor){
 				$tabela .= "<tr> 
 					<td align='left'>".$professor->getId()."</td>
-					<td align='left'>".$professor->getNome()."</td> 
+					<td align='left' width = '30%'>".$professor->getNome()."</td>
+					<td align='left' width = '40%'>".$professor->getComentario()."</td>
 					<td align='left'>".$professor->getAcesso()."</td>
 					$linha
 				</tr>";
