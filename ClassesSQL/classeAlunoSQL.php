@@ -15,8 +15,13 @@ class AlunoSQL{
 		return mysql_query($this->sql);
 	}
 	
-	function alterar(){
-		
+	function alterar($aluno){
+		$this->sql = "update alunos set
+		nome = '".$aluno->getNome()."',
+		email = '".$aluno->getMail()."'
+		where id = '".$aluno->getId()."'
+		";
+		return mysql_query($this->sql);
 	}
 	
 	function deletar(){
