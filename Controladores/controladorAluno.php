@@ -30,6 +30,32 @@ class ControladorAluno {
 		echo $resultado;
 	}
 	
+	function alterar(){
+		$persistir = new AlunoSQL;
+		$aluno = $persistir->listar($_REQUEST['id']);
+		if (isset($_REQUEST['nome'])){
+			$aluno->setNome($_REQUEST['nome']);
+		}
+		if (isset($_REQUEST['mail'])){
+			$aluno->setMail($_REQUEST['mail']);
+		}
+		if ($persistir->alterar($aluno)){
+			$resultado = "
+				<div class='alert alert-success' role='alert'>
+					Dados do aluno ".$aluno->getId()." alterados com sucesso!
+				</div>
+			";
+		}
+		else {
+			$resultado = "
+				<div class='alert alert-danger' role='alert'>
+					Ops! Dados do aluno não foram alterados.<BR />".mysql_error()."
+				</div>
+			";
+		}
+		echo $resultado;
+	}
+
 	function listar($id) {
 		$persistir = new AlunoSQL();
 		return $persistir->listar($id);
@@ -57,9 +83,10 @@ class ControladorAluno {
 			for($i=0; $i<$total; $i++) {
 				$id = $alunos[$i]->getId();
 				$nome = $alunos[$i]->getNome();
+				$mail = $alunos[$i]->getMail();
 				$resultado .= "
 					<tr>						
-						<td><button type='button' class='btn btn-primary' onClick=\"javaScript:pegueme('$id','$nome');\">$id</button> </td> 
+						<td><button type='button' class='btn btn-primary' onClick=\"javaScript:pegueme('$id','$nome', '$mail');\">$id</button> </td> 
 						<td>$nome</td> 
 					</tr>
 				";			
