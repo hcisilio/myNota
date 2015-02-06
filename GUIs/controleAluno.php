@@ -53,6 +53,7 @@
 			$( '#id' ).attr('value', aluno);
 			$( '#nome' ).attr('value', nome);
 			$( '#mail' ).attr('value', mail);
+			$( '#msg' ).hide();
 			consultarNotas();
 			$( '#selecionarAluno').modal('toggle');
 		}
@@ -150,7 +151,7 @@
 					</div>
 					<div class="tab-pane" id="turmasNotas">
 						<div class='alert alert-danger'> Utilize o campo acima para buscar o aluno </div>
-					</div>								
+					</div>							
 				</div>
 			</form>			
 		</div>
