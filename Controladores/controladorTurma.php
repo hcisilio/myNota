@@ -43,6 +43,44 @@ class ControladorTurma {
 		}
 		echo $resultado;
 	}
+
+	function alterar(){
+		if(isset($_REQUEST["dias"])) {
+			$persistir = new TurmaSQL();
+			$turma = $persistir->listar($_REQUEST["id"]);
+			if (isset($_REQUEST["professor"])){
+				$professor = new ProfessorSQL();
+				$turma->setProfessor($professor->listar($_REQUEST["professor"]));
+			}
+			$ok = $persistir->alterar($turma);		
+			if ($ok == true) {
+				$dia = new Dia();
+				$persistir->removerDias($_REQUEST["id"]);
+				for($i = 0; $i < count($_REQUEST["dias"]); $i++) {
+					$persistir->DiaTurma($_REQUEST["dias"][$i],$_REQUEST["id"]);
+				}
+				$resultado = "
+					<div class='alert alert-success' role='alert'>
+						Dados da turma atualizados com sucesso!
+					</div>
+				";
+			}
+			else{
+				$resultado = "
+					<div class='alert alert-danger' role='alert'>
+						Ops! A atualização da turma falhou!. <BR />".mysql_error()."
+					</div>
+				";
+			}
+		} else {
+			$resultado = "
+				<div class='alert alert-danger' role='alert'>
+					Ops! Não foram selecionados os dias de aula desta turma
+				</div>
+			";
+		}
+		echo $resultado;
+	}
 	
 	#funções para consulta de turma
 	function listar($id){
@@ -106,8 +144,7 @@ class ControladorTurma {
 		$persistir = new turmaSQL();
 		return $persistir->diasDeAula($turma->getId());
 	}
-	
-	
+		
 	function criarCombo() {		
 		$combo = "<option value='null'> Selecione uma turma </option>";
 		if ($_REQUEST["tipo"] == "minhas"){

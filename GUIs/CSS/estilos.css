@@ -1,10 +1,17 @@
 @charset "UTF-8";
+/*propriedade para fixar uma altura minima da página, evitando que o menu lateral seja cortado*/
+#principal{
+	min-height: 600px;
+}
 .topo{
 	height: 150px;
 	background: #428BCA;
 	text-align: center;
 }
-
+/*classe para destacar elemento padrão de um combobox*/
+.destaque {
+	color: #428BCA;
+}
 /*classe para afastar conteúdo para baixo da div atual*/
 .abaixo{
 	margin-bottom: 20px;
