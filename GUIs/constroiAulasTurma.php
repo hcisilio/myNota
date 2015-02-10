@@ -1,5 +1,4 @@
-<?php 
-//session_start("mynota");
+<?php
 include_once ("../Controladores/controladorAula.php");
 include_once ("../Controladores/controladorTurma.php");
 
