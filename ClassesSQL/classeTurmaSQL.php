@@ -110,6 +110,11 @@ class TurmaSQL{
 		$this->sql = "insert into turma_dia values ('$turma',$dia)";
 		return mysql_query($this->sql);
 	}
+
+	function removerDias($turma){
+		$this->sql = "delete from turma_dia where turma = '$turma'";
+		return mysql_query($this->sql);
+	}
 	
 	function diasDeAula($turma) {
 		$this->sql = "select * from dias where id in (select dia from turma_dia where turma = '$turma')";

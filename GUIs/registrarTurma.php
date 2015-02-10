@@ -13,7 +13,7 @@
 	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
-	   function doPost() {
+	   	function doPost() {
 		   if ( nuloOUvazio("#turma") ) {
 			   var dias = new Array();		   
 			   for (i=0; i<7; i++) {
