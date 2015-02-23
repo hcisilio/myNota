@@ -83,7 +83,7 @@
 					<input class="form-control edits" name="senha" id="senha" type="password" placeholder="Senha" onKeyPress="chamaLogar()">
 			  	</div>
 			  	<div class="naDireita">	
-			  		<input type="button" class="btn btn-primary" id="btnSubmit" value="Login" onclick="logar()">
+			  		<input type="button" class="btn btn-primary" id="btnSubmit" value="Entrar" onclick="logar()">
 			  	</div>
 			</form>	
 			<p align="right"> <a href="minhaNota.php"> Ou clique aqui para consultar sua nota </a> </p>
