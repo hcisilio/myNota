@@ -1,12 +1,26 @@
 @charset "UTF-8";
+/*Classe para estilizar textos em geral*/
+.texto {
+	color: #0008C5;
+	font-size: 1.5em;
+	font-weight: normal;
+	font-family: Helvetica, sans-serif;
+}
 /*propriedade para fixar uma altura minima da página, evitando que o menu lateral seja cortado*/
 #principal{
 	min-height: 600px;
 }
 .topo{
-	height: 150px;
-	background: #428BCA;
-	text-align: center;
+	height: 60px;
+}
+/**/
+.sublinhado {
+	border-style: none;
+	border-color: #FFF;
+	border-bottom-style: solid;
+	border-bottom-color: #428BCA;
+	border-bottom-width: 2px;
+	text-align: left;
 }
 /*classe para destacar elemento padrão de um combobox*/
 .destaque {
@@ -16,7 +30,6 @@
 .abaixo{
 	margin-bottom: 20px;
 }
-
 /*Classe para abaixar a div atual*/
 .desce {
 	margin-top: 120px

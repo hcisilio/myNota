@@ -57,22 +57,22 @@
 </head>
 <body>
 	<!-- mainLogo -->
-	<div id="row">
-		<div class="col-md-3 topo">
-		</div>
-		<div class="col-md-6 topo">
-			<img src="Imagens/mainLogo.png" height="150px" width="100%">
-		</div>	
-		<div class="col-md-3 topo">
-		</div>
+	<div id="row" class="topo">
+		<div class="col-md-2">  </div>
+		<div class="col-md-8 sublinhado"> <img src="Imagens/microlins.png" height="50px"> </div>	
+		<div class="col-md-2"> 	</div>
 	</div>
 	<div id="row">
+		<!-- sobra -->
+		<div class="col-md-1">
+		</div>
 		<!-- sublogo -->
-		<div class="col-md-6">
-			<img src="Imagens/sublogo.png" class="img-responsive" alt="Responsive image">
+		<div class="col-md-5 aproxima">
+			<img src="Imagens/A+.png" class="img-responsive" alt="Responsive image">
 		</div>
 		<!-- formulário -->
 		<div class="col-md-4 desce">
+			<p class="texto"> Acesse sua conta </p>
 			<form action="../Controladores/controlador.php" method="post">
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class="glyphicon glyphicon-user"></span></span>			 		
@@ -83,7 +83,7 @@
 					<input class="form-control edits" name="senha" id="senha" type="password" placeholder="Senha" onKeyPress="chamaLogar()">
 			  	</div>
 			  	<div class="naDireita">	
-			  		<input type="button" class="btn btn-primary" id="btnSubmit" value="Login" onclick="logar()">
+			  		<input type="button" class="btn btn-primary" id="btnSubmit" value="Entrar" onclick="logar()">
 			  	</div>
 			</form>	
 			<p align="right"> <a href="minhaNota.php"> Ou clique aqui para consultar sua nota </a> </p>
