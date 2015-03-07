@@ -7,10 +7,10 @@
 <head>
 	<meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
 	<title>Lançar notas</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
-	<link href="CSS/bootstrap.css" rel="stylesheet">	
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link href="css/bootstrap.css" rel="stylesheet">	
 	<script src="js/bootstrap.min.js"></script>	
-	<script type="text/javascript" src="../Ajax/jQuery.js"></script>
+	<script type="text/javascript" src="js/jQuery.js"></script>
 	<script type="text/javascript">
 	function listaAlunos(turma) {		
 	    $.ajax({	    

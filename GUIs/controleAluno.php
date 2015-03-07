@@ -7,11 +7,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Controle de Aluno</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
-	<link href="CSS/bootstrap.css" rel="stylesheet">	
-	<script src="../Ajax/jQuery.js"></script>
-	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
-	<script src="../Ajax/tabs.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link href="css/bootstrap.css" rel="stylesheet">	
+	<script src="js/jQuery.js"></script>
+	<script type="text/javascript" src="js/validacoes.js"></script>
+	<script src="js/tabs.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
 		function alterarAluno() {

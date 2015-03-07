@@ -7,9 +7,9 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Trocar Senha</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
-	<link href="CSS/bootstrap.css" rel="stylesheet">	
-	<script type="text/javascript" src="../Ajax/jQuery.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link href="css/bootstrap.css" rel="stylesheet">	
+	<script type="text/javascript" src="js/jQuery.js"></script>
 	<script type="text/javascript">
 		function doPost(classe, metodo) {		
 			var id = document.getElementById("id").value;

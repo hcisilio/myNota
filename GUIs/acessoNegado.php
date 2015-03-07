@@ -2,8 +2,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Acesso Negado</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
-	<link href="CSS/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link href="css/bootstrap.css" rel="stylesheet">
 	<style>
 		.proibido {
 			background: url('Imagens/proibido.png') no-repeat center center;
@@ -13,7 +13,7 @@
 			color: #fff !important;			
 		}
 	</style>	
-	<script src="../Ajax/jQuery.js"></script>
+	<script src="js/jQuery.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 </head>
 

@@ -7,11 +7,14 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Registrar Aula</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
-	<link href="CSS/bootstrap.css" rel="stylesheet">	
-	<script src="js/bootstrap.min.js"></script>	
-	<script type="text/javascript" src="../Ajax/jQuery.js"></script>
-	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
+	<script type="text/javascript" src="js/jQuery.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/datepicker.js"></script>
+	<script type="text/javascript" src="js/validacoes.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		function listaAulas(turma) {				
 		    $.ajax({			        
@@ -166,7 +169,7 @@
 				</div>
 				<div class="input-group abaixo">
 			 		<span class="input-group-addon edits"><span class=" glyphicon glyphicon-calendar"></span></span>			 		
-					<input class="form-control edits nuloOUvazio br-data-widget hasDatepicker" name="data" id="data" type="date" value="<?php echo date("d/m/Y") ?>" placeholder="dd/mm/YYYY">
+					<input class="form-control edits nuloOUvazio br-data-widget datepicker" name="data" id="data" type="text" value="<?php echo date("d/m/Y") ?>" placeholder="dd/mm/YYYY">
 			  	</div>
 				<div class="input-group abaixo">
 					<textarea rows="10" cols="200%" name="conteudo" id="conteudo" class="form-control edits nuloOUvazio" placeholder="Conteúdo ministrado"></textarea>

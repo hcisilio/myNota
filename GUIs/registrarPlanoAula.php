@@ -7,10 +7,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Registrar Plano de Aula</title>
-	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
-	<link href="CSS/bootstrap.css" rel="stylesheet">	
-	<script src="../Ajax/jQuery.js"></script>
-	<script type="text/javascript" src="../Ajax/validacoes.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/jquery-ui.min.css">
+	<script type="text/javascript" src="js/jQuery.js"></script>
+	<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="js/datepicker.js"></script>		
+	<script type="text/javascript" src="js/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script type="text/javascript">
 		function listaPlanos(turma) {				
@@ -173,7 +176,7 @@
 					</div>
 					<div class="input-group abaixo">				
 						<span class="input-group-addon edits"><span class=" glyphicon glyphicon-calendar"></span></span>			 		
-						<input class="form-control edits nuloOUvazio" name="data" id="data" type="date" placeholder="dd/mm/YYYY">																												
+						<input class="form-control edits nuloOUvazio br-data-widget datepicker" name="data" id="data" type="text" placeholder="dd/mm/YYYY">
 					</div>
 					<div class="input-group abaixo">
 						<textarea rows="1" cols="100%" name="caps" id="caps" placeholder="Capítulos da apostila" class="form-control edits nuloOUvazio"></textarea>
