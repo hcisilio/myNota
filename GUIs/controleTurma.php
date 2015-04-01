@@ -148,7 +148,7 @@
 			<div class="input-group abaixo">
 				<input type="text" id="q" name="q" class="form-control edits" placeholder="Digite o código da turma">
 				<span class="input-group-addon edits">
-					<a href="JavaScript:detalharTurma(); $('#iconeSalvar').show()" class="glyphicon glyphicon-search"></a>
+					<a href="JavaScript:detalharTurma()" onclick="JavaScript:$('#iconeSalvar').show()" class="glyphicon glyphicon-search"></a>
 				</span>																														
 			</div>	
 			<!-- Nav tabs -->	
