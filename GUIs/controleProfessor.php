@@ -10,7 +10,6 @@
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<link href="css/bootstrap.css" rel="stylesheet">	
 	<script src="js/jQuery.js"></script>
-	<script src="js/tabs.js"></script>
 	<script type="text/javascript" src="js/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
@@ -251,9 +250,9 @@
 		<div id="principal" class="abaixo col-md-7">	
 			<div id="msg" style="display:none"> </div>
 			<!-- Nav tabs -->	
-			<ul id="tab" class="nav nav-tabs" role="tablist">			  	
-			 	<li class="active"><a href="#Ativo" onclick="mudaAba(); listarProfessores('Ativo')">Ativos</a></li>
-			  	<li><a href="#Inativo" onclick="mudaAba(); listarProfessores('Inativo')">Inativos</a></li>
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="active"><a href="#Ativo" onclick="listarProfessores('Ativo')" data-toggle="tab">Ativos</a></li>
+			  	<li><a href="#Inativo" onclick="listarProfessores('Inativo')" data-toggle="tab">Inativos</a></li>
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content">				

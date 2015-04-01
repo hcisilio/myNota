@@ -9,8 +9,7 @@
 	<title>Controle da turma</title>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<link href="css/bootstrap.css" rel="stylesheet">	
-	<script src="js/jQuery.js"></script>
-	<script src="js/tabs.js"></script>
+	<script src="js/jQuery.js"></script>	
 	<script src="js/validacoes.js"></script>
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
@@ -151,12 +150,12 @@
 					<a href="JavaScript:detalharTurma()" onclick="JavaScript:$('#iconeSalvar').show()" class="glyphicon glyphicon-search"></a>
 				</span>																														
 			</div>	
-			<!-- Nav tabs -->	
-			<ul id="tab" class="nav nav-tabs" role="tablist">
-				<li class="active"><a href="#dadosCadastrais" onclick="mudaAba();$('#iconeImprimir').hide();$('#iconeSalvar').show()">Dados Cadastrais</a></li>	  	
-			  	<li><a href="#planos" onclick="mudaAba();$('#iconeImprimir').hide();$('#iconeSalvar').hide()">Planos de Aula</a></li>
-			  	<li><a href="#aulas" onclick="mudaAba();$('#iconeImprimir').hide()">Aulas</a></li>
-			  	<li><a href="#notas" onclick="mudaAba();$('#iconeImprimir').show();$('#iconeSalvar').hide()">Notas</a></li>
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#dadosCadastrais" onclick="$('#iconeImprimir').hide();$('#iconeSalvar').show()" data-toggle="tab">Dados Cadastrais</a></li>
+				<li class=""><a href="#planos" onclick="$('#iconeImprimir').hide();$('#iconeSalvar').hide()" data-toggle="tab">Planos de Aula</a></li>
+				<li class=""><a href="#aulas" onclick="$('#iconeImprimir').hide()" data-toggle="tab">Aulas Ministradas</a></li>
+				<li class=""><a href="#notas" onclick="$('#iconeImprimir').show();$('#iconeSalvar').hide()" data-toggle="tab">Notas</a></li>
 			</ul>
 			<!-- Tab panes -->
 			<div class="tab-content">				

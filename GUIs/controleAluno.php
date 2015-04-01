@@ -10,8 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<link href="css/bootstrap.css" rel="stylesheet">	
 	<script src="js/jQuery.js"></script>
-	<script type="text/javascript" src="js/validacoes.js"></script>
-	<script src="js/tabs.js"></script>
+	<script type="text/javascript" src="js/validacoes.js"></script>	
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
 		function alterarAluno() {
@@ -134,8 +133,8 @@
 
 			  	<!-- Nav tabs -->	
 				<ul id="tab" class="nav nav-tabs" role="tablist">			  	
-				 	<li class="active"><a href="#dadosCadastrais" onclick="mudaAba()">Dados Cadastrais</a></li>
-				  	<li><a href="#turmasNotas" onclick="mudaAba()">Turmas e Notas</a></li>
+				 	<li class="active"><a href="#dadosCadastrais" data-toggle="tab">Dados Cadastrais</a></li>
+				  	<li><a href="#turmasNotas" data-toggle="tab">Turmas e Notas</a></li>
 				</ul>
 				<!-- Tab panes -->
 				<div class="tab-content">				
