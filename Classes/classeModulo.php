@@ -23,7 +23,7 @@ class Modulo{
 	function setNome($nome){
 		$this->nome = $nome;
 	}
-	function setCruso($curso){
+	function setCurso($curso){
 		$this->curso = $curso;
 	}
 

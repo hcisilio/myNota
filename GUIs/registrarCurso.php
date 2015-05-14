@@ -1,7 +1,25 @@
-<?php 
+<?php
+	session_start("mynota");
 	include_once ("../Controladores/controladorPermissao.php");
 	$persistir = new ControladorPermissao();
 	$persistir->autorizarAcesso( end(explode("/", $_SERVER['PHP_SELF'])) );
+
+	//Adicionando os módulos
+	if ( (!isset($_SESSION['modulos'])) && (isset($_GET['modulo_add'])) ) {
+		$_SESSION['modulos'] = array();
+		$_SESSION['modulos'][$_GET['modulo_add']] = $_GET['modulo_add'];
+	}
+	else if (isset($_GET['modulo_add'])){
+		//array_push($_SESSION['modulos'], $_GET['modulo_add']);
+		$_SESSION['modulos'][$_GET['modulo_add']] = $_GET['modulo_add'];
+	}
+	//removendo os módulos
+	if (isset($_GET['modulo_del'])){
+		unset($_SESSION['modulos'][$_GET['modulo_del']]);
+		if ( count($_SESSION['modulos']) == 0 ){
+			unset($_SESSION['modulos']);
+		}
+	}
 ?>
 <html>
 <head>
@@ -14,15 +32,13 @@
 	<script src="js/bootstrap.min.js"></script>	
 	<script>
 		function matricularAluno() {
-			if ( nuloOUvazio("#aluno") ) {
+			if ( nuloOUvazio("#curso") ) {
 				$.ajax({			        
 					type: "POST",
 					url: "../Controladores/controlador.php",
 					data: { 
-						id: $("#id").val(),
-						nome: $("#nome").val(),
-						mail: $("#mail").val(),
-						classe: "Aluno",
+						descricao: $("#descricao").val(),
+						classe: "Curso",
 						metodo: "inserir"
 					},
 					success: function(resultado) {
@@ -74,12 +90,31 @@
 					<input class="form-control edits nuloOUvazio" name="descricao" id="descricao" type="text" placeholder="Descrição do curso">	
 			  	</div>
 			</form>
+			<p>Inserir Módulos:</p>
+			<form id="modulos" action="registrarCurso.php" method="GET">
+			  	<div class='input-group abaixo'>
+			  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-pencil"></span></span>
+					<input class="form-control edits nuloOUvazio" name="modulo_add" id="modulo_add" type="text" placeholder="Módulo">
+			  		<span class="input-group-btn"><input type='submit' class='btn btn-primary' value='Incluir'></span>
+			  	</div>
+			</form>
 			<p>Módulos:</p>
-		  	<div class='input-group abaixo'>
-		  		<span class="input-group-addon edits"><span class="glyphicon glyphicon-pencil"></span></span>
-				<input class="form-control edits nuloOUvazio" name="modulo" id="modulo" type="text" placeholder="Módulo">
-		  		<span class="input-group-btn"><input type='button' class='btn btn-primary' value='Incluir'></span>
-		  	</div>
+			<?php
+				if (isset($_SESSION['modulos'])) {					
+					foreach ($_SESSION['modulos'] as $modulo) {
+						echo "
+							<li> $modulo </li>
+							<form action='registrarCurso.php' method='GET'>
+								<input type='hidden' name='modulo_del' id='modulo_del' value='$modulo'>
+								<input type='submit' value='X'>
+							</form>
+							";
+					}
+				}
+				else {
+					echo "Não há módulos";
+				}			
+			?>
 		</div>
 		<!-- sobra -->
 		<div class="col-md-2">

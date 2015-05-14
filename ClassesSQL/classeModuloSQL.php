@@ -5,6 +5,14 @@ include("../Classes/classeModulo.php");
 class ModuloSQL {
 	
 	var $sql;
+
+	function inserir($modulo){
+		$this->sql = "insert into modulos (nome, curso) values (
+		'".$modulo->getNome()."',
+		'".$modulo->getCurso()->getId()."'
+		)";
+		return mysql_query($this->sql);
+	}
 	
 	function listar($id){
 		$this->sql = "select * from modulos where id = $id";

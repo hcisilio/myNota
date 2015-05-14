@@ -7,8 +7,12 @@ class CursoSQL {
 	
 	var $sql;
 	
-	function inserir(){
-		
+	function inserir($curso){
+		$this->sql = "insert into cursos (descricao) values (
+		'".$curso->getDescricao()."'
+		)";
+		mysql_query($this->sql);
+		return mysql_insert_id();
 	}
 	
 	function alterar(){

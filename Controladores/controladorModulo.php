@@ -6,8 +6,15 @@ include ("../ClassesSQL/classeModuloSQL.php");
 
 class controladorModulo {
 	
-	function inserir(){
-		
+	function inserir($curso){
+		$modulo = new Modulo();
+		$persistir = new ModuloSQL();
+		foreach ($_SESSION['modulos'] as $m) {
+			$modulo->setNome($m);
+			$modulo->setCurso($curso);
+			$persistir->inserir($modulo);
+		}
+		unset($_SESSION['modulos']);
 	}
 	
 	function alterar(){
