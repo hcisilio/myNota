@@ -230,7 +230,7 @@ class ControladorProfessor {
 	
 	function logout(){
 		$_SESSION['logado'] = "false";
-		session_destroy("mynota");
+		session_destroy();
 		header("Location: ../GUIs/login.php");
 	}
 }
